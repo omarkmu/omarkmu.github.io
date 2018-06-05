@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `CodePage` enum in crate `winconsole`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, CodePage">
+
+    <title>winconsole::console::CodePage - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css"
+          id="mainThemeStyle">
+    
+    <link rel="stylesheet" type="text/css" href="../../dark.css">
+    <link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle">
+    <script src="../../storage.js"></script>
+    
+
+    
+    
+</head>
+<body class="rustdoc enum">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
+        
+        <p class='location'>Enum CodePage</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#variants">Variants</a><div class="sidebar-links"><a href="#variant.None">None</a><a href="#variant.IBM037">IBM037</a><a href="#variant.IBM437">IBM437</a><a href="#variant.IBM500">IBM500</a><a href="#variant.ASMO_708">ASMO_708</a><a href="#variant.ASMO_709">ASMO_709</a><a href="#variant.ASMO_710">ASMO_710</a><a href="#variant.DOS_720">DOS_720</a><a href="#variant.ibm737">ibm737</a><a href="#variant.ibm775">ibm775</a><a href="#variant.ibm850">ibm850</a><a href="#variant.ibm852">ibm852</a><a href="#variant.IBM855">IBM855</a><a href="#variant.ibm857">ibm857</a><a href="#variant.IBM00858">IBM00858</a><a href="#variant.IBM860">IBM860</a><a href="#variant.ibm861">ibm861</a><a href="#variant.DOS_862">DOS_862</a><a href="#variant.IBM863">IBM863</a><a href="#variant.IBM864">IBM864</a><a href="#variant.IBM865">IBM865</a><a href="#variant.cp866">cp866</a><a href="#variant.ibm869">ibm869</a><a href="#variant.IBM870">IBM870</a><a href="#variant.windows_874">windows_874</a><a href="#variant.cp875">cp875</a><a href="#variant.shift_jis">shift_jis</a><a href="#variant.gb2312">gb2312</a><a href="#variant.ks_c_5601_1987">ks_c_5601_1987</a><a href="#variant.big5">big5</a><a href="#variant.IBM1026">IBM1026</a><a href="#variant.IBM01047">IBM01047</a><a href="#variant.IBM01140">IBM01140</a><a href="#variant.IBM01141">IBM01141</a><a href="#variant.IBM01142">IBM01142</a><a href="#variant.IBM01143">IBM01143</a><a href="#variant.IBM01144">IBM01144</a><a href="#variant.IBM01145">IBM01145</a><a href="#variant.IBM01146">IBM01146</a><a href="#variant.IBM01147">IBM01147</a><a href="#variant.IBM01148">IBM01148</a><a href="#variant.IBM01149">IBM01149</a><a href="#variant.utf_16">utf_16</a><a href="#variant.unicodeFFFE">unicodeFFFE</a><a href="#variant.windows_1250">windows_1250</a><a href="#variant.windows_1251">windows_1251</a><a href="#variant.windows_1252">windows_1252</a><a href="#variant.windows_1253">windows_1253</a><a href="#variant.windows_1254">windows_1254</a><a href="#variant.windows_1255">windows_1255</a><a href="#variant.windows_1256">windows_1256</a><a href="#variant.windows_1257">windows_1257</a><a href="#variant.windows_1258">windows_1258</a><a href="#variant.Johab">Johab</a><a href="#variant.macintosh">macintosh</a><a href="#variant.x_mac_japanese">x_mac_japanese</a><a href="#variant.x_mac_chinesetrad">x_mac_chinesetrad</a><a href="#variant.x_mac_korean">x_mac_korean</a><a href="#variant.x_mac_arabic">x_mac_arabic</a><a href="#variant.x_mac_hebrew">x_mac_hebrew</a><a href="#variant.x_mac_greek">x_mac_greek</a><a href="#variant.x_mac_cyrillic">x_mac_cyrillic</a><a href="#variant.x_mac_chinesesimp">x_mac_chinesesimp</a><a href="#variant.x_mac_romanian">x_mac_romanian</a><a href="#variant.x_mac_ukrainian">x_mac_ukrainian</a><a href="#variant.x_mac_thai">x_mac_thai</a><a href="#variant.x_mac_ce">x_mac_ce</a><a href="#variant.x_mac_icelandic">x_mac_icelandic</a><a href="#variant.x_mac_turkish">x_mac_turkish</a><a href="#variant.x_mac_croatian">x_mac_croatian</a><a href="#variant.utf_32">utf_32</a><a href="#variant.utf_32BE">utf_32BE</a><a href="#variant.x_Chinese_CNS">x_Chinese_CNS</a><a href="#variant.x_cp20001">x_cp20001</a><a href="#variant.x_Chinese_Eten">x_Chinese_Eten</a><a href="#variant.x_cp20003">x_cp20003</a><a href="#variant.x_cp20004">x_cp20004</a><a href="#variant.x_cp20005">x_cp20005</a><a href="#variant.x_IA5">x_IA5</a><a href="#variant.x_IA5_German">x_IA5_German</a><a href="#variant.x_IA5_Swedish">x_IA5_Swedish</a><a href="#variant.x_IA5_Norwegian">x_IA5_Norwegian</a><a href="#variant.us_ascii">us_ascii</a><a href="#variant.x_cp20261">x_cp20261</a><a href="#variant.x_cp20269">x_cp20269</a><a href="#variant.IBM273">IBM273</a><a href="#variant.IBM277">IBM277</a><a href="#variant.IBM278">IBM278</a><a href="#variant.IBM280">IBM280</a><a href="#variant.IBM284">IBM284</a><a href="#variant.IBM285">IBM285</a><a href="#variant.IBM290">IBM290</a><a href="#variant.IBM297">IBM297</a><a href="#variant.IBM420">IBM420</a><a href="#variant.IBM423">IBM423</a><a href="#variant.IBM424">IBM424</a><a href="#variant.x_EBCDIC_KoreanExtended">x_EBCDIC_KoreanExtended</a><a href="#variant.IBM_Thai">IBM_Thai</a><a href="#variant.koi8_r">koi8_r</a><a href="#variant.IBM871">IBM871</a><a href="#variant.IBM880">IBM880</a><a href="#variant.IBM905">IBM905</a><a href="#variant.IBM00924">IBM00924</a><a href="#variant.EUC_JP">EUC_JP</a><a href="#variant.x_cp20936">x_cp20936</a><a href="#variant.x_cp20949">x_cp20949</a><a href="#variant.cp1025">cp1025</a><a href="#variant.koi8_u">koi8_u</a><a href="#variant.iso_8859_1">iso_8859_1</a><a href="#variant.iso_8859_2">iso_8859_2</a><a href="#variant.iso_8859_3">iso_8859_3</a><a href="#variant.iso_8859_4">iso_8859_4</a><a href="#variant.iso_8859_5">iso_8859_5</a><a href="#variant.iso_8859_6">iso_8859_6</a><a href="#variant.iso_8859_7">iso_8859_7</a><a href="#variant.iso_8859_8">iso_8859_8</a><a href="#variant.iso_8859_9">iso_8859_9</a><a href="#variant.iso_8859_13">iso_8859_13</a><a href="#variant.iso_8859_15">iso_8859_15</a><a href="#variant.x_Europa">x_Europa</a><a href="#variant.iso_8859_8_i">iso_8859_8_i</a><a href="#variant.iso_2022_jp_1">iso_2022_jp_1</a><a href="#variant.csISO2022JP">csISO2022JP</a><a href="#variant.iso_2022_jp_2">iso_2022_jp_2</a><a href="#variant.iso_2022_kr">iso_2022_kr</a><a href="#variant.x_cp50227">x_cp50227</a><a href="#variant.iso_2022_ch">iso_2022_ch</a><a href="#variant.x_EBCDIC_JapaneseExtended">x_EBCDIC_JapaneseExtended</a><a href="#variant.x_EBCDIC_USCanadaJapanese">x_EBCDIC_USCanadaJapanese</a><a href="#variant.x_EBCDIC_KoreanExtendedAndKorean">x_EBCDIC_KoreanExtendedAndKorean</a><a href="#variant.x_EBCDIC_ChineseExtendedAndChinese">x_EBCDIC_ChineseExtendedAndChinese</a><a href="#variant.x_EBCDIC_ChineseExtended">x_EBCDIC_ChineseExtended</a><a href="#variant.x_EBCDIC_USCanadaChinese">x_EBCDIC_USCanadaChinese</a><a href="#variant.x_EBCDIC_JapaneseExtendedAndJapanese">x_EBCDIC_JapaneseExtendedAndJapanese</a><a href="#variant.euc_jp">euc_jp</a><a href="#variant.EUC_CN">EUC_CN</a><a href="#variant.euc_kr">euc_kr</a><a href="#variant.EUC_TCN">EUC_TCN</a><a href="#variant.hz_gb_2312">hz_gb_2312</a><a href="#variant.GB18030">GB18030</a><a href="#variant.x_iscii_de">x_iscii_de</a><a href="#variant.x_iscii_be">x_iscii_be</a><a href="#variant.x_iscii_ta">x_iscii_ta</a><a href="#variant.x_iscii_te">x_iscii_te</a><a href="#variant.x_iscii_as">x_iscii_as</a><a href="#variant.x_iscii_or">x_iscii_or</a><a href="#variant.x_iscii_ka">x_iscii_ka</a><a href="#variant.x_iscii_ma">x_iscii_ma</a><a href="#variant.x_iscii_gu">x_iscii_gu</a><a href="#variant.x_iscii_pa">x_iscii_pa</a><a href="#variant.utf_7">utf_7</a><a href="#variant.utf_8">utf_8</a><a href="#variant.Invalid">Invalid</a></div><a class="sidebar-title" href="#methods">Methods</a><div class="sidebar-links"><a href="#method.get_value">get_value</a><a href="#method.get_info">get_info</a></div><a class="sidebar-title" href="#implementations">Trait Implementations</a><div class="sidebar-links"><a href="#impl-Clone">Clone</a><a href="#impl-Copy">Copy</a><a href="#impl-Debug">Debug</a><a href="#impl-PartialEq">PartialEq</a><a href="#impl-From%3Cu16%3E">From&lt;u16&gt;</a><a href="#impl-Into%3Cu16%3E">Into&lt;u16&gt;</a><a href="#impl-Display">Display</a></div><a class="sidebar-title" href="#synthetic-implementations">Auto Trait Implementations</a><div class="sidebar-links"><a href="#impl-Send">Send</a><a href="#impl-Sync">Sync</a></div></div><p class='location'><a href='../index.html'>winconsole</a>::<wbr><a href='index.html'>console</a></p><script>window.sidebarCurrent = {name: 'CodePage', ty: 'enum', relpath: ''};</script><script defer src="sidebar-items.js"></script></div>
+    </nav>
+
+    <div class="theme-picker">
+        <button id="theme-picker" aria-label="Pick another theme!">
+            <img src="../../brush.svg" width="18" alt="Pick another theme!">
+        </button>
+        <div id="theme-choices"></div>
+    </div>
+    <script src="../../theme.js"></script>
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content"><h1 class='fqn'><span class='in-band'>Enum <a href='../index.html'>winconsole</a>::<wbr><a href='index.html'>console</a>::<wbr><a class="enum" href=''>CodePage</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/winconsole/macros.rs.html#101-106' title='goto source code'>[src]</a></span></h1><div class="docblock type-decl"><pre class='rust enum'><div class="docblock attributes">#[repr(u16)]
+</div>pub enum CodePage {
+    None,
+    IBM037,
+    IBM437,
+    IBM500,
+    ASMO_708,
+    ASMO_709,
+    ASMO_710,
+    DOS_720,
+    ibm737,
+    ibm775,
+    ibm850,
+    ibm852,
+    IBM855,
+    ibm857,
+    IBM00858,
+    IBM860,
+    ibm861,
+    DOS_862,
+    IBM863,
+    IBM864,
+    IBM865,
+    cp866,
+    ibm869,
+    IBM870,
+    windows_874,
+    cp875,
+    shift_jis,
+    gb2312,
+    ks_c_5601_1987,
+    big5,
+    IBM1026,
+    IBM01047,
+    IBM01140,
+    IBM01141,
+    IBM01142,
+    IBM01143,
+    IBM01144,
+    IBM01145,
+    IBM01146,
+    IBM01147,
+    IBM01148,
+    IBM01149,
+    utf_16,
+    unicodeFFFE,
+    windows_1250,
+    windows_1251,
+    windows_1252,
+    windows_1253,
+    windows_1254,
+    windows_1255,
+    windows_1256,
+    windows_1257,
+    windows_1258,
+    Johab,
+    macintosh,
+    x_mac_japanese,
+    x_mac_chinesetrad,
+    x_mac_korean,
+    x_mac_arabic,
+    x_mac_hebrew,
+    x_mac_greek,
+    x_mac_cyrillic,
+    x_mac_chinesesimp,
+    x_mac_romanian,
+    x_mac_ukrainian,
+    x_mac_thai,
+    x_mac_ce,
+    x_mac_icelandic,
+    x_mac_turkish,
+    x_mac_croatian,
+    utf_32,
+    utf_32BE,
+    x_Chinese_CNS,
+    x_cp20001,
+    x_Chinese_Eten,
+    x_cp20003,
+    x_cp20004,
+    x_cp20005,
+    x_IA5,
+    x_IA5_German,
+    x_IA5_Swedish,
+    x_IA5_Norwegian,
+    us_ascii,
+    x_cp20261,
+    x_cp20269,
+    IBM273,
+    IBM277,
+    IBM278,
+    IBM280,
+    IBM284,
+    IBM285,
+    IBM290,
+    IBM297,
+    IBM420,
+    IBM423,
+    IBM424,
+    x_EBCDIC_KoreanExtended,
+    IBM_Thai,
+    koi8_r,
+    IBM871,
+    IBM880,
+    IBM905,
+    IBM00924,
+    EUC_JP,
+    x_cp20936,
+    x_cp20949,
+    cp1025,
+    koi8_u,
+    iso_8859_1,
+    iso_8859_2,
+    iso_8859_3,
+    iso_8859_4,
+    iso_8859_5,
+    iso_8859_6,
+    iso_8859_7,
+    iso_8859_8,
+    iso_8859_9,
+    iso_8859_13,
+    iso_8859_15,
+    x_Europa,
+    iso_8859_8_i,
+    iso_2022_jp_1,
+    csISO2022JP,
+    iso_2022_jp_2,
+    iso_2022_kr,
+    x_cp50227,
+    iso_2022_ch,
+    x_EBCDIC_JapaneseExtended,
+    x_EBCDIC_USCanadaJapanese,
+    x_EBCDIC_KoreanExtendedAndKorean,
+    x_EBCDIC_ChineseExtendedAndChinese,
+    x_EBCDIC_ChineseExtended,
+    x_EBCDIC_USCanadaChinese,
+    x_EBCDIC_JapaneseExtendedAndJapanese,
+    euc_jp,
+    EUC_CN,
+    euc_kr,
+    EUC_TCN,
+    hz_gb_2312,
+    GB18030,
+    x_iscii_de,
+    x_iscii_be,
+    x_iscii_ta,
+    x_iscii_te,
+    x_iscii_as,
+    x_iscii_or,
+    x_iscii_ka,
+    x_iscii_ma,
+    x_iscii_gu,
+    x_iscii_pa,
+    utf_7,
+    utf_8,
+    Invalid,
+}</pre></div><div class='docblock'><p>Represents a console code page.</p>
+</div><h2 id='variants' class='variants small-section-header'>
+                   Variants<a href='#variants' class='anchor'></a></h2>
+<span id="variant.None" class="variant small-section-header"><a href="#variant.None" class="anchor field"></a><span id='None.v' class='invisible'><code>None</code></span></span><div class='docblock'><p>Default value.</p>
+</div><span id="variant.IBM037" class="variant small-section-header"><a href="#variant.IBM037" class="anchor field"></a><span id='IBM037.v' class='invisible'><code>IBM037</code></span></span><div class='docblock'><p>IBM EBCDIC US-Canada.</p>
+</div><span id="variant.IBM437" class="variant small-section-header"><a href="#variant.IBM437" class="anchor field"></a><span id='IBM437.v' class='invisible'><code>IBM437</code></span></span><div class='docblock'><p>OEM United States.</p>
+</div><span id="variant.IBM500" class="variant small-section-header"><a href="#variant.IBM500" class="anchor field"></a><span id='IBM500.v' class='invisible'><code>IBM500</code></span></span><div class='docblock'><p>IBM EBCDIC International.</p>
+</div><span id="variant.ASMO_708" class="variant small-section-header"><a href="#variant.ASMO_708" class="anchor field"></a><span id='ASMO_708.v' class='invisible'><code>ASMO_708</code></span></span><div class='docblock'><p>Arabic (ASMO 708).</p>
+</div><span id="variant.ASMO_709" class="variant small-section-header"><a href="#variant.ASMO_709" class="anchor field"></a><span id='ASMO_709.v' class='invisible'><code>ASMO_709</code></span></span><div class='docblock'><p>Arabic (ASMO-449+, BCON V4).</p>
+</div><span id="variant.ASMO_710" class="variant small-section-header"><a href="#variant.ASMO_710" class="anchor field"></a><span id='ASMO_710.v' class='invisible'><code>ASMO_710</code></span></span><div class='docblock'><p>Arabic - Transparent Arabic.</p>
+</div><span id="variant.DOS_720" class="variant small-section-header"><a href="#variant.DOS_720" class="anchor field"></a><span id='DOS_720.v' class='invisible'><code>DOS_720</code></span></span><div class='docblock'><p>Arabic (Transparent ASMO); Arabic (DOS).</p>
+</div><span id="variant.ibm737" class="variant small-section-header"><a href="#variant.ibm737" class="anchor field"></a><span id='ibm737.v' class='invisible'><code>ibm737</code></span></span><div class='docblock'><p>OEM Greek (formerly 437G); Greek (DOS).</p>
+</div><span id="variant.ibm775" class="variant small-section-header"><a href="#variant.ibm775" class="anchor field"></a><span id='ibm775.v' class='invisible'><code>ibm775</code></span></span><div class='docblock'><p>OEM Baltic; Baltic (DOS).</p>
+</div><span id="variant.ibm850" class="variant small-section-header"><a href="#variant.ibm850" class="anchor field"></a><span id='ibm850.v' class='invisible'><code>ibm850</code></span></span><div class='docblock'><p>OEM Multilingual Latin 1; Western European (DOS).</p>
+</div><span id="variant.ibm852" class="variant small-section-header"><a href="#variant.ibm852" class="anchor field"></a><span id='ibm852.v' class='invisible'><code>ibm852</code></span></span><div class='docblock'><p>OEM Latin 2; Central European (DOS).</p>
+</div><span id="variant.IBM855" class="variant small-section-header"><a href="#variant.IBM855" class="anchor field"></a><span id='IBM855.v' class='invisible'><code>IBM855</code></span></span><div class='docblock'><p>OEM Cyrillic (primarily Russian).</p>
+</div><span id="variant.ibm857" class="variant small-section-header"><a href="#variant.ibm857" class="anchor field"></a><span id='ibm857.v' class='invisible'><code>ibm857</code></span></span><div class='docblock'><p>OEM Turkish; Turkish (DOS).</p>
+</div><span id="variant.IBM00858" class="variant small-section-header"><a href="#variant.IBM00858" class="anchor field"></a><span id='IBM00858.v' class='invisible'><code>IBM00858</code></span></span><div class='docblock'><p>OEM Multilingual Latin 1 + Euro symbol.</p>
+</div><span id="variant.IBM860" class="variant small-section-header"><a href="#variant.IBM860" class="anchor field"></a><span id='IBM860.v' class='invisible'><code>IBM860</code></span></span><div class='docblock'><p>OEM Portuguese; Portuguese (DOS).</p>
+</div><span id="variant.ibm861" class="variant small-section-header"><a href="#variant.ibm861" class="anchor field"></a><span id='ibm861.v' class='invisible'><code>ibm861</code></span></span><div class='docblock'><p>OEM Icelandic; Icelandic (DOS).</p>
+</div><span id="variant.DOS_862" class="variant small-section-header"><a href="#variant.DOS_862" class="anchor field"></a><span id='DOS_862.v' class='invisible'><code>DOS_862</code></span></span><div class='docblock'><p>OEM Hebrew; Hebrew (DOS).</p>
+</div><span id="variant.IBM863" class="variant small-section-header"><a href="#variant.IBM863" class="anchor field"></a><span id='IBM863.v' class='invisible'><code>IBM863</code></span></span><div class='docblock'><p>OEM French Canadian; French Canadian (DOS).</p>
+</div><span id="variant.IBM864" class="variant small-section-header"><a href="#variant.IBM864" class="anchor field"></a><span id='IBM864.v' class='invisible'><code>IBM864</code></span></span><div class='docblock'><p>OEM Arabic; Arabic (864).</p>
+</div><span id="variant.IBM865" class="variant small-section-header"><a href="#variant.IBM865" class="anchor field"></a><span id='IBM865.v' class='invisible'><code>IBM865</code></span></span><div class='docblock'><p>OEM Nordic; Nordic (DOS).</p>
+</div><span id="variant.cp866" class="variant small-section-header"><a href="#variant.cp866" class="anchor field"></a><span id='cp866.v' class='invisible'><code>cp866</code></span></span><div class='docblock'><p>OEM Russian; Cyrillic (DOS).</p>
+</div><span id="variant.ibm869" class="variant small-section-header"><a href="#variant.ibm869" class="anchor field"></a><span id='ibm869.v' class='invisible'><code>ibm869</code></span></span><div class='docblock'><p>OEM Modern Greek; Greek, Modern (DOS).</p>
+</div><span id="variant.IBM870" class="variant small-section-header"><a href="#variant.IBM870" class="anchor field"></a><span id='IBM870.v' class='invisible'><code>IBM870</code></span></span><div class='docblock'><p>IBM EBCDIC Multilingual/ROECE (Latin 2); IBM EBCDIC Multilingual Latin 2.</p>
+</div><span id="variant.windows_874" class="variant small-section-header"><a href="#variant.windows_874" class="anchor field"></a><span id='windows_874.v' class='invisible'><code>windows_874</code></span></span><div class='docblock'><p>ANSI/OEM Thai (ISO 8859-11); Thai (Windows).</p>
+</div><span id="variant.cp875" class="variant small-section-header"><a href="#variant.cp875" class="anchor field"></a><span id='cp875.v' class='invisible'><code>cp875</code></span></span><div class='docblock'><p>IBM EBCDIC Greek Modern.</p>
+</div><span id="variant.shift_jis" class="variant small-section-header"><a href="#variant.shift_jis" class="anchor field"></a><span id='shift_jis.v' class='invisible'><code>shift_jis</code></span></span><div class='docblock'><p>ANSI/OEM Japanese; Japanese (Shift-JIS).</p>
+</div><span id="variant.gb2312" class="variant small-section-header"><a href="#variant.gb2312" class="anchor field"></a><span id='gb2312.v' class='invisible'><code>gb2312</code></span></span><div class='docblock'><p>ANSI/OEM Simplified Chinese (PRC, Singapore); Chinese Simplified (GB2312).</p>
+</div><span id="variant.ks_c_5601_1987" class="variant small-section-header"><a href="#variant.ks_c_5601_1987" class="anchor field"></a><span id='ks_c_5601_1987.v' class='invisible'><code>ks_c_5601_1987</code></span></span><div class='docblock'><p>ANSI/OEM Korean (Unified Hangul Code).</p>
+</div><span id="variant.big5" class="variant small-section-header"><a href="#variant.big5" class="anchor field"></a><span id='big5.v' class='invisible'><code>big5</code></span></span><div class='docblock'><p>ANSI/OEM Traditional Chinese (Taiwan; Hong Kong SAR, PRC); Chinese Traditional (Big5).</p>
+</div><span id="variant.IBM1026" class="variant small-section-header"><a href="#variant.IBM1026" class="anchor field"></a><span id='IBM1026.v' class='invisible'><code>IBM1026</code></span></span><div class='docblock'><p>IBM EBCDIC Turkish (Latin 5).</p>
+</div><span id="variant.IBM01047" class="variant small-section-header"><a href="#variant.IBM01047" class="anchor field"></a><span id='IBM01047.v' class='invisible'><code>IBM01047</code></span></span><div class='docblock'><p>IBM EBCDIC Latin 1/Open System.</p>
+</div><span id="variant.IBM01140" class="variant small-section-header"><a href="#variant.IBM01140" class="anchor field"></a><span id='IBM01140.v' class='invisible'><code>IBM01140</code></span></span><div class='docblock'><p>IBM EBCDIC US-Canada (037 + Euro symbol); IBM EBCDIC (US-Canada-Euro).</p>
+</div><span id="variant.IBM01141" class="variant small-section-header"><a href="#variant.IBM01141" class="anchor field"></a><span id='IBM01141.v' class='invisible'><code>IBM01141</code></span></span><div class='docblock'><p>IBM EBCDIC Germany (20273 + Euro symbol); IBM EBCDIC (Germany-Euro).</p>
+</div><span id="variant.IBM01142" class="variant small-section-header"><a href="#variant.IBM01142" class="anchor field"></a><span id='IBM01142.v' class='invisible'><code>IBM01142</code></span></span><div class='docblock'><p>IBM EBCDIC Denmark-Norway (20277 + Euro symbol); IBM EBCDIC (Denmark-Norway-Euro).</p>
+</div><span id="variant.IBM01143" class="variant small-section-header"><a href="#variant.IBM01143" class="anchor field"></a><span id='IBM01143.v' class='invisible'><code>IBM01143</code></span></span><div class='docblock'><p>IBM EBCDIC Finland-Sweden (20278 + Euro symbol); IBM EBCDIC (Finland-Sweden-Euro).</p>
+</div><span id="variant.IBM01144" class="variant small-section-header"><a href="#variant.IBM01144" class="anchor field"></a><span id='IBM01144.v' class='invisible'><code>IBM01144</code></span></span><div class='docblock'><p>IBM EBCDIC Italy (20280 + Euro symbol); IBM EBCDIC (Italy-Euro).</p>
+</div><span id="variant.IBM01145" class="variant small-section-header"><a href="#variant.IBM01145" class="anchor field"></a><span id='IBM01145.v' class='invisible'><code>IBM01145</code></span></span><div class='docblock'><p>IBM EBCDIC Latin America-Spain (20284 + Euro symbol); IBM EBCDIC (Spain-Euro).</p>
+</div><span id="variant.IBM01146" class="variant small-section-header"><a href="#variant.IBM01146" class="anchor field"></a><span id='IBM01146.v' class='invisible'><code>IBM01146</code></span></span><div class='docblock'><p>IBM EBCDIC United Kingdom (20285 + Euro symbol); IBM EBCDIC (UK-Euro).</p>
+</div><span id="variant.IBM01147" class="variant small-section-header"><a href="#variant.IBM01147" class="anchor field"></a><span id='IBM01147.v' class='invisible'><code>IBM01147</code></span></span><div class='docblock'><p>IBM EBCDIC France (20297 + Euro symbol); IBM EBCDIC (France-Euro).</p>
+</div><span id="variant.IBM01148" class="variant small-section-header"><a href="#variant.IBM01148" class="anchor field"></a><span id='IBM01148.v' class='invisible'><code>IBM01148</code></span></span><div class='docblock'><p>IBM EBCDIC International (500 + Euro symbol); IBM EBCDIC (International-Euro).</p>
+</div><span id="variant.IBM01149" class="variant small-section-header"><a href="#variant.IBM01149" class="anchor field"></a><span id='IBM01149.v' class='invisible'><code>IBM01149</code></span></span><div class='docblock'><p>IBM EBCDIC Icelandic (20871 + Euro symbol); IBM EBCDIC (Icelandic-Euro).</p>
+</div><span id="variant.utf_16" class="variant small-section-header"><a href="#variant.utf_16" class="anchor field"></a><span id='utf_16.v' class='invisible'><code>utf_16</code></span></span><div class='docblock'><p>Unicode UTF-16, little endian byte order (BMP of ISO 10646); available only to managed applications.</p>
+</div><span id="variant.unicodeFFFE" class="variant small-section-header"><a href="#variant.unicodeFFFE" class="anchor field"></a><span id='unicodeFFFE.v' class='invisible'><code>unicodeFFFE</code></span></span><div class='docblock'><p>Unicode UTF-16, big endian byte order; available only to managed applications.</p>
+</div><span id="variant.windows_1250" class="variant small-section-header"><a href="#variant.windows_1250" class="anchor field"></a><span id='windows_1250.v' class='invisible'><code>windows_1250</code></span></span><div class='docblock'><p>ANSI Central European; Central European (Windows).</p>
+</div><span id="variant.windows_1251" class="variant small-section-header"><a href="#variant.windows_1251" class="anchor field"></a><span id='windows_1251.v' class='invisible'><code>windows_1251</code></span></span><div class='docblock'><p>ANSI Cyrillic; Cyrillic (Windows).</p>
+</div><span id="variant.windows_1252" class="variant small-section-header"><a href="#variant.windows_1252" class="anchor field"></a><span id='windows_1252.v' class='invisible'><code>windows_1252</code></span></span><div class='docblock'><p>ANSI Latin 1; Western European (Windows).</p>
+</div><span id="variant.windows_1253" class="variant small-section-header"><a href="#variant.windows_1253" class="anchor field"></a><span id='windows_1253.v' class='invisible'><code>windows_1253</code></span></span><div class='docblock'><p>ANSI Greek; Greek (Windows).</p>
+</div><span id="variant.windows_1254" class="variant small-section-header"><a href="#variant.windows_1254" class="anchor field"></a><span id='windows_1254.v' class='invisible'><code>windows_1254</code></span></span><div class='docblock'><p>ANSI Turkish; Turkish (Windows).</p>
+</div><span id="variant.windows_1255" class="variant small-section-header"><a href="#variant.windows_1255" class="anchor field"></a><span id='windows_1255.v' class='invisible'><code>windows_1255</code></span></span><div class='docblock'><p>ANSI Hebrew; Hebrew (Windows).</p>
+</div><span id="variant.windows_1256" class="variant small-section-header"><a href="#variant.windows_1256" class="anchor field"></a><span id='windows_1256.v' class='invisible'><code>windows_1256</code></span></span><div class='docblock'><p>ANSI Arabic; Arabic (Windows).</p>
+</div><span id="variant.windows_1257" class="variant small-section-header"><a href="#variant.windows_1257" class="anchor field"></a><span id='windows_1257.v' class='invisible'><code>windows_1257</code></span></span><div class='docblock'><p>ANSI Baltic; Baltic (Windows).</p>
+</div><span id="variant.windows_1258" class="variant small-section-header"><a href="#variant.windows_1258" class="anchor field"></a><span id='windows_1258.v' class='invisible'><code>windows_1258</code></span></span><div class='docblock'><p>ANSI/OEM Vietnamese; Vietnamese (Windows).</p>
+</div><span id="variant.Johab" class="variant small-section-header"><a href="#variant.Johab" class="anchor field"></a><span id='Johab.v' class='invisible'><code>Johab</code></span></span><div class='docblock'><p>Korean (Johab).</p>
+</div><span id="variant.macintosh" class="variant small-section-header"><a href="#variant.macintosh" class="anchor field"></a><span id='macintosh.v' class='invisible'><code>macintosh</code></span></span><div class='docblock'><p>MAC Roman; Western European (Mac).</p>
+</div><span id="variant.x_mac_japanese" class="variant small-section-header"><a href="#variant.x_mac_japanese" class="anchor field"></a><span id='x_mac_japanese.v' class='invisible'><code>x_mac_japanese</code></span></span><div class='docblock'><p>Japanese (Mac).</p>
+</div><span id="variant.x_mac_chinesetrad" class="variant small-section-header"><a href="#variant.x_mac_chinesetrad" class="anchor field"></a><span id='x_mac_chinesetrad.v' class='invisible'><code>x_mac_chinesetrad</code></span></span><div class='docblock'><p>MAC Traditional Chinese (Big5); Chinese Traditional (Mac).</p>
+</div><span id="variant.x_mac_korean" class="variant small-section-header"><a href="#variant.x_mac_korean" class="anchor field"></a><span id='x_mac_korean.v' class='invisible'><code>x_mac_korean</code></span></span><div class='docblock'><p>Korean (Mac).</p>
+</div><span id="variant.x_mac_arabic" class="variant small-section-header"><a href="#variant.x_mac_arabic" class="anchor field"></a><span id='x_mac_arabic.v' class='invisible'><code>x_mac_arabic</code></span></span><div class='docblock'><p>Arabic (Mac).</p>
+</div><span id="variant.x_mac_hebrew" class="variant small-section-header"><a href="#variant.x_mac_hebrew" class="anchor field"></a><span id='x_mac_hebrew.v' class='invisible'><code>x_mac_hebrew</code></span></span><div class='docblock'><p>Hebrew (Mac).</p>
+</div><span id="variant.x_mac_greek" class="variant small-section-header"><a href="#variant.x_mac_greek" class="anchor field"></a><span id='x_mac_greek.v' class='invisible'><code>x_mac_greek</code></span></span><div class='docblock'><p>Greek (Mac).</p>
+</div><span id="variant.x_mac_cyrillic" class="variant small-section-header"><a href="#variant.x_mac_cyrillic" class="anchor field"></a><span id='x_mac_cyrillic.v' class='invisible'><code>x_mac_cyrillic</code></span></span><div class='docblock'><p>Cyrillic (Mac).</p>
+</div><span id="variant.x_mac_chinesesimp" class="variant small-section-header"><a href="#variant.x_mac_chinesesimp" class="anchor field"></a><span id='x_mac_chinesesimp.v' class='invisible'><code>x_mac_chinesesimp</code></span></span><div class='docblock'><p>MAC Simplified Chinese (GB 2312); Chinese Simplified (Mac).</p>
+</div><span id="variant.x_mac_romanian" class="variant small-section-header"><a href="#variant.x_mac_romanian" class="anchor field"></a><span id='x_mac_romanian.v' class='invisible'><code>x_mac_romanian</code></span></span><div class='docblock'><p>Romanian (Mac).</p>
+</div><span id="variant.x_mac_ukrainian" class="variant small-section-header"><a href="#variant.x_mac_ukrainian" class="anchor field"></a><span id='x_mac_ukrainian.v' class='invisible'><code>x_mac_ukrainian</code></span></span><div class='docblock'><p>Ukrainian (Mac).</p>
+</div><span id="variant.x_mac_thai" class="variant small-section-header"><a href="#variant.x_mac_thai" class="anchor field"></a><span id='x_mac_thai.v' class='invisible'><code>x_mac_thai</code></span></span><div class='docblock'><p>Thai (Mac).</p>
+</div><span id="variant.x_mac_ce" class="variant small-section-header"><a href="#variant.x_mac_ce" class="anchor field"></a><span id='x_mac_ce.v' class='invisible'><code>x_mac_ce</code></span></span><div class='docblock'><p>MAC Latin 2; Central European (Mac).</p>
+</div><span id="variant.x_mac_icelandic" class="variant small-section-header"><a href="#variant.x_mac_icelandic" class="anchor field"></a><span id='x_mac_icelandic.v' class='invisible'><code>x_mac_icelandic</code></span></span><div class='docblock'><p>Icelandic (Mac).</p>
+</div><span id="variant.x_mac_turkish" class="variant small-section-header"><a href="#variant.x_mac_turkish" class="anchor field"></a><span id='x_mac_turkish.v' class='invisible'><code>x_mac_turkish</code></span></span><div class='docblock'><p>Turkish (Mac).</p>
+</div><span id="variant.x_mac_croatian" class="variant small-section-header"><a href="#variant.x_mac_croatian" class="anchor field"></a><span id='x_mac_croatian.v' class='invisible'><code>x_mac_croatian</code></span></span><div class='docblock'><p>Croatian (Mac).</p>
+</div><span id="variant.utf_32" class="variant small-section-header"><a href="#variant.utf_32" class="anchor field"></a><span id='utf_32.v' class='invisible'><code>utf_32</code></span></span><div class='docblock'><p>Unicode UTF-32, little endian byte order; available only to managed applications.</p>
+</div><span id="variant.utf_32BE" class="variant small-section-header"><a href="#variant.utf_32BE" class="anchor field"></a><span id='utf_32BE.v' class='invisible'><code>utf_32BE</code></span></span><div class='docblock'><p>Unicode UTF-32, big endian byte order; available only to managed applications.</p>
+</div><span id="variant.x_Chinese_CNS" class="variant small-section-header"><a href="#variant.x_Chinese_CNS" class="anchor field"></a><span id='x_Chinese_CNS.v' class='invisible'><code>x_Chinese_CNS</code></span></span><div class='docblock'><p>CNS Taiwan; Chinese Traditional (CNS).</p>
+</div><span id="variant.x_cp20001" class="variant small-section-header"><a href="#variant.x_cp20001" class="anchor field"></a><span id='x_cp20001.v' class='invisible'><code>x_cp20001</code></span></span><div class='docblock'><p>TCA Taiwan.</p>
+</div><span id="variant.x_Chinese_Eten" class="variant small-section-header"><a href="#variant.x_Chinese_Eten" class="anchor field"></a><span id='x_Chinese_Eten.v' class='invisible'><code>x_Chinese_Eten</code></span></span><div class='docblock'><p>Eten Taiwan; Chinese Traditional (Eten).</p>
+</div><span id="variant.x_cp20003" class="variant small-section-header"><a href="#variant.x_cp20003" class="anchor field"></a><span id='x_cp20003.v' class='invisible'><code>x_cp20003</code></span></span><div class='docblock'><p>IBM5550 Taiwan.</p>
+</div><span id="variant.x_cp20004" class="variant small-section-header"><a href="#variant.x_cp20004" class="anchor field"></a><span id='x_cp20004.v' class='invisible'><code>x_cp20004</code></span></span><div class='docblock'><p>TeleText Taiwan.</p>
+</div><span id="variant.x_cp20005" class="variant small-section-header"><a href="#variant.x_cp20005" class="anchor field"></a><span id='x_cp20005.v' class='invisible'><code>x_cp20005</code></span></span><div class='docblock'><p>Wang Taiwan.</p>
+</div><span id="variant.x_IA5" class="variant small-section-header"><a href="#variant.x_IA5" class="anchor field"></a><span id='x_IA5.v' class='invisible'><code>x_IA5</code></span></span><div class='docblock'><p>IA5 (IRV International Alphabet No. 5, 7-bit); Western European (IA5).</p>
+</div><span id="variant.x_IA5_German" class="variant small-section-header"><a href="#variant.x_IA5_German" class="anchor field"></a><span id='x_IA5_German.v' class='invisible'><code>x_IA5_German</code></span></span><div class='docblock'><p>IA5 German (7-bit).</p>
+</div><span id="variant.x_IA5_Swedish" class="variant small-section-header"><a href="#variant.x_IA5_Swedish" class="anchor field"></a><span id='x_IA5_Swedish.v' class='invisible'><code>x_IA5_Swedish</code></span></span><div class='docblock'><p>IA5 Swedish (7-bit).</p>
+</div><span id="variant.x_IA5_Norwegian" class="variant small-section-header"><a href="#variant.x_IA5_Norwegian" class="anchor field"></a><span id='x_IA5_Norwegian.v' class='invisible'><code>x_IA5_Norwegian</code></span></span><div class='docblock'><p>IA5 Norwegian (7-bit).</p>
+</div><span id="variant.us_ascii" class="variant small-section-header"><a href="#variant.us_ascii" class="anchor field"></a><span id='us_ascii.v' class='invisible'><code>us_ascii</code></span></span><div class='docblock'><p>US-ASCII (7-bit).</p>
+</div><span id="variant.x_cp20261" class="variant small-section-header"><a href="#variant.x_cp20261" class="anchor field"></a><span id='x_cp20261.v' class='invisible'><code>x_cp20261</code></span></span><div class='docblock'><p>T.61.</p>
+</div><span id="variant.x_cp20269" class="variant small-section-header"><a href="#variant.x_cp20269" class="anchor field"></a><span id='x_cp20269.v' class='invisible'><code>x_cp20269</code></span></span><div class='docblock'><p>ISO 6937 Non-Spacing Accent.</p>
+</div><span id="variant.IBM273" class="variant small-section-header"><a href="#variant.IBM273" class="anchor field"></a><span id='IBM273.v' class='invisible'><code>IBM273</code></span></span><div class='docblock'><p>IBM EBCDIC Germany.</p>
+</div><span id="variant.IBM277" class="variant small-section-header"><a href="#variant.IBM277" class="anchor field"></a><span id='IBM277.v' class='invisible'><code>IBM277</code></span></span><div class='docblock'><p>IBM EBCDIC Denmark-Norway.</p>
+</div><span id="variant.IBM278" class="variant small-section-header"><a href="#variant.IBM278" class="anchor field"></a><span id='IBM278.v' class='invisible'><code>IBM278</code></span></span><div class='docblock'><p>IBM EBCDIC Finland-Sweden.</p>
+</div><span id="variant.IBM280" class="variant small-section-header"><a href="#variant.IBM280" class="anchor field"></a><span id='IBM280.v' class='invisible'><code>IBM280</code></span></span><div class='docblock'><p>IBM EBCDIC Italy.</p>
+</div><span id="variant.IBM284" class="variant small-section-header"><a href="#variant.IBM284" class="anchor field"></a><span id='IBM284.v' class='invisible'><code>IBM284</code></span></span><div class='docblock'><p>IBM EBCDIC Latin America-Spain.</p>
+</div><span id="variant.IBM285" class="variant small-section-header"><a href="#variant.IBM285" class="anchor field"></a><span id='IBM285.v' class='invisible'><code>IBM285</code></span></span><div class='docblock'><p>IBM EBCDIC United Kingdom.</p>
+</div><span id="variant.IBM290" class="variant small-section-header"><a href="#variant.IBM290" class="anchor field"></a><span id='IBM290.v' class='invisible'><code>IBM290</code></span></span><div class='docblock'><p>IBM EBCDIC Japanese Katakana Extended.</p>
+</div><span id="variant.IBM297" class="variant small-section-header"><a href="#variant.IBM297" class="anchor field"></a><span id='IBM297.v' class='invisible'><code>IBM297</code></span></span><div class='docblock'><p>IBM EBCDIC France.</p>
+</div><span id="variant.IBM420" class="variant small-section-header"><a href="#variant.IBM420" class="anchor field"></a><span id='IBM420.v' class='invisible'><code>IBM420</code></span></span><div class='docblock'><p>IBM EBCDIC Arabic.</p>
+</div><span id="variant.IBM423" class="variant small-section-header"><a href="#variant.IBM423" class="anchor field"></a><span id='IBM423.v' class='invisible'><code>IBM423</code></span></span><div class='docblock'><p>IBM EBCDIC Greek.</p>
+</div><span id="variant.IBM424" class="variant small-section-header"><a href="#variant.IBM424" class="anchor field"></a><span id='IBM424.v' class='invisible'><code>IBM424</code></span></span><div class='docblock'><p>IBM EBCDIC Hebrew.</p>
+</div><span id="variant.x_EBCDIC_KoreanExtended" class="variant small-section-header"><a href="#variant.x_EBCDIC_KoreanExtended" class="anchor field"></a><span id='x_EBCDIC_KoreanExtended.v' class='invisible'><code>x_EBCDIC_KoreanExtended</code></span></span><div class='docblock'><p>IBM EBCDIC Korean Extended.</p>
+</div><span id="variant.IBM_Thai" class="variant small-section-header"><a href="#variant.IBM_Thai" class="anchor field"></a><span id='IBM_Thai.v' class='invisible'><code>IBM_Thai</code></span></span><div class='docblock'><p>IBM EBCDIC Thai.</p>
+</div><span id="variant.koi8_r" class="variant small-section-header"><a href="#variant.koi8_r" class="anchor field"></a><span id='koi8_r.v' class='invisible'><code>koi8_r</code></span></span><div class='docblock'><p>Russian (KOI8-R); Cyrillic (KOI8-R).</p>
+</div><span id="variant.IBM871" class="variant small-section-header"><a href="#variant.IBM871" class="anchor field"></a><span id='IBM871.v' class='invisible'><code>IBM871</code></span></span><div class='docblock'><p>IBM EBCDIC Icelandic.</p>
+</div><span id="variant.IBM880" class="variant small-section-header"><a href="#variant.IBM880" class="anchor field"></a><span id='IBM880.v' class='invisible'><code>IBM880</code></span></span><div class='docblock'><p>IBM EBCDIC Cyrillic Russian.</p>
+</div><span id="variant.IBM905" class="variant small-section-header"><a href="#variant.IBM905" class="anchor field"></a><span id='IBM905.v' class='invisible'><code>IBM905</code></span></span><div class='docblock'><p>IBM EBCDIC Turkish.</p>
+</div><span id="variant.IBM00924" class="variant small-section-header"><a href="#variant.IBM00924" class="anchor field"></a><span id='IBM00924.v' class='invisible'><code>IBM00924</code></span></span><div class='docblock'><p>IBM EBCDIC Latin 1/Open System (1047 + Euro symbol).</p>
+</div><span id="variant.EUC_JP" class="variant small-section-header"><a href="#variant.EUC_JP" class="anchor field"></a><span id='EUC_JP.v' class='invisible'><code>EUC_JP</code></span></span><div class='docblock'><p>Japanese (JIS 0208-1990 and 0212-1990).</p>
+</div><span id="variant.x_cp20936" class="variant small-section-header"><a href="#variant.x_cp20936" class="anchor field"></a><span id='x_cp20936.v' class='invisible'><code>x_cp20936</code></span></span><div class='docblock'><p>Simplified Chinese (GB2312); Chinese Simplified (GB2312-80).</p>
+</div><span id="variant.x_cp20949" class="variant small-section-header"><a href="#variant.x_cp20949" class="anchor field"></a><span id='x_cp20949.v' class='invisible'><code>x_cp20949</code></span></span><div class='docblock'><p>Korean Wansung.</p>
+</div><span id="variant.cp1025" class="variant small-section-header"><a href="#variant.cp1025" class="anchor field"></a><span id='cp1025.v' class='invisible'><code>cp1025</code></span></span><div class='docblock'><p>IBM EBCDIC Cyrillic Serbian-Bulgarian.</p>
+</div><span id="variant.koi8_u" class="variant small-section-header"><a href="#variant.koi8_u" class="anchor field"></a><span id='koi8_u.v' class='invisible'><code>koi8_u</code></span></span><div class='docblock'><p>Ukrainian (KOI8-U); Cyrillic (KOI8-U).</p>
+</div><span id="variant.iso_8859_1" class="variant small-section-header"><a href="#variant.iso_8859_1" class="anchor field"></a><span id='iso_8859_1.v' class='invisible'><code>iso_8859_1</code></span></span><div class='docblock'><p>ISO 8859-1 Latin 1; Western European (ISO).</p>
+</div><span id="variant.iso_8859_2" class="variant small-section-header"><a href="#variant.iso_8859_2" class="anchor field"></a><span id='iso_8859_2.v' class='invisible'><code>iso_8859_2</code></span></span><div class='docblock'><p>ISO 8859-2 Central European; Central European (ISO).</p>
+</div><span id="variant.iso_8859_3" class="variant small-section-header"><a href="#variant.iso_8859_3" class="anchor field"></a><span id='iso_8859_3.v' class='invisible'><code>iso_8859_3</code></span></span><div class='docblock'><p>ISO 8859-3 Latin 3.</p>
+</div><span id="variant.iso_8859_4" class="variant small-section-header"><a href="#variant.iso_8859_4" class="anchor field"></a><span id='iso_8859_4.v' class='invisible'><code>iso_8859_4</code></span></span><div class='docblock'><p>ISO 8859-4 Baltic.</p>
+</div><span id="variant.iso_8859_5" class="variant small-section-header"><a href="#variant.iso_8859_5" class="anchor field"></a><span id='iso_8859_5.v' class='invisible'><code>iso_8859_5</code></span></span><div class='docblock'><p>ISO 8859-5 Cyrillic.</p>
+</div><span id="variant.iso_8859_6" class="variant small-section-header"><a href="#variant.iso_8859_6" class="anchor field"></a><span id='iso_8859_6.v' class='invisible'><code>iso_8859_6</code></span></span><div class='docblock'><p>ISO 8859-6 Arabic.</p>
+</div><span id="variant.iso_8859_7" class="variant small-section-header"><a href="#variant.iso_8859_7" class="anchor field"></a><span id='iso_8859_7.v' class='invisible'><code>iso_8859_7</code></span></span><div class='docblock'><p>ISO 8859-7 Greek.</p>
+</div><span id="variant.iso_8859_8" class="variant small-section-header"><a href="#variant.iso_8859_8" class="anchor field"></a><span id='iso_8859_8.v' class='invisible'><code>iso_8859_8</code></span></span><div class='docblock'><p>ISO 8859-8 Hebrew; Hebrew (ISO-Visual).</p>
+</div><span id="variant.iso_8859_9" class="variant small-section-header"><a href="#variant.iso_8859_9" class="anchor field"></a><span id='iso_8859_9.v' class='invisible'><code>iso_8859_9</code></span></span><div class='docblock'><p>ISO 8859-9 Turkish.</p>
+</div><span id="variant.iso_8859_13" class="variant small-section-header"><a href="#variant.iso_8859_13" class="anchor field"></a><span id='iso_8859_13.v' class='invisible'><code>iso_8859_13</code></span></span><div class='docblock'><p>ISO 8859-13 Estonian.</p>
+</div><span id="variant.iso_8859_15" class="variant small-section-header"><a href="#variant.iso_8859_15" class="anchor field"></a><span id='iso_8859_15.v' class='invisible'><code>iso_8859_15</code></span></span><div class='docblock'><p>ISO 8859-15 Latin 9.</p>
+</div><span id="variant.x_Europa" class="variant small-section-header"><a href="#variant.x_Europa" class="anchor field"></a><span id='x_Europa.v' class='invisible'><code>x_Europa</code></span></span><div class='docblock'><p>Europa 3.</p>
+</div><span id="variant.iso_8859_8_i" class="variant small-section-header"><a href="#variant.iso_8859_8_i" class="anchor field"></a><span id='iso_8859_8_i.v' class='invisible'><code>iso_8859_8_i</code></span></span><div class='docblock'><p>ISO 8859-8 Hebrew; Hebrew (ISO-Logical).</p>
+</div><span id="variant.iso_2022_jp_1" class="variant small-section-header"><a href="#variant.iso_2022_jp_1" class="anchor field"></a><span id='iso_2022_jp_1.v' class='invisible'><code>iso_2022_jp_1</code></span></span><div class='docblock'><p>ISO 2022 Japanese with no halfwidth Katakana; Japanese (JIS).</p>
+</div><span id="variant.csISO2022JP" class="variant small-section-header"><a href="#variant.csISO2022JP" class="anchor field"></a><span id='csISO2022JP.v' class='invisible'><code>csISO2022JP</code></span></span><div class='docblock'><p>ISO 2022 Japanese with halfwidth Katakana; Japanese (JIS-Allow 1 byte Kana).</p>
+</div><span id="variant.iso_2022_jp_2" class="variant small-section-header"><a href="#variant.iso_2022_jp_2" class="anchor field"></a><span id='iso_2022_jp_2.v' class='invisible'><code>iso_2022_jp_2</code></span></span><div class='docblock'><p>ISO 2022 Japanese JIS X 0201-1989; Japanese (JIS-Allow 1 byte Kana - SO/SI).</p>
+</div><span id="variant.iso_2022_kr" class="variant small-section-header"><a href="#variant.iso_2022_kr" class="anchor field"></a><span id='iso_2022_kr.v' class='invisible'><code>iso_2022_kr</code></span></span><div class='docblock'><p>ISO 2022 Korean.</p>
+</div><span id="variant.x_cp50227" class="variant small-section-header"><a href="#variant.x_cp50227" class="anchor field"></a><span id='x_cp50227.v' class='invisible'><code>x_cp50227</code></span></span><div class='docblock'><p>ISO 2022 Simplified Chinese; Chinese Simplified (ISO 2022).</p>
+</div><span id="variant.iso_2022_ch" class="variant small-section-header"><a href="#variant.iso_2022_ch" class="anchor field"></a><span id='iso_2022_ch.v' class='invisible'><code>iso_2022_ch</code></span></span><div class='docblock'><p>ISO 2022 Traditional Chinese.</p>
+</div><span id="variant.x_EBCDIC_JapaneseExtended" class="variant small-section-header"><a href="#variant.x_EBCDIC_JapaneseExtended" class="anchor field"></a><span id='x_EBCDIC_JapaneseExtended.v' class='invisible'><code>x_EBCDIC_JapaneseExtended</code></span></span><div class='docblock'><p>EBCDIC Japanese (Katakana) Extended.</p>
+</div><span id="variant.x_EBCDIC_USCanadaJapanese" class="variant small-section-header"><a href="#variant.x_EBCDIC_USCanadaJapanese" class="anchor field"></a><span id='x_EBCDIC_USCanadaJapanese.v' class='invisible'><code>x_EBCDIC_USCanadaJapanese</code></span></span><div class='docblock'><p>EBCDIC US-Canada and Japanese.</p>
+</div><span id="variant.x_EBCDIC_KoreanExtendedAndKorean" class="variant small-section-header"><a href="#variant.x_EBCDIC_KoreanExtendedAndKorean" class="anchor field"></a><span id='x_EBCDIC_KoreanExtendedAndKorean.v' class='invisible'><code>x_EBCDIC_KoreanExtendedAndKorean</code></span></span><div class='docblock'><p>EBCDIC Korean Extended and Korean.</p>
+</div><span id="variant.x_EBCDIC_ChineseExtendedAndChinese" class="variant small-section-header"><a href="#variant.x_EBCDIC_ChineseExtendedAndChinese" class="anchor field"></a><span id='x_EBCDIC_ChineseExtendedAndChinese.v' class='invisible'><code>x_EBCDIC_ChineseExtendedAndChinese</code></span></span><div class='docblock'><p>EBCDIC Simplified Chinese Extended and Simplified Chinese.</p>
+</div><span id="variant.x_EBCDIC_ChineseExtended" class="variant small-section-header"><a href="#variant.x_EBCDIC_ChineseExtended" class="anchor field"></a><span id='x_EBCDIC_ChineseExtended.v' class='invisible'><code>x_EBCDIC_ChineseExtended</code></span></span><div class='docblock'><p>EBCDIC Simplified Chinese.</p>
+</div><span id="variant.x_EBCDIC_USCanadaChinese" class="variant small-section-header"><a href="#variant.x_EBCDIC_USCanadaChinese" class="anchor field"></a><span id='x_EBCDIC_USCanadaChinese.v' class='invisible'><code>x_EBCDIC_USCanadaChinese</code></span></span><div class='docblock'><p>EBCDIC US-Canada and Traditional Chinese.</p>
+</div><span id="variant.x_EBCDIC_JapaneseExtendedAndJapanese" class="variant small-section-header"><a href="#variant.x_EBCDIC_JapaneseExtendedAndJapanese" class="anchor field"></a><span id='x_EBCDIC_JapaneseExtendedAndJapanese.v' class='invisible'><code>x_EBCDIC_JapaneseExtendedAndJapanese</code></span></span><div class='docblock'><p>EBCDIC Japanese (Latin) Extended and Japanese.</p>
+</div><span id="variant.euc_jp" class="variant small-section-header"><a href="#variant.euc_jp" class="anchor field"></a><span id='euc_jp.v' class='invisible'><code>euc_jp</code></span></span><div class='docblock'><p>EUC Japanese.</p>
+</div><span id="variant.EUC_CN" class="variant small-section-header"><a href="#variant.EUC_CN" class="anchor field"></a><span id='EUC_CN.v' class='invisible'><code>EUC_CN</code></span></span><div class='docblock'><p>EUC Simplified Chinese; Chinese Simplified (EUC).</p>
+</div><span id="variant.euc_kr" class="variant small-section-header"><a href="#variant.euc_kr" class="anchor field"></a><span id='euc_kr.v' class='invisible'><code>euc_kr</code></span></span><div class='docblock'><p>EUC Korean.</p>
+</div><span id="variant.EUC_TCN" class="variant small-section-header"><a href="#variant.EUC_TCN" class="anchor field"></a><span id='EUC_TCN.v' class='invisible'><code>EUC_TCN</code></span></span><div class='docblock'><p>EUC Traditional Chinese.</p>
+</div><span id="variant.hz_gb_2312" class="variant small-section-header"><a href="#variant.hz_gb_2312" class="anchor field"></a><span id='hz_gb_2312.v' class='invisible'><code>hz_gb_2312</code></span></span><div class='docblock'><p>HZ-GB2312 Simplified Chinese; Chinese Simplified (HZ).</p>
+</div><span id="variant.GB18030" class="variant small-section-header"><a href="#variant.GB18030" class="anchor field"></a><span id='GB18030.v' class='invisible'><code>GB18030</code></span></span><div class='docblock'><p><strong>Windows XP and later:</strong> GB18030 Simplified Chinese (4 byte); Chinese Simplified (GB18030).</p>
+</div><span id="variant.x_iscii_de" class="variant small-section-header"><a href="#variant.x_iscii_de" class="anchor field"></a><span id='x_iscii_de.v' class='invisible'><code>x_iscii_de</code></span></span><div class='docblock'><p>ISCII Devanagari.</p>
+</div><span id="variant.x_iscii_be" class="variant small-section-header"><a href="#variant.x_iscii_be" class="anchor field"></a><span id='x_iscii_be.v' class='invisible'><code>x_iscii_be</code></span></span><div class='docblock'><p>ISCII Bangla.</p>
+</div><span id="variant.x_iscii_ta" class="variant small-section-header"><a href="#variant.x_iscii_ta" class="anchor field"></a><span id='x_iscii_ta.v' class='invisible'><code>x_iscii_ta</code></span></span><div class='docblock'><p>ISCII Tamil.</p>
+</div><span id="variant.x_iscii_te" class="variant small-section-header"><a href="#variant.x_iscii_te" class="anchor field"></a><span id='x_iscii_te.v' class='invisible'><code>x_iscii_te</code></span></span><div class='docblock'><p>ISCII Telugu.</p>
+</div><span id="variant.x_iscii_as" class="variant small-section-header"><a href="#variant.x_iscii_as" class="anchor field"></a><span id='x_iscii_as.v' class='invisible'><code>x_iscii_as</code></span></span><div class='docblock'><p>ISCII Assamese.</p>
+</div><span id="variant.x_iscii_or" class="variant small-section-header"><a href="#variant.x_iscii_or" class="anchor field"></a><span id='x_iscii_or.v' class='invisible'><code>x_iscii_or</code></span></span><div class='docblock'><p>ISCII Odia.</p>
+</div><span id="variant.x_iscii_ka" class="variant small-section-header"><a href="#variant.x_iscii_ka" class="anchor field"></a><span id='x_iscii_ka.v' class='invisible'><code>x_iscii_ka</code></span></span><div class='docblock'><p>ISCII Kannada.</p>
+</div><span id="variant.x_iscii_ma" class="variant small-section-header"><a href="#variant.x_iscii_ma" class="anchor field"></a><span id='x_iscii_ma.v' class='invisible'><code>x_iscii_ma</code></span></span><div class='docblock'><p>ISCII Malayalam.</p>
+</div><span id="variant.x_iscii_gu" class="variant small-section-header"><a href="#variant.x_iscii_gu" class="anchor field"></a><span id='x_iscii_gu.v' class='invisible'><code>x_iscii_gu</code></span></span><div class='docblock'><p>ISCII Gujarati.</p>
+</div><span id="variant.x_iscii_pa" class="variant small-section-header"><a href="#variant.x_iscii_pa" class="anchor field"></a><span id='x_iscii_pa.v' class='invisible'><code>x_iscii_pa</code></span></span><div class='docblock'><p>ISCII Punjabi.</p>
+</div><span id="variant.utf_7" class="variant small-section-header"><a href="#variant.utf_7" class="anchor field"></a><span id='utf_7.v' class='invisible'><code>utf_7</code></span></span><div class='docblock'><p>Unicode (UTF-7).</p>
+</div><span id="variant.utf_8" class="variant small-section-header"><a href="#variant.utf_8" class="anchor field"></a><span id='utf_8.v' class='invisible'><code>utf_8</code></span></span><div class='docblock'><p>Unicode (UTF-8).</p>
+</div><span id="variant.Invalid" class="variant small-section-header"><a href="#variant.Invalid" class="anchor field"></a><span id='Invalid.v' class='invisible'><code>Invalid</code></span></span><div class='docblock'><p>Invalid code page.</p>
+</div>
+                    <h2 id='methods' class='small-section-header'>
+                      Methods<a href='#methods' class='anchor'></a>
+                    </h2>
+                <h3 id='impl' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl <a class="enum" href="../../winconsole/console/enum.CodePage.html" title="enum winconsole::console::CodePage">CodePage</a></code><a href='#impl' class='anchor'></a></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/winconsole/macros.rs.html#107-114' title='goto source code'>[src]</a></span></td></tr></tbody></table></h3><div class='impl-items'><h4 id='method.get_value' class="method"><span id='get_value.v' class='invisible'><table class='table-display'><tbody><tr><td><code>pub fn <a href='#method.get_value' class='fnname'>get_value</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u16.html">u16</a></code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/winconsole/macros.rs.html#111-113' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>Returns the integral value of the
+CodePage
+.</p>
+</div></div><h3 id='impl-1' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl <a class="enum" href="../../winconsole/console/enum.CodePage.html" title="enum winconsole::console::CodePage">CodePage</a></code><a href='#impl-1' class='anchor'></a></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/winconsole/console/etc/code_page.rs.html#319-335' title='goto source code'>[src]</a></span></td></tr></tbody></table></h3><div class='impl-items'><h4 id='method.get_info' class="method"><span id='get_info.v' class='invisible'><table class='table-display'><tbody><tr><td><code>pub fn <a href='#method.get_info' class='fnname'>get_info</a>(&amp;self) -&gt; <a class="type" href="../../winconsole/errors/type.WinResult.html" title="type winconsole::errors::WinResult">WinResult</a>&lt;<a class="struct" href="../../winconsole/console/struct.CodePageInfo.html" title="struct winconsole::console::CodePageInfo">CodePageInfo</a>&gt;</code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/winconsole/console/etc/code_page.rs.html#332-334' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>Returns a CodePageInfo object which contains information about the CodePage.</p>
+<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<pre class="rust rust-example-rendered">
+<span class="kw">let</span> <span class="ident">info</span> <span class="op">=</span> <span class="ident">CodePage</span>::<span class="ident">utf_8</span>.<span class="ident">get_info</span>().<span class="ident">unwrap</span>();
+<span class="macro">println</span><span class="macro">!</span>(<span class="string">&quot;{}&quot;</span>, <span class="ident">info</span>.<span class="ident">name</span>);</pre>
+</div></div>
+            <h2 id='implementations' class='small-section-header'>
+              Trait Implementations<a href='#implementations' class='anchor'></a>
+            </h2>
+            <div id='implementations-list'>
+        <h3 id='impl-Clone' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="enum" href="../../winconsole/console/enum.CodePage.html" title="enum winconsole::console::CodePage">CodePage</a></code><a href='#impl-Clone' class='anchor'></a></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/winconsole/macros.rs.html#99' title='goto source code'>[src]</a></span></td></tr></tbody></table></h3><div class='impl-items'><h4 id='method.clone' class="method"><span id='clone.v' class='invisible'><table class='table-display'><tbody><tr><td><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class="enum" href="../../winconsole/console/enum.CodePage.html" title="enum winconsole::console::CodePage">CodePage</a></code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/winconsole/macros.rs.html#99' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>
+</div><h4 id='method.clone_from' class="method"><span id='clone_from.v' class='invisible'><table class='table-display'><tbody><tr><td><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>Self)</code></span></td><td><span class='out-of-band'><div class='ghost'></div><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/clone.rs.html#117-119' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>Performs copy-assignment from <code>source</code>. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from">Read more</a></p>
+</div></div><h3 id='impl-Copy' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="enum" href="../../winconsole/console/enum.CodePage.html" title="enum winconsole::console::CodePage">CodePage</a></code><a href='#impl-Copy' class='anchor'></a></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/winconsole/macros.rs.html#99' title='goto source code'>[src]</a></span></td></tr></tbody></table></h3><div class='impl-items'></div><h3 id='impl-Debug' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a> for <a class="enum" href="../../winconsole/console/enum.CodePage.html" title="enum winconsole::console::CodePage">CodePage</a></code><a href='#impl-Debug' class='anchor'></a></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/winconsole/macros.rs.html#99' title='goto source code'>[src]</a></span></td></tr></tbody></table></h3><div class='impl-items'><h4 id='method.fmt' class="method"><span id='fmt.v' class='invisible'><table class='table-display'><tbody><tr><td><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class="struct" href="https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html" title="struct core::fmt::Formatter">Formatter</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/core/fmt/type.Result.html" title="type core::fmt::Result">Result</a></code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/winconsole/macros.rs.html#99' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>Formats the value using the given formatter. <a href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt">Read more</a></p>
+</div></div><h3 id='impl-PartialEq' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html" title="trait core::cmp::PartialEq">PartialEq</a> for <a class="enum" href="../../winconsole/console/enum.CodePage.html" title="enum winconsole::console::CodePage">CodePage</a></code><a href='#impl-PartialEq' class='anchor'></a></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/winconsole/macros.rs.html#99' title='goto source code'>[src]</a></span></td></tr></tbody></table></h3><div class='impl-items'><h4 id='method.eq' class="method"><span id='eq.v' class='invisible'><table class='table-display'><tbody><tr><td><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq' class='fnname'>eq</a>(&amp;self, __arg_0: &amp;<a class="enum" href="../../winconsole/console/enum.CodePage.html" title="enum winconsole::console::CodePage">CodePage</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/winconsole/macros.rs.html#99' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>This method tests for <code>self</code> and <code>other</code> values to be equal, and is used by <code>==</code>. <a href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq">Read more</a></p>
+</div><h4 id='method.ne' class="method"><span id='ne.v' class='invisible'><table class='table-display'><tbody><tr><td><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#method.ne' class='fnname'>ne</a>(&amp;self, other: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.reference.html">&amp;</a>Rhs) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></td><td><span class='out-of-band'><div class='ghost'></div><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div><a class='srclink' href='https://doc.rust-lang.org/nightly/src/core/cmp.rs.html#121' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>This method tests for <code>!=</code>.</p>
+</div></div><h3 id='impl-From%3Cu16%3E' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html" title="trait core::convert::From">From</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u16.html">u16</a>&gt; for <a class="enum" href="../../winconsole/console/enum.CodePage.html" title="enum winconsole::console::CodePage">CodePage</a></code><a href='#impl-From%3Cu16%3E' class='anchor'></a></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/winconsole/macros.rs.html#115-124' title='goto source code'>[src]</a></span></td></tr></tbody></table></h3><div class='impl-items'><h4 id='method.from' class="method"><span id='from.v' class='invisible'><table class='table-display'><tbody><tr><td><code>fn <a href='https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from' class='fnname'>from</a>(value: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u16.html">u16</a>) -&gt; <a class="enum" href="../../winconsole/console/enum.CodePage.html" title="enum winconsole::console::CodePage">CodePage</a></code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/winconsole/macros.rs.html#116-123' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>Performs the conversion.</p>
+</div></div><h3 id='impl-Into%3Cu16%3E' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html" title="trait core::convert::Into">Into</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u16.html">u16</a>&gt; for <a class="enum" href="../../winconsole/console/enum.CodePage.html" title="enum winconsole::console::CodePage">CodePage</a></code><a href='#impl-Into%3Cu16%3E' class='anchor'></a></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/winconsole/macros.rs.html#125-129' title='goto source code'>[src]</a></span></td></tr></tbody></table></h3><div class='impl-items'><h4 id='method.into' class="method"><span id='into.v' class='invisible'><table class='table-display'><tbody><tr><td><code>fn <a href='https://doc.rust-lang.org/nightly/core/convert/trait.Into.html#tymethod.into' class='fnname'>into</a>(self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u16.html">u16</a></code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/winconsole/macros.rs.html#126-128' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>Performs the conversion.</p>
+</div></div><h3 id='impl-Display' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html" title="trait core::fmt::Display">Display</a> for <a class="enum" href="../../winconsole/console/enum.CodePage.html" title="enum winconsole::console::CodePage">CodePage</a></code><a href='#impl-Display' class='anchor'></a></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/winconsole/macros.rs.html#130-139' title='goto source code'>[src]</a></span></td></tr></tbody></table></h3><div class='impl-items'><h4 id='method.fmt-1' class="method"><span id='fmt.v-1' class='invisible'><table class='table-display'><tbody><tr><td><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, f: &amp;mut <a class="struct" href="https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html" title="struct core::fmt::Formatter">Formatter</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/core/fmt/type.Result.html" title="type core::fmt::Result">Result</a></code></span></td><td><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/winconsole/macros.rs.html#131-138' title='goto source code'>[src]</a></td></tr></tbody></table></span></h4><div class='docblock'><p>Formats the value using the given formatter. <a href="https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html#tymethod.fmt">Read more</a></p>
+</div></div></div>
+                <h2 id='synthetic-implementations' class='small-section-header'>
+                  Auto Trait Implementations<a href='#synthetic-implementations' class='anchor'></a>
+                </h2>
+                <div id='synthetic-implementations-list'>
+            <h3 id='impl-Send' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> for <a class="enum" href="../../winconsole/console/enum.CodePage.html" title="enum winconsole::console::CodePage">CodePage</a></code><a href='#impl-Send' class='anchor'></a></span></td><td><span class='out-of-band'></span></td></tr></tbody></table></h3><div class='impl-items'></div><h3 id='impl-Sync' class='impl'><span class='in-band'><table class='table-display'><tbody><tr><td><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html" title="trait core::marker::Sync">Sync</a> for <a class="enum" href="../../winconsole/console/enum.CodePage.html" title="enum winconsole::console::CodePage">CodePage</a></code><a href='#impl-Sync' class='anchor'></a></span></td><td><span class='out-of-band'></span></td></tr></tbody></table></h3><div class='impl-items'></div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt><kbd>?</kbd></dt>
+                    <dd>Show this help dialog</dd>
+                    <dt><kbd>S</kbd></dt>
+                    <dd>Focus the search field</dd>
+                    <dt><kbd>↑</kbd></dt>
+                    <dd>Move up in search results</dd>
+                    <dt><kbd>↓</kbd></dt>
+                    <dd>Move down in search results</dd>
+                    <dt><kbd>↹</kbd></dt>
+                    <dd>Switch tab</dd>
+                    <dt><kbd>&#9166;</kbd></dt>
+                    <dd>Go to active search result</dd>
+                    <dt><kbd>+</kbd></dt>
+                    <dd>Expand all sections</dd>
+                    <dt><kbd>-</kbd></dt>
+                    <dd>Collapse all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "winconsole";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

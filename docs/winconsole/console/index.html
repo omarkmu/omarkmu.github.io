@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `console` mod in crate `winconsole`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, console">
+
+    <title>winconsole::console - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css"
+          id="mainThemeStyle">
+    
+    <link rel="stylesheet" type="text/css" href="../../dark.css">
+    <link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle">
+    <script src="../../storage.js"></script>
+    
+
+    
+    
+</head>
+<body class="rustdoc mod">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
+        
+        <p class='location'>Module console</p><div class="sidebar-elems"><div class="block items"><ul><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li><li><a href="#functions">Functions</a></li></ul></div><p class='location'><a href='../index.html'>winconsole</a></p><script>window.sidebarCurrent = {name: 'console', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script></div>
+    </nav>
+
+    <div class="theme-picker">
+        <button id="theme-picker" aria-label="Pick another theme!">
+            <img src="../../brush.svg" width="18" alt="Pick another theme!">
+        </button>
+        <div id="theme-choices"></div>
+    </div>
+    <script src="../../theme.js"></script>
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content"><h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>winconsole</a>::<wbr><a class="mod" href=''>console</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/winconsole/console/mod.rs.html#1-41' title='goto source code'>[src]</a></span></h1><div class='docblock'><p>Contains console-related functions, structs, and enums.</p>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.CodePageInfo.html"
+                                  title='struct winconsole::console::CodePageInfo'>CodePageInfo</a></td>
+                           <td class='docblock-short'>
+                                <p>Information about a code page.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.ConsoleFont.html"
+                                  title='struct winconsole::console::ConsoleFont'>ConsoleFont</a></td>
+                           <td class='docblock-short'>
+                                <p>Represents a usable console font.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.ConsoleState.html"
+                                  title='struct winconsole::console::ConsoleState'>ConsoleState</a></td>
+                           <td class='docblock-short'>
+                                <p>Represents the state of the console.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.HistoryInfo.html"
+                                  title='struct winconsole::console::HistoryInfo'>HistoryInfo</a></td>
+                           <td class='docblock-short'>
+                                <p>Information about console history.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.InputSettings.html"
+                                  title='struct winconsole::console::InputSettings'>InputSettings</a></td>
+                           <td class='docblock-short'>
+                                <p>Settings related to console input.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.OutputSettings.html"
+                                  title='struct winconsole::console::OutputSettings'>OutputSettings</a></td>
+                           <td class='docblock-short'>
+                                <p>Settings related to console output.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Rect.html"
+                                  title='struct winconsole::console::Rect'>Rect</a></td>
+                           <td class='docblock-short'>
+                                <p>Defines the coordinates of the corners of a rectangle.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.SelectionInfo.html"
+                                  title='struct winconsole::console::SelectionInfo'>SelectionInfo</a></td>
+                           <td class='docblock-short'>
+                                <p>Information about a console selection.</p>
+
+                           </td>
+                       </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.CodePage.html"
+                                  title='enum winconsole::console::CodePage'>CodePage</a></td>
+                           <td class='docblock-short'>
+                                <p>Represents a console code page.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.ConsoleColor.html"
+                                  title='enum winconsole::console::ConsoleColor'>ConsoleColor</a></td>
+                           <td class='docblock-short'>
+                                <p>Represents supported console colors.</p>
+
+                           </td>
+                       </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.beep.html"
+                                  title='fn winconsole::console::beep'>beep</a></td>
+                           <td class='docblock-short'>
+                                <p>Generates a tone on the speaker.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.clear.html"
+                                  title='fn winconsole::console::clear'>clear</a></td>
+                           <td class='docblock-short'>
+                                <p>Clears the console.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.clear_history.html"
+                                  title='fn winconsole::console::clear_history'>clear_history</a></td>
+                           <td class='docblock-short'>
+                                <p>Clears the console history.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.fill_character.html"
+                                  title='fn winconsole::console::fill_character'>fill_character</a></td>
+                           <td class='docblock-short'>
+                                <p>Fills the console window with a specified character starting
+at a specified location, and returns the number of cells which were filled.<br />
+Note that this only changes the character; the colors of each cell will remain the same.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.fill_colors.html"
+                                  title='fn winconsole::console::fill_colors'>fill_colors</a></td>
+                           <td class='docblock-short'>
+                                <p>Fills the console window with a specified set of colors starting
+at a specified location, and returns the number of cells which were filled.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.flush_input.html"
+                                  title='fn winconsole::console::flush_input'>flush_input</a></td>
+                           <td class='docblock-short'>
+                                <p>Flushes the console input buffer.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.flush_output.html"
+                                  title='fn winconsole::console::flush_output'>flush_output</a></td>
+                           <td class='docblock-short'>
+                                <p>Flushes the console output buffer.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.generate_ctrl_event.html"
+                                  title='fn winconsole::console::generate_ctrl_event'>generate_ctrl_event</a></td>
+                           <td class='docblock-short'>
+                                <p>Sends a ctrl signal to a process group which shares the console.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.get_background_color.html"
+                                  title='fn winconsole::console::get_background_color'>get_background_color</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the current background color of the console.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.get_buffer_size.html"
+                                  title='fn winconsole::console::get_buffer_size'>get_buffer_size</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the size of the console output buffer.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.get_code_page_info.html"
+                                  title='fn winconsole::console::get_code_page_info'>get_code_page_info</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns a CodePageInfo object which contains information about the CodePage.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.get_color.html"
+                                  title='fn winconsole::console::get_color'>get_color</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the RGB color value of a ConsoleColor.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.get_color_mapping.html"
+                                  title='fn winconsole::console::get_color_mapping'>get_color_mapping</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the current color mapping for the console.
+The indices of the returned array correspond with ConsoleColor values.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.get_cursor_position.html"
+                                  title='fn winconsole::console::get_cursor_position'>get_cursor_position</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the current position of the console cursor.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.get_cursor_size.html"
+                                  title='fn winconsole::console::get_cursor_size'>get_cursor_size</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the size of the console cursor.<br />
+The size of the console cursor will always be between 0 and 100 (inclusive).</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.get_font.html"
+                                  title='fn winconsole::console::get_font'>get_font</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns information about the current console font.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.get_foreground_color.html"
+                                  title='fn winconsole::console::get_foreground_color'>get_foreground_color</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the current foreground color of the console.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.get_history_info.html"
+                                  title='fn winconsole::console::get_history_info'>get_history_info</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns a HistoryInfo object containing information about console history settings.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.get_input_code_page.html"
+                                  title='fn winconsole::console::get_input_code_page'>get_input_code_page</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the input code page used by the console.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.get_input_mode.html"
+                                  title='fn winconsole::console::get_input_mode'>get_input_mode</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns settings related to console input.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.get_installed_code_pages.html"
+                                  title='fn winconsole::console::get_installed_code_pages'>get_installed_code_pages</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns a list of installed code pages.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.get_largest_window_size.html"
+                                  title='fn winconsole::console::get_largest_window_size'>get_largest_window_size</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the size of the largest possible console window in character cells,
+based on the current font and the size of the display.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.get_original_title.html"
+                                  title='fn winconsole::console::get_original_title'>get_original_title</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the original title of the console window.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.get_output_code_page.html"
+                                  title='fn winconsole::console::get_output_code_page'>get_output_code_page</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the output code page used by the console.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.get_output_mode.html"
+                                  title='fn winconsole::console::get_output_mode'>get_output_mode</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns settings related to console output.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.get_scroll_position.html"
+                                  title='fn winconsole::console::get_scroll_position'>get_scroll_position</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the current scroll position of a window scroll bar.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.get_selection_info.html"
+                                  title='fn winconsole::console::get_selection_info'>get_selection_info</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns a SelectionInfo object containing information about console selection.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.get_state.html"
+                                  title='fn winconsole::console::get_state'>get_state</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns a ConsoleState object containing information about the current state of the console.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.get_supported_code_pages.html"
+                                  title='fn winconsole::console::get_supported_code_pages'>get_supported_code_pages</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns a list of supported code pages.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.get_title.html"
+                                  title='fn winconsole::console::get_title'>get_title</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the title of the console window.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.get_window_size.html"
+                                  title='fn winconsole::console::get_window_size'>get_window_size</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the size of the window in character cells.
+These dimensions also serve as minimum values for the size of the buffer.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.getch.html"
+                                  title='fn winconsole::console::getch'>getch</a></td>
+                           <td class='docblock-short'>
+                                <p>Reads a single character from the input buffer.
+Note that this will wait for input from the user, and will only accept certain characters;
+this will not return from a control key press event.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.is_cursor_visible.html"
+                                  title='fn winconsole::console::is_cursor_visible'>is_cursor_visible</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns a boolean representing whether or not the console cursor is visible.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.is_valid_code_page.html"
+                                  title='fn winconsole::console::is_valid_code_page'>is_valid_code_page</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns a boolean representing whether or not the supplied value is a valid code page.
+A code page is considered valid if it is installed on the system.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.map_color.html"
+                                  title='fn winconsole::console::map_color'>map_color</a></td>
+                           <td class='docblock-short'>
+                                <p>Maps a ConsoleColor to an RGB8 value.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.move_contents.html"
+                                  title='fn winconsole::console::move_contents'>move_contents</a></td>
+                           <td class='docblock-short'>
+                                <p>Moves data from a rectangle of the console output to another point in the output.
+The effects of the move can be limited by specifying a clipping rectangle,
+so the contents of the console screen buffer outside the clipping rectangle are unchanged.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.read_output.html"
+                                  title='fn winconsole::console::read_output'>read_output</a></td>
+                           <td class='docblock-short'>
+                                <p>Reads a string from the console output starting at a specified location.
+Returns an error if the position is not within the buffer bounds.<br />
+Note that this method reads the output buffer <em>directly</em> (i.e., an empty end of a line will
+be made up of multiple space characters rather than a newline character sequence).</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.read_output_colors.html"
+                                  title='fn winconsole::console::read_output_colors'>read_output_colors</a></td>
+                           <td class='docblock-short'>
+                                <p>Reads colors from the console output starting at a specified location, and returns a vector of tuples.
+The first item in each tuple is the foreground color, and the second is the background color.
+Returns an error if the position is not within the buffer bounds.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.scroll_by.html"
+                                  title='fn winconsole::console::scroll_by'>scroll_by</a></td>
+                           <td class='docblock-short'>
+                                <p>Scrolls the console window by the specified amount relative to its current position, in character cells.
+If the resultant position is greater than the maximum scroll position, the window is
+scrolled to the maximum position.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.scroll_to.html"
+                                  title='fn winconsole::console::scroll_to'>scroll_to</a></td>
+                           <td class='docblock-short'>
+                                <p>Scrolls the console window to the specified position, in character cells.
+If the specified position is greater than the maximum scroll position, the window is
+scrolled to the maximum position.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.set_background_color.html"
+                                  title='fn winconsole::console::set_background_color'>set_background_color</a></td>
+                           <td class='docblock-short'>
+                                <p>Sets the background color of the console.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.set_buffer_size.html"
+                                  title='fn winconsole::console::set_buffer_size'>set_buffer_size</a></td>
+                           <td class='docblock-short'>
+                                <p>Sets the size of the output buffer.
+Returns an error if this size is smaller than the window's minimum amount of cells.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.set_color_mapping.html"
+                                  title='fn winconsole::console::set_color_mapping'>set_color_mapping</a></td>
+                           <td class='docblock-short'>
+                                <p>Sets the color mapping of the console.
+The indices of the array correspond with ConsoleColor values.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.set_ctrl_handler.html"
+                                  title='fn winconsole::console::set_ctrl_handler'>set_ctrl_handler</a></td>
+                           <td class='docblock-short'>
+                                <p>Adds or removes a handler routine from the console.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.set_cursor_position.html"
+                                  title='fn winconsole::console::set_cursor_position'>set_cursor_position</a></td>
+                           <td class='docblock-short'>
+                                <p>Sets the position of the console cursor.
+Returns an error if the position is not within the buffer bounds.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.set_cursor_size.html"
+                                  title='fn winconsole::console::set_cursor_size'>set_cursor_size</a></td>
+                           <td class='docblock-short'>
+                                <p>Sets the size of the console cursor. Must be between 0 and 100 (inclusive).</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.set_cursor_visible.html"
+                                  title='fn winconsole::console::set_cursor_visible'>set_cursor_visible</a></td>
+                           <td class='docblock-short'>
+                                <p>Sets the visibility of the console cursor.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.set_font.html"
+                                  title='fn winconsole::console::set_font'>set_font</a></td>
+                           <td class='docblock-short'>
+                                <p>Sets information about the console font.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.set_foreground_color.html"
+                                  title='fn winconsole::console::set_foreground_color'>set_foreground_color</a></td>
+                           <td class='docblock-short'>
+                                <p>Sets the foreground color of the console.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.set_history_info.html"
+                                  title='fn winconsole::console::set_history_info'>set_history_info</a></td>
+                           <td class='docblock-short'>
+                                <p>Sets information about console history settings.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.set_input_code_page.html"
+                                  title='fn winconsole::console::set_input_code_page'>set_input_code_page</a></td>
+                           <td class='docblock-short'>
+                                <p>Sets the input code page to be used by the console.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.set_input_mode.html"
+                                  title='fn winconsole::console::set_input_mode'>set_input_mode</a></td>
+                           <td class='docblock-short'>
+                                <p>Sets settings related to console input.
+Returns an error if the settings are invalid.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.set_output_code_page.html"
+                                  title='fn winconsole::console::set_output_code_page'>set_output_code_page</a></td>
+                           <td class='docblock-short'>
+                                <p>Sets the output code page to be used by the console.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.set_output_mode.html"
+                                  title='fn winconsole::console::set_output_mode'>set_output_mode</a></td>
+                           <td class='docblock-short'>
+                                <p>Sets settings related to console output.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.set_state.html"
+                                  title='fn winconsole::console::set_state'>set_state</a></td>
+                           <td class='docblock-short'>
+                                <p>Sets the state of the console to a ConsoleState.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.set_title.html"
+                                  title='fn winconsole::console::set_title'>set_title</a></td>
+                           <td class='docblock-short'>
+                                <p>Sets the title of the console window.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.write_output.html"
+                                  title='fn winconsole::console::write_output'>write_output</a></td>
+                           <td class='docblock-short'>
+                                <p>Writes characters to the output at a specified position, and returns the
+number of cells which were written to. Returns an error if the position is not within the buffer bounds.<br />
+Note that this method writes characters  <em>directly</em> to the output buffer
+(i.e., newline characters do not move output to the next line,
+but instead write the newline character).</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.write_output_colors.html"
+                                  title='fn winconsole::console::write_output_colors'>write_output_colors</a></td>
+                           <td class='docblock-short'>
+                                <p>Changes the output colors starting at a specified position, and returns the
+number of cells which were written to.
+Returns an error if the position is not within the buffer bounds.</p>
+
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt><kbd>?</kbd></dt>
+                    <dd>Show this help dialog</dd>
+                    <dt><kbd>S</kbd></dt>
+                    <dd>Focus the search field</dd>
+                    <dt><kbd>↑</kbd></dt>
+                    <dd>Move up in search results</dd>
+                    <dt><kbd>↓</kbd></dt>
+                    <dd>Move down in search results</dd>
+                    <dt><kbd>↹</kbd></dt>
+                    <dd>Switch tab</dd>
+                    <dt><kbd>&#9166;</kbd></dt>
+                    <dd>Go to active search result</dd>
+                    <dt><kbd>+</kbd></dt>
+                    <dd>Expand all sections</dd>
+                    <dt><kbd>-</kbd></dt>
+                    <dd>Collapse all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "winconsole";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>
