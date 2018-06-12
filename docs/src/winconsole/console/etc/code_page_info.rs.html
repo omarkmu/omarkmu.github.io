@@ -104,7 +104,7 @@
 	<span class="doccomment">/// An array of lead byte ranges.</span>
 	<span class="kw">pub</span> <span class="ident">lead_byte</span>: [<span class="ident">u8</span>; <span class="number">12</span>],
 	<span class="doccomment">/// The default unicode character used when translating to the code page.</span>
-	<span class="kw">pub</span> <span class="ident">unicode_default</span>: <span class="ident">u16</span>,
+	<span class="kw">pub</span> <span class="ident">unicode_default</span>: <span class="ident">String</span>,
 	<span class="doccomment">/// The code page associated with the information.</span>
 	<span class="kw">pub</span> <span class="ident">code_page</span>: <span class="ident">CodePage</span>,
 	<span class="doccomment">/// The full name of the code page.</span>
@@ -120,12 +120,13 @@
 			<span class="ident">max_char_size</span>: <span class="number">0</span>,
 			<span class="ident">default</span>: <span class="ident">String</span>::<span class="ident">new</span>(),
 			<span class="ident">lead_byte</span>: [<span class="number">0</span>; <span class="number">12</span>],
-			<span class="ident">unicode_default</span>: <span class="number">0</span>,
+			<span class="ident">unicode_default</span>: <span class="ident">String</span>::<span class="ident">new</span>(),
 			<span class="ident">code_page</span>: <span class="ident">CodePage</span>::<span class="prelude-val">None</span>,
 			<span class="ident">name</span>: <span class="ident">String</span>::<span class="ident">new</span>()
 		}
 	}
-}</pre>
+}
+</pre>
 </section>
     <section id='search' class="content hidden"></section>
 

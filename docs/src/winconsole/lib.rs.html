@@ -116,7 +116,7 @@
  Add the following to `Cargo.toml`:
  ```toml
  [dependencies]
- winconsole = &quot;0.7&quot;
+ winconsole = &quot;0.8&quot;
  ```
  Then, add the following to your code:
  ```rust
@@ -133,17 +133,17 @@
  These features must be added to `Cargo.toml`:
  ```toml
  [dependencies.winconsole]
- version = &quot;0.7&quot;
+ version = &quot;0.8&quot;
  features = [&quot;input&quot;, &quot;serde&quot;] 
  ```
  */</span>
-<span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">winapi</span>;
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">cgmath</span>;
 <span class="attribute">#[<span class="ident">macro_use</span>]</span>
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">lazy_static</span>;
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">rgb</span>;
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>)]</span> <span class="attribute">#[<span class="ident">macro_use</span>]</span>
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">serde</span>;
+<span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">winapi</span>;
 
 <span class="attribute">#[<span class="ident">macro_use</span>]</span>
 <span class="kw">mod</span> <span class="ident">macros</span>;
