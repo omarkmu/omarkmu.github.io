@@ -3231,7 +3231,7 @@
  */</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_input_code_page</span>(<span class="ident">page</span>: <span class="ident">CodePage</span>) <span class="op">-&gt;</span> <span class="ident">WinResult</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
 	<span class="kw">if</span> <span class="ident">page</span> <span class="op">==</span> <span class="ident">CodePage</span>::<span class="prelude-val">None</span> <span class="op">||</span> <span class="ident">page</span> <span class="op">==</span> <span class="ident">CodePage</span>::<span class="ident">Invalid</span> {
-		<span class="kw">return</span> <span class="prelude-val">Ok</span>(()); <span class="comment">// TODO: Maybe throw argument error instead?</span>
+		<span class="macro">throw_err</span><span class="macro">!</span>(<span class="ident">ArgumentError</span>::<span class="ident">new</span>(<span class="string">&quot;page&quot;</span>, <span class="string">&quot;page cannot be CodePage::None or CodePage::Invalid&quot;</span>));
 	}
 	<span class="kw">let</span> <span class="ident">page</span>: <span class="ident">u16</span> <span class="op">=</span> <span class="ident">page</span>.<span class="ident">into</span>();
 	<span class="macro">os_err</span><span class="macro">!</span>(<span class="kw">unsafe</span> { <span class="ident">wincon</span>::<span class="ident">SetConsoleCP</span>(<span class="ident">page</span> <span class="kw">as</span> <span class="ident">u32</span>) });
@@ -3281,7 +3281,7 @@
  */</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_output_code_page</span>(<span class="ident">page</span>: <span class="ident">CodePage</span>) <span class="op">-&gt;</span> <span class="ident">WinResult</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
 	<span class="kw">if</span> <span class="ident">page</span> <span class="op">==</span> <span class="ident">CodePage</span>::<span class="prelude-val">None</span> <span class="op">||</span> <span class="ident">page</span> <span class="op">==</span> <span class="ident">CodePage</span>::<span class="ident">Invalid</span> {
-		<span class="kw">return</span> <span class="prelude-val">Ok</span>(());
+		<span class="macro">throw_err</span><span class="macro">!</span>(<span class="ident">ArgumentError</span>::<span class="ident">new</span>(<span class="string">&quot;page&quot;</span>, <span class="string">&quot;page cannot be CodePage::None or CodePage::Invalid&quot;</span>));
 	}
 	<span class="kw">let</span> <span class="ident">page</span>: <span class="ident">u16</span> <span class="op">=</span> <span class="ident">page</span>.<span class="ident">into</span>();
 	<span class="macro">os_err</span><span class="macro">!</span>(<span class="kw">unsafe</span> { <span class="ident">wincon</span>::<span class="ident">SetConsoleOutputCP</span>(<span class="ident">page</span> <span class="kw">as</span> <span class="ident">u32</span>) });

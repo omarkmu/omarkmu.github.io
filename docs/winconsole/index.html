@@ -59,24 +59,26 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a class='srclink' href='../src/winconsole/lib.rs.html#1-45' title='goto source code'>[src]</a></span></h1><div class='docblock'><p>This crate provides a wrapper for console-related functions in the Windows API.</p>
+               </span><a class='srclink' href='../src/winconsole/lib.rs.html#1-51' title='goto source code'>[src]</a></span></h1><div class='docblock'><p>This crate provides a wrapper for console-related functions in the Windows API.</p>
 <h1 id="usage" class="section-header"><a href="#usage">Usage</a></h1>
 <p>Add the following to <code>Cargo.toml</code>:</p>
 <pre><code class="language-toml">[dependencies]
-winconsole = &quot;0.6&quot;
+winconsole = &quot;0.7&quot;
 </code></pre>
 <p>Then, add the following to your code:</p>
 
 <pre class="rust rust-example-rendered">
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">winconsole</span>;</pre>
-<p>There are two optional features: <code>input</code> and <code>serde</code>.</p>
+<hr />
+<p>There are a few optional features:</p>
 <ul>
 <li><code>input</code> - Includes input-related functions.</li>
 <li><code>serde</code> - Support for <a href="https://serde.rs/">serde</a>.</li>
+<li><code>window</code> - Includes window-related functions.</li>
 </ul>
-<p>Additional features must be added to <code>Cargo.toml</code>:</p>
+<p>These features must be added to <code>Cargo.toml</code>:</p>
 <pre><code class="language-toml">[dependencies.winconsole]
-version = &quot;0.6&quot;
+version = &quot;0.7&quot;
 features = [&quot;input&quot;, &quot;serde&quot;] 
 </code></pre>
 </div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
@@ -102,6 +104,14 @@ features = [&quot;input&quot;, &quot;serde&quot;]
                                   title='mod winconsole::input'>input</a></td>
                            <td class='docblock-short'>
                                 <p>Contains input-related functions, structs, and enums.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="window/index.html"
+                                  title='mod winconsole::window'>window</a></td>
+                           <td class='docblock-short'>
+                                <p>Contains window-related functions, structs, and enums.</p>
 
                            </td>
                        </tr></table><h2 id='macros' class='section-header'><a href="#macros">Macros</a></h2>

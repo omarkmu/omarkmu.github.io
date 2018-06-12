@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `window` mod in crate `winconsole`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, window">
+
+    <title>winconsole::window - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css"
+          id="mainThemeStyle">
+    
+    <link rel="stylesheet" type="text/css" href="../../dark.css">
+    <link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle">
+    <script src="../../storage.js"></script>
+    
+
+    
+    
+</head>
+<body class="rustdoc mod">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
+        
+        <p class='location'>Module window</p><div class="sidebar-elems"><div class="block items"><ul><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li><li><a href="#functions">Functions</a></li></ul></div><p class='location'><a href='../index.html'>winconsole</a></p><script>window.sidebarCurrent = {name: 'window', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script></div>
+    </nav>
+
+    <div class="theme-picker">
+        <button id="theme-picker" aria-label="Pick another theme!">
+            <img src="../../brush.svg" width="18" alt="Pick another theme!">
+        </button>
+        <div id="theme-choices"></div>
+    </div>
+    <script src="../../theme.js"></script>
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content"><h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>winconsole</a>::<wbr><a class="mod" href=''>window</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/winconsole/window/mod.rs.html#1-16' title='goto source code'>[src]</a></span></h1><div class='docblock'><p>Contains window-related functions, structs, and enums.</p>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.FlashInfo.html"
+                                  title='struct winconsole::window::FlashInfo'>FlashInfo</a></td>
+                           <td class='docblock-short'>
+                                <p>Information used to flash the window.</p>
+
+                           </td>
+                       </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.DisplayState.html"
+                                  title='enum winconsole::window::DisplayState'>DisplayState</a></td>
+                           <td class='docblock-short'>
+                                <p>The display state of the console window.</p>
+
+                           </td>
+                       </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.activate.html"
+                                  title='fn winconsole::window::activate'>activate</a></td>
+                           <td class='docblock-short'>
+                                <p>Brings the window to the foreground and activates it, optionally displaying it.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.flash.html"
+                                  title='fn winconsole::window::flash'>flash</a></td>
+                           <td class='docblock-short'>
+                                <p>Flashes the console window caption and/or tray icon.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.get_cursor_position.html"
+                                  title='fn winconsole::window::get_cursor_position'>get_cursor_position</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the screen position of the cursor.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.get_display_state.html"
+                                  title='fn winconsole::window::get_display_state'>get_display_state</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the display state of the console window.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.get_position.html"
+                                  title='fn winconsole::window::get_position'>get_position</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the position of the console window in pixels.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.get_size.html"
+                                  title='fn winconsole::window::get_size'>get_size</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the size of the console window in pixels.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.hide.html"
+                                  title='fn winconsole::window::hide'>hide</a></td>
+                           <td class='docblock-short'>
+                                <p>Hides the console window.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.is_active.html"
+                                  title='fn winconsole::window::is_active'>is_active</a></td>
+                           <td class='docblock-short'>
+                                <p>Is the window the active window?</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.is_maximized.html"
+                                  title='fn winconsole::window::is_maximized'>is_maximized</a></td>
+                           <td class='docblock-short'>
+                                <p>Is the window maximized?</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.is_minimized.html"
+                                  title='fn winconsole::window::is_minimized'>is_minimized</a></td>
+                           <td class='docblock-short'>
+                                <p>Is the window minimized?</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.is_visible.html"
+                                  title='fn winconsole::window::is_visible'>is_visible</a></td>
+                           <td class='docblock-short'>
+                                <p>Is the window visible?</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.maximize.html"
+                                  title='fn winconsole::window::maximize'>maximize</a></td>
+                           <td class='docblock-short'>
+                                <p>Maximizes and activates the console window.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.minimize.html"
+                                  title='fn winconsole::window::minimize'>minimize</a></td>
+                           <td class='docblock-short'>
+                                <p>Minimizes the console window.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.restore.html"
+                                  title='fn winconsole::window::restore'>restore</a></td>
+                           <td class='docblock-short'>
+                                <p>Restores and activates the console window.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.set_cursor_position.html"
+                                  title='fn winconsole::window::set_cursor_position'>set_cursor_position</a></td>
+                           <td class='docblock-short'>
+                                <p>Sets the screen position of the cursor.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.set_display_state.html"
+                                  title='fn winconsole::window::set_display_state'>set_display_state</a></td>
+                           <td class='docblock-short'>
+                                <p>Sets the display state of the console window.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.set_position.html"
+                                  title='fn winconsole::window::set_position'>set_position</a></td>
+                           <td class='docblock-short'>
+                                <p>Sets the position of the console window.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.set_size.html"
+                                  title='fn winconsole::window::set_size'>set_size</a></td>
+                           <td class='docblock-short'>
+                                <p>Sets the size of the console window.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.show.html"
+                                  title='fn winconsole::window::show'>show</a></td>
+                           <td class='docblock-short'>
+                                <p>Shows the console window.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.stop_flash.html"
+                                  title='fn winconsole::window::stop_flash'>stop_flash</a></td>
+                           <td class='docblock-short'>
+                                <p>Stops flashing the console window caption and/or tray icon.</p>
+
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt><kbd>?</kbd></dt>
+                    <dd>Show this help dialog</dd>
+                    <dt><kbd>S</kbd></dt>
+                    <dd>Focus the search field</dd>
+                    <dt><kbd>↑</kbd></dt>
+                    <dd>Move up in search results</dd>
+                    <dt><kbd>↓</kbd></dt>
+                    <dd>Move down in search results</dd>
+                    <dt><kbd>↹</kbd></dt>
+                    <dd>Switch tab</dd>
+                    <dt><kbd>&#9166;</kbd></dt>
+                    <dd>Go to active search result</dd>
+                    <dt><kbd>+</kbd></dt>
+                    <dd>Expand all sections</dd>
+                    <dt><kbd>-</kbd></dt>
+                    <dd>Collapse all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "winconsole";
+    </script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>
