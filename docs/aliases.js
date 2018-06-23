@@ -4,3 +4,4 @@ ALIASES['winconsole'] = {};
 ALIASES['winconsole'] = {};
 ALIASES['winconsole'] = {};
 ALIASES['winconsole'] = {};
+ALIASES['winconsole'] = {};
