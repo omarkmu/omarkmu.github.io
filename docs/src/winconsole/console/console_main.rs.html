@@ -2175,8 +2175,99 @@
 <span id="2175">2175</span>
 <span id="2176">2176</span>
 <span id="2177">2177</span>
+<span id="2178">2178</span>
+<span id="2179">2179</span>
+<span id="2180">2180</span>
+<span id="2181">2181</span>
+<span id="2182">2182</span>
+<span id="2183">2183</span>
+<span id="2184">2184</span>
+<span id="2185">2185</span>
+<span id="2186">2186</span>
+<span id="2187">2187</span>
+<span id="2188">2188</span>
+<span id="2189">2189</span>
+<span id="2190">2190</span>
+<span id="2191">2191</span>
+<span id="2192">2192</span>
+<span id="2193">2193</span>
+<span id="2194">2194</span>
+<span id="2195">2195</span>
+<span id="2196">2196</span>
+<span id="2197">2197</span>
+<span id="2198">2198</span>
+<span id="2199">2199</span>
+<span id="2200">2200</span>
+<span id="2201">2201</span>
+<span id="2202">2202</span>
+<span id="2203">2203</span>
+<span id="2204">2204</span>
+<span id="2205">2205</span>
+<span id="2206">2206</span>
+<span id="2207">2207</span>
+<span id="2208">2208</span>
+<span id="2209">2209</span>
+<span id="2210">2210</span>
+<span id="2211">2211</span>
+<span id="2212">2212</span>
+<span id="2213">2213</span>
+<span id="2214">2214</span>
+<span id="2215">2215</span>
+<span id="2216">2216</span>
+<span id="2217">2217</span>
+<span id="2218">2218</span>
+<span id="2219">2219</span>
+<span id="2220">2220</span>
+<span id="2221">2221</span>
+<span id="2222">2222</span>
+<span id="2223">2223</span>
+<span id="2224">2224</span>
+<span id="2225">2225</span>
+<span id="2226">2226</span>
+<span id="2227">2227</span>
+<span id="2228">2228</span>
+<span id="2229">2229</span>
+<span id="2230">2230</span>
+<span id="2231">2231</span>
+<span id="2232">2232</span>
+<span id="2233">2233</span>
+<span id="2234">2234</span>
+<span id="2235">2235</span>
+<span id="2236">2236</span>
+<span id="2237">2237</span>
+<span id="2238">2238</span>
+<span id="2239">2239</span>
+<span id="2240">2240</span>
+<span id="2241">2241</span>
+<span id="2242">2242</span>
+<span id="2243">2243</span>
+<span id="2244">2244</span>
+<span id="2245">2245</span>
+<span id="2246">2246</span>
+<span id="2247">2247</span>
+<span id="2248">2248</span>
+<span id="2249">2249</span>
+<span id="2250">2250</span>
+<span id="2251">2251</span>
+<span id="2252">2252</span>
+<span id="2253">2253</span>
+<span id="2254">2254</span>
+<span id="2255">2255</span>
+<span id="2256">2256</span>
+<span id="2257">2257</span>
+<span id="2258">2258</span>
+<span id="2259">2259</span>
+<span id="2260">2260</span>
+<span id="2261">2261</span>
+<span id="2262">2262</span>
+<span id="2263">2263</span>
+<span id="2264">2264</span>
+<span id="2265">2265</span>
+<span id="2266">2266</span>
+<span id="2267">2267</span>
 </pre><pre class="rust ">
 <span class="kw">use</span> <span class="kw">super</span>::<span class="kw-2">*</span>;
+<span class="kw">use</span> <span class="ident">std</span>;
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">io</span>::<span class="ident">Write</span>;
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">sync</span>::<span class="ident">Mutex</span>;
 
@@ -4047,6 +4138,95 @@
 		<span class="kw">let</span> <span class="ident">buffer_p</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">buffer</span>[<span class="number">0</span>] <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">CHAR</span>;
 		<span class="ident">wincon</span>::<span class="ident">SetConsoleTitleA</span>(<span class="ident">buffer_p</span>)
 	});
+
+	<span class="prelude-val">Ok</span>(())
+}
+<span class="doccomment">/**
+ Sets the size of the console window in character cells.
+ If the screen buffer is too small for the new size, it is resized as well.
+
+ # Examples
+ ```
+ # extern crate winconsole;
+ # use winconsole::console;
+ # fn main() {
+ let size = console::get_window_size().unwrap();
+ console::set_window_size(size.x + 10, size.y + 10).unwrap();
+ # }
+ ```
+
+ # Errors
+ * [`ArgumentError`]: Returned if either `columns` or `rows` is less than zero,
+ exceeds the maximum window size, or if addition will result in a value which is
+ greater than the i16 maximum value.
+ * [`InvalidHandleError`]: Returned if an invalid handle to the console output is retrieved or used.
+ * [`IoError`]: Returned if an OS error occurs.
+
+ [`ArgumentError`]: ../errors/enum.WinError.html#Argument.v
+ [`InvalidHandleError`]: ../errors/enum.WinError.html#InvalidHandle.v
+ [`IoError`]: ../errors/enum.WinError.html#Io.v
+ */</span>
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_window_size</span>(<span class="ident">columns</span>: <span class="ident">u16</span>, <span class="ident">rows</span>: <span class="ident">u16</span>) <span class="op">-&gt;</span> <span class="ident">WinResult</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+	<span class="kw">if</span> <span class="ident">columns</span> <span class="op">==</span> <span class="number">0</span> {
+		<span class="macro">throw_err</span><span class="macro">!</span>(<span class="ident">ArgumentError</span>::<span class="ident">new</span>(<span class="string">&quot;columns&quot;</span>, <span class="string">&quot;columns must greater than zero&quot;</span>));
+	} <span class="kw">else</span> <span class="kw">if</span> <span class="ident">rows</span> <span class="op">==</span> <span class="number">0</span> {
+		<span class="macro">throw_err</span><span class="macro">!</span>(<span class="ident">ArgumentError</span>::<span class="ident">new</span>(<span class="string">&quot;rows&quot;</span>, <span class="string">&quot;rows must greater than zero&quot;</span>));
+	}
+
+	<span class="kw">let</span> <span class="ident">csbi</span> <span class="op">=</span> <span class="ident">get_screen_buffer_info</span>()<span class="question-mark">?</span>;
+	<span class="kw">let</span> <span class="ident">buffer_size</span> <span class="op">=</span> <span class="ident">csbi</span>.<span class="ident">dwSize</span>;
+	<span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">window_rect</span> <span class="op">=</span> <span class="ident">csbi</span>.<span class="ident">srWindow</span>;
+
+	<span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">needs_resize</span> <span class="op">=</span> <span class="bool-val">false</span>;
+	<span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">resize_x</span> <span class="op">=</span> <span class="ident">buffer_size</span>.<span class="ident">X</span>;
+	<span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">resize_y</span> <span class="op">=</span> <span class="ident">buffer_size</span>.<span class="ident">Y</span>;
+
+	<span class="kw">let</span> <span class="ident">columns_i16</span> <span class="op">=</span> <span class="ident">columns</span> <span class="kw">as</span> <span class="ident">i16</span>;
+	<span class="kw">let</span> <span class="ident">rows_i16</span> <span class="op">=</span> <span class="ident">rows</span> <span class="kw">as</span> <span class="ident">i16</span>;
+	<span class="kw">let</span> <span class="ident">left</span> <span class="op">=</span> <span class="ident">window_rect</span>.<span class="ident">Left</span>;
+	<span class="kw">let</span> <span class="ident">top</span> <span class="op">=</span> <span class="ident">window_rect</span>.<span class="ident">Top</span>;
+
+	<span class="kw">if</span> <span class="ident">buffer_size</span>.<span class="ident">X</span> <span class="op">&lt;</span> <span class="ident">left</span> <span class="op">+</span> <span class="ident">columns_i16</span> {
+		<span class="kw">if</span> <span class="ident">window_rect</span>.<span class="ident">Left</span> <span class="op">&gt;=</span> <span class="ident">std</span>::<span class="ident">i16</span>::<span class="ident">MAX</span> <span class="op">-</span> <span class="ident">columns_i16</span> {
+			<span class="macro">throw_err</span><span class="macro">!</span>(<span class="ident">ArgumentError</span>::<span class="ident">new</span>(<span class="string">&quot;columns&quot;</span>, <span class="string">&quot;(window left + columns) is greater than i16::MAX&quot;</span>));
+		}
+		<span class="ident">resize_x</span> <span class="op">=</span> <span class="ident">left</span> <span class="op">+</span> <span class="ident">columns_i16</span>;
+		<span class="ident">needs_resize</span> <span class="op">=</span> <span class="bool-val">true</span>;
+	}
+	<span class="kw">if</span> <span class="ident">buffer_size</span>.<span class="ident">Y</span> <span class="op">&lt;</span> <span class="ident">top</span> <span class="op">+</span> <span class="ident">rows_i16</span> {
+		<span class="kw">if</span> <span class="ident">window_rect</span>.<span class="ident">Top</span> <span class="op">&gt;=</span> <span class="ident">std</span>::<span class="ident">i16</span>::<span class="ident">MAX</span> <span class="op">-</span> <span class="ident">rows_i16</span> {
+			<span class="macro">throw_err</span><span class="macro">!</span>(<span class="ident">ArgumentError</span>::<span class="ident">new</span>(<span class="string">&quot;rows&quot;</span>, <span class="string">&quot;(window top + rows) is greater than i16::MAX&quot;</span>));
+		}
+		<span class="ident">resize_y</span> <span class="op">=</span> <span class="ident">top</span> <span class="op">+</span> <span class="ident">rows_i16</span>;
+		<span class="ident">needs_resize</span> <span class="op">=</span> <span class="bool-val">true</span>;
+	}
+
+	<span class="kw">if</span> <span class="ident">needs_resize</span> {
+		<span class="ident">set_buffer_size</span>(<span class="ident">resize_x</span> <span class="kw">as</span> <span class="ident">u16</span>, <span class="ident">resize_y</span> <span class="kw">as</span> <span class="ident">u16</span>)<span class="question-mark">?</span>;
+	}
+
+	<span class="ident">window_rect</span>.<span class="ident">Right</span> <span class="op">=</span> <span class="ident">left</span> <span class="op">+</span> <span class="ident">columns_i16</span> <span class="op">-</span> <span class="number">1</span>;
+	<span class="ident">window_rect</span>.<span class="ident">Bottom</span> <span class="op">=</span> <span class="ident">top</span> <span class="op">+</span> <span class="ident">rows_i16</span> <span class="op">-</span> <span class="number">1</span>;
+	<span class="kw">unsafe</span> {
+		<span class="kw">let</span> <span class="ident">handle</span> <span class="op">=</span> <span class="macro">handle</span><span class="macro">!</span>(<span class="ident">STDOUT</span>);
+		<span class="kw">let</span> <span class="ident">rect_p</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="ident">window_rect</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">SMALL_RECT</span>;
+
+		<span class="kw">if</span> <span class="ident">wincon</span>::<span class="ident">SetConsoleWindowInfo</span>(<span class="ident">handle</span>, <span class="number">1</span>, <span class="ident">rect_p</span>) <span class="op">==</span> <span class="number">0</span> {
+			<span class="kw">let</span> <span class="ident">err</span> <span class="op">=</span> <span class="macro">os_err</span><span class="macro">!</span>();
+			<span class="kw">if</span> <span class="ident">needs_resize</span> {
+				<span class="ident">wincon</span>::<span class="ident">SetConsoleScreenBufferSize</span>(<span class="ident">handle</span>, <span class="ident">buffer_size</span>);
+			}
+
+			<span class="kw">let</span> <span class="ident">max</span> <span class="op">=</span> <span class="ident">wincon</span>::<span class="ident">GetLargestConsoleWindowSize</span>(<span class="ident">handle</span>);
+			<span class="kw">if</span> <span class="ident">columns</span> <span class="op">&gt;</span> (<span class="ident">max</span>.<span class="ident">X</span> <span class="kw">as</span> <span class="ident">u16</span>) {
+				<span class="macro">throw_err</span><span class="macro">!</span>(<span class="ident">ArgumentError</span>::<span class="ident">new</span>(<span class="string">&quot;columns&quot;</span>, <span class="string">&quot;columns is greater than maximum window columns&quot;</span>));
+			} <span class="kw">else</span> <span class="kw">if</span> <span class="ident">rows</span> <span class="op">&gt;</span> (<span class="ident">max</span>.<span class="ident">Y</span> <span class="kw">as</span> <span class="ident">u16</span>) {
+				<span class="macro">throw_err</span><span class="macro">!</span>(<span class="ident">ArgumentError</span>::<span class="ident">new</span>(<span class="string">&quot;rows&quot;</span>, <span class="string">&quot;rows is greater than maximum window rows&quot;</span>));
+			}
+
+			<span class="kw">return</span> <span class="ident">err</span>;
+		}
+	}
 
 	<span class="prelude-val">Ok</span>(())
 }
