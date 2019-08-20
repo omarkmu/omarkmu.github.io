@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `src\console\etc\code_page.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>code_page.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../../dark.css"><link rel="stylesheet" type="text/css" href="../../../../light.css" id="themeStyle"><script src="../../../../storage.js"></script></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../../../theme.js"></script><nav class="sub"><form class="search-form js-only"><div class="search-container"><input class="search-input" name="search" autocomplete="off" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><a id="settings-menu" href="../../../../settings.html"><img src="../../../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `src\console\etc\code_page.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>code_page.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../../dark.css"><link rel="stylesheet" type="text/css" href="../../../../light.css" id="themeStyle"><script src="../../../../storage.js"></script><noscript><link rel="stylesheet" href="../../../../noscript.css"></noscript><link rel="shortcut icon" href="../../../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../../../winconsole/index.html'><div class='logo-container'><img src='../../../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../../../theme.js"></script><nav class="sub"><form class="search-form js-only"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../../../settings.html"><img src="../../../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
 <span id="4">  4</span>
@@ -343,351 +343,351 @@
 <span id="343">343</span>
 <span id="344">344</span>
 <span id="345">345</span>
-</pre><pre class="rust ">
+</pre><div class="example-wrap"><pre class="rust ">
 <span class="kw">use</span> <span class="kw">super</span>::<span class="ident">CodePageInfo</span>;
-<span class="kw">use</span> ::<span class="ident">console</span>;
-<span class="kw">use</span> ::<span class="ident">errors</span>::<span class="ident">WinResult</span>;
+<span class="kw">use</span> <span class="ident">console</span>;
+<span class="kw">use</span> <span class="ident">errors</span>::<span class="ident">WinResult</span>;
 
 <span class="macro">enumeration</span><span class="macro">!</span> {
-	<span class="doccomment">/// Represents a console code page.</span>
-	<span class="attribute">#[<span class="ident">repr</span>(<span class="ident">u16</span>)]</span>
-	<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_camel_case_types</span>)]</span>
-	<span class="ident">CodePage</span><span class="op">&lt;</span><span class="ident">u16</span><span class="op">&gt;</span> {
-		<span class="ident">__DEFAULT__</span> <span class="op">=</span> <span class="number">65535</span>,
-		<span class="doccomment">/// Default value.</span>
-		<span class="prelude-val">None</span> <span class="op">=</span> <span class="number">0</span>,
-		<span class="doccomment">/// IBM EBCDIC US-Canada.</span>
-		<span class="ident">IBM037</span> <span class="op">=</span> <span class="number">037</span>,
-		<span class="doccomment">/// OEM United States.</span>
-		<span class="ident">IBM437</span> <span class="op">=</span> <span class="number">437</span>,
-		<span class="doccomment">/// IBM EBCDIC International.</span>
-		<span class="ident">IBM500</span> <span class="op">=</span> <span class="number">500</span>,
-		<span class="doccomment">/// Arabic (ASMO 708).</span>
-		<span class="ident">ASMO_708</span> <span class="op">=</span> <span class="number">708</span>,
-		<span class="doccomment">/// Arabic (ASMO-449+, BCON V4).</span>
-		<span class="ident">ASMO_709</span> <span class="op">=</span> <span class="number">709</span>,
-		<span class="doccomment">/// Arabic - Transparent Arabic.</span>
-		<span class="ident">ASMO_710</span> <span class="op">=</span> <span class="number">710</span>,
-		<span class="doccomment">/// Arabic (Transparent ASMO); Arabic (DOS).</span>
-		<span class="ident">DOS_720</span> <span class="op">=</span> <span class="number">720</span>,
-		<span class="doccomment">/// OEM Greek (formerly 437G); Greek (DOS).</span>
-		<span class="ident">ibm737</span> <span class="op">=</span> <span class="number">737</span>,
-		<span class="doccomment">/// OEM Baltic; Baltic (DOS).</span>
-		<span class="ident">ibm775</span> <span class="op">=</span> <span class="number">775</span>,
-		<span class="doccomment">/// OEM Multilingual Latin 1; Western European (DOS).</span>
-		<span class="ident">ibm850</span> <span class="op">=</span> <span class="number">850</span>,
-		<span class="doccomment">/// OEM Latin 2; Central European (DOS).</span>
-		<span class="ident">ibm852</span> <span class="op">=</span> <span class="number">852</span>,
-		<span class="doccomment">/// OEM Cyrillic (primarily Russian).</span>
-		<span class="ident">IBM855</span> <span class="op">=</span> <span class="number">855</span>,
-		<span class="doccomment">/// OEM Turkish; Turkish (DOS).</span>
-		<span class="ident">ibm857</span> <span class="op">=</span> <span class="number">857</span>,
-		<span class="doccomment">/// OEM Multilingual Latin 1 + Euro symbol.</span>
-		<span class="ident">IBM00858</span> <span class="op">=</span> <span class="number">858</span>,
-		<span class="doccomment">/// OEM Portuguese; Portuguese (DOS).</span>
-		<span class="ident">IBM860</span> <span class="op">=</span> <span class="number">860</span>,
-		<span class="doccomment">/// OEM Icelandic; Icelandic (DOS).</span>
-		<span class="ident">ibm861</span> <span class="op">=</span> <span class="number">861</span>,
-		<span class="doccomment">/// OEM Hebrew; Hebrew (DOS).</span>
-		<span class="ident">DOS_862</span> <span class="op">=</span> <span class="number">862</span>,
-		<span class="doccomment">/// OEM French Canadian; French Canadian (DOS).</span>
-		<span class="ident">IBM863</span> <span class="op">=</span> <span class="number">863</span>,
-		<span class="doccomment">/// OEM Arabic; Arabic (864).</span>
-		<span class="ident">IBM864</span> <span class="op">=</span> <span class="number">864</span>,
-		<span class="doccomment">/// OEM Nordic; Nordic (DOS).</span>
-		<span class="ident">IBM865</span> <span class="op">=</span> <span class="number">865</span>,
-		<span class="doccomment">/// OEM Russian; Cyrillic (DOS).</span>
-		<span class="ident">cp866</span> <span class="op">=</span> <span class="number">866</span>,
-		<span class="doccomment">/// OEM Modern Greek; Greek, Modern (DOS).</span>
-		<span class="ident">ibm869</span> <span class="op">=</span> <span class="number">869</span>,
-		<span class="doccomment">/// IBM EBCDIC Multilingual/ROECE (Latin 2); IBM EBCDIC Multilingual Latin 2.</span>
-		<span class="ident">IBM870</span> <span class="op">=</span> <span class="number">870</span>,
-		<span class="doccomment">/// ANSI/OEM Thai (ISO 8859-11); Thai (Windows).</span>
-		<span class="ident">windows_874</span> <span class="op">=</span> <span class="number">874</span>,
-		<span class="doccomment">/// IBM EBCDIC Greek Modern.</span>
-		<span class="ident">cp875</span> <span class="op">=</span> <span class="number">875</span>,
-		<span class="doccomment">/// ANSI/OEM Japanese; Japanese (Shift-JIS).</span>
-		<span class="ident">shift_jis</span> <span class="op">=</span> <span class="number">932</span>,
-		<span class="doccomment">/// ANSI/OEM Simplified Chinese (PRC, Singapore); Chinese Simplified (GB2312).</span>
-		<span class="ident">gb2312</span> <span class="op">=</span> <span class="number">936</span>,
-		<span class="doccomment">/// ANSI/OEM Korean (Unified Hangul Code).</span>
-		<span class="ident">ks_c_5601_1987</span> <span class="op">=</span> <span class="number">949</span>,
-		<span class="doccomment">/// ANSI/OEM Traditional Chinese (Taiwan; Hong Kong SAR, PRC); Chinese Traditional (Big5).</span>
-		<span class="ident">big5</span> <span class="op">=</span> <span class="number">950</span>,
-		<span class="doccomment">/// IBM EBCDIC Turkish (Latin 5).</span>
-		<span class="ident">IBM1026</span> <span class="op">=</span> <span class="number">1026</span>,
-		<span class="doccomment">/// IBM EBCDIC Latin 1/Open System.</span>
-		<span class="ident">IBM01047</span> <span class="op">=</span> <span class="number">1047</span>,
-		<span class="doccomment">/// IBM EBCDIC US-Canada (037 + Euro symbol); IBM EBCDIC (US-Canada-Euro).</span>
-		<span class="ident">IBM01140</span> <span class="op">=</span> <span class="number">1140</span>,
-		<span class="doccomment">/// IBM EBCDIC Germany (20273 + Euro symbol); IBM EBCDIC (Germany-Euro).</span>
-		<span class="ident">IBM01141</span> <span class="op">=</span> <span class="number">1141</span>,
-		<span class="doccomment">/// IBM EBCDIC Denmark-Norway (20277 + Euro symbol); IBM EBCDIC (Denmark-Norway-Euro).</span>
-		<span class="ident">IBM01142</span> <span class="op">=</span> <span class="number">1142</span>,
-		<span class="doccomment">/// IBM EBCDIC Finland-Sweden (20278 + Euro symbol); IBM EBCDIC (Finland-Sweden-Euro).</span>
-		<span class="ident">IBM01143</span> <span class="op">=</span> <span class="number">1143</span>,
-		<span class="doccomment">/// IBM EBCDIC Italy (20280 + Euro symbol); IBM EBCDIC (Italy-Euro).</span>
-		<span class="ident">IBM01144</span> <span class="op">=</span> <span class="number">1144</span>,
-		<span class="doccomment">/// IBM EBCDIC Latin America-Spain (20284 + Euro symbol); IBM EBCDIC (Spain-Euro).</span>
-		<span class="ident">IBM01145</span> <span class="op">=</span> <span class="number">1145</span>,
-		<span class="doccomment">/// IBM EBCDIC United Kingdom (20285 + Euro symbol); IBM EBCDIC (UK-Euro).</span>
-		<span class="ident">IBM01146</span> <span class="op">=</span> <span class="number">1146</span>,
-		<span class="doccomment">/// IBM EBCDIC France (20297 + Euro symbol); IBM EBCDIC (France-Euro).</span>
-		<span class="ident">IBM01147</span> <span class="op">=</span> <span class="number">1147</span>,
-		<span class="doccomment">/// IBM EBCDIC International (500 + Euro symbol); IBM EBCDIC (International-Euro).</span>
-		<span class="ident">IBM01148</span> <span class="op">=</span> <span class="number">1148</span>,
-		<span class="doccomment">/// IBM EBCDIC Icelandic (20871 + Euro symbol); IBM EBCDIC (Icelandic-Euro).</span>
-		<span class="ident">IBM01149</span> <span class="op">=</span> <span class="number">1149</span>,
-		<span class="doccomment">/// Unicode UTF-16, little endian byte order (BMP of ISO 10646); available only to managed applications.</span>
-		<span class="ident">utf_16</span> <span class="op">=</span> <span class="number">1200</span>,
-		<span class="doccomment">/// Unicode UTF-16, big endian byte order; available only to managed applications.</span>
-		<span class="ident">unicodeFFFE</span> <span class="op">=</span> <span class="number">1201</span>,
-		<span class="doccomment">/// ANSI Central European; Central European (Windows).</span>
-		<span class="ident">windows_1250</span> <span class="op">=</span> <span class="number">1250</span>,
-		<span class="doccomment">/// ANSI Cyrillic; Cyrillic (Windows).</span>
-		<span class="ident">windows_1251</span> <span class="op">=</span> <span class="number">1251</span>,
-		<span class="doccomment">/// ANSI Latin 1; Western European (Windows).</span>
-		<span class="ident">windows_1252</span> <span class="op">=</span> <span class="number">1252</span>,
-		<span class="doccomment">/// ANSI Greek; Greek (Windows).</span>
-		<span class="ident">windows_1253</span> <span class="op">=</span> <span class="number">1253</span>,
-		<span class="doccomment">/// ANSI Turkish; Turkish (Windows).</span>
-		<span class="ident">windows_1254</span> <span class="op">=</span> <span class="number">1254</span>,
-		<span class="doccomment">/// ANSI Hebrew; Hebrew (Windows).</span>
-		<span class="ident">windows_1255</span> <span class="op">=</span> <span class="number">1255</span>,
-		<span class="doccomment">/// ANSI Arabic; Arabic (Windows).</span>
-		<span class="ident">windows_1256</span> <span class="op">=</span> <span class="number">1256</span>,
-		<span class="doccomment">/// ANSI Baltic; Baltic (Windows).</span>
-		<span class="ident">windows_1257</span> <span class="op">=</span> <span class="number">1257</span>,
-		<span class="doccomment">/// ANSI/OEM Vietnamese; Vietnamese (Windows).</span>
-		<span class="ident">windows_1258</span> <span class="op">=</span> <span class="number">1258</span>,
-		<span class="doccomment">/// Korean (Johab).</span>
-		<span class="ident">Johab</span> <span class="op">=</span> <span class="number">1361</span>,
-		<span class="doccomment">/// MAC Roman; Western European (Mac).</span>
-		<span class="ident">macintosh</span> <span class="op">=</span> <span class="number">10000</span>,
-		<span class="doccomment">/// Japanese (Mac).</span>
-		<span class="ident">x_mac_japanese</span> <span class="op">=</span> <span class="number">10001</span>,
-		<span class="doccomment">/// MAC Traditional Chinese (Big5); Chinese Traditional (Mac).</span>
-		<span class="ident">x_mac_chinesetrad</span> <span class="op">=</span> <span class="number">10002</span>,
-		<span class="doccomment">/// Korean (Mac).</span>
-		<span class="ident">x_mac_korean</span> <span class="op">=</span> <span class="number">10003</span>,
-		<span class="doccomment">/// Arabic (Mac).</span>
-		<span class="ident">x_mac_arabic</span> <span class="op">=</span> <span class="number">10004</span>,
-		<span class="doccomment">/// Hebrew (Mac).</span>
-		<span class="ident">x_mac_hebrew</span> <span class="op">=</span> <span class="number">10005</span>,
-		<span class="doccomment">/// Greek (Mac).</span>
-		<span class="ident">x_mac_greek</span> <span class="op">=</span> <span class="number">10006</span>,
-		<span class="doccomment">/// Cyrillic (Mac).</span>
-		<span class="ident">x_mac_cyrillic</span> <span class="op">=</span> <span class="number">10007</span>,
-		<span class="doccomment">/// MAC Simplified Chinese (GB 2312); Chinese Simplified (Mac).</span>
-		<span class="ident">x_mac_chinesesimp</span> <span class="op">=</span> <span class="number">10008</span>,
-		<span class="doccomment">/// Romanian (Mac).</span>
-		<span class="ident">x_mac_romanian</span> <span class="op">=</span> <span class="number">10010</span>,
-		<span class="doccomment">/// Ukrainian (Mac).</span>
-		<span class="ident">x_mac_ukrainian</span> <span class="op">=</span> <span class="number">10017</span>,
-		<span class="doccomment">/// Thai (Mac).</span>
-		<span class="ident">x_mac_thai</span> <span class="op">=</span> <span class="number">10021</span>,
-		<span class="doccomment">/// MAC Latin 2; Central European (Mac).</span>
-		<span class="ident">x_mac_ce</span> <span class="op">=</span> <span class="number">10029</span>,
-		<span class="doccomment">/// Icelandic (Mac).</span>
-		<span class="ident">x_mac_icelandic</span> <span class="op">=</span> <span class="number">10079</span>,
-		<span class="doccomment">/// Turkish (Mac).</span>
-		<span class="ident">x_mac_turkish</span> <span class="op">=</span> <span class="number">10081</span>,
-		<span class="doccomment">/// Croatian (Mac).</span>
-		<span class="ident">x_mac_croatian</span> <span class="op">=</span> <span class="number">10082</span>,
-		<span class="doccomment">/// Unicode UTF-32, little endian byte order; available only to managed applications.</span>
-		<span class="ident">utf_32</span> <span class="op">=</span> <span class="number">12000</span>,
-		<span class="doccomment">/// Unicode UTF-32, big endian byte order; available only to managed applications.</span>
-		<span class="ident">utf_32BE</span> <span class="op">=</span> <span class="number">12001</span>,
-		<span class="doccomment">/// CNS Taiwan; Chinese Traditional (CNS).</span>
-		<span class="ident">x_Chinese_CNS</span> <span class="op">=</span> <span class="number">20000</span>,
-		<span class="doccomment">/// TCA Taiwan.</span>
-		<span class="ident">x_cp20001</span> <span class="op">=</span> <span class="number">20001</span>,
-		<span class="doccomment">/// Eten Taiwan; Chinese Traditional (Eten).</span>
-		<span class="ident">x_Chinese_Eten</span> <span class="op">=</span> <span class="number">20002</span>,
-		<span class="doccomment">/// IBM5550 Taiwan.</span>
-		<span class="ident">x_cp20003</span> <span class="op">=</span> <span class="number">20003</span>,
-		<span class="doccomment">/// TeleText Taiwan.</span>
-		<span class="ident">x_cp20004</span> <span class="op">=</span> <span class="number">20004</span>,
-		<span class="doccomment">/// Wang Taiwan.</span>
-		<span class="ident">x_cp20005</span> <span class="op">=</span> <span class="number">20005</span>,
-		<span class="doccomment">/// IA5 (IRV International Alphabet No. 5, 7-bit); Western European (IA5).</span>
-		<span class="ident">x_IA5</span> <span class="op">=</span> <span class="number">20105</span>,
-		<span class="doccomment">/// IA5 German (7-bit).</span>
-		<span class="ident">x_IA5_German</span> <span class="op">=</span> <span class="number">20106</span>,
-		<span class="doccomment">/// IA5 Swedish (7-bit).</span>
-		<span class="ident">x_IA5_Swedish</span> <span class="op">=</span> <span class="number">20107</span>,
-		<span class="doccomment">/// IA5 Norwegian (7-bit).</span>
-		<span class="ident">x_IA5_Norwegian</span> <span class="op">=</span> <span class="number">20108</span>,
-		<span class="doccomment">/// US-ASCII (7-bit).</span>
-		<span class="ident">us_ascii</span> <span class="op">=</span> <span class="number">20127</span>,
-		<span class="doccomment">/// T.61.</span>
-		<span class="ident">x_cp20261</span> <span class="op">=</span> <span class="number">20261</span>,
-		<span class="doccomment">/// ISO 6937 Non-Spacing Accent.</span>
-		<span class="ident">x_cp20269</span> <span class="op">=</span> <span class="number">20269</span>,
-		<span class="doccomment">/// IBM EBCDIC Germany.</span>
-		<span class="ident">IBM273</span> <span class="op">=</span> <span class="number">20273</span>,
-		<span class="doccomment">/// IBM EBCDIC Denmark-Norway.</span>
-		<span class="ident">IBM277</span> <span class="op">=</span> <span class="number">20277</span>,
-		<span class="doccomment">/// IBM EBCDIC Finland-Sweden.</span>
-		<span class="ident">IBM278</span> <span class="op">=</span> <span class="number">20278</span>,
-		<span class="doccomment">/// IBM EBCDIC Italy.</span>
-		<span class="ident">IBM280</span> <span class="op">=</span> <span class="number">20280</span>,
-		<span class="doccomment">/// IBM EBCDIC Latin America-Spain.</span>
-		<span class="ident">IBM284</span> <span class="op">=</span> <span class="number">20284</span>,
-		<span class="doccomment">/// IBM EBCDIC United Kingdom.</span>
-		<span class="ident">IBM285</span> <span class="op">=</span> <span class="number">20285</span>,
-		<span class="doccomment">/// IBM EBCDIC Japanese Katakana Extended.</span>
-		<span class="ident">IBM290</span> <span class="op">=</span> <span class="number">20290</span>,
-		<span class="doccomment">/// IBM EBCDIC France.</span>
-		<span class="ident">IBM297</span> <span class="op">=</span> <span class="number">20297</span>,
-		<span class="doccomment">/// IBM EBCDIC Arabic.</span>
-		<span class="ident">IBM420</span> <span class="op">=</span> <span class="number">20420</span>,
-		<span class="doccomment">/// IBM EBCDIC Greek.</span>
-		<span class="ident">IBM423</span> <span class="op">=</span> <span class="number">20423</span>,
-		<span class="doccomment">/// IBM EBCDIC Hebrew.</span>
-		<span class="ident">IBM424</span> <span class="op">=</span> <span class="number">20424</span>,
-		<span class="doccomment">/// IBM EBCDIC Korean Extended.</span>
-		<span class="ident">x_EBCDIC_KoreanExtended</span> <span class="op">=</span> <span class="number">20833</span>,
-		<span class="doccomment">/// IBM EBCDIC Thai.</span>
-		<span class="ident">IBM_Thai</span> <span class="op">=</span> <span class="number">20838</span>,
-		<span class="doccomment">/// Russian (KOI8-R); Cyrillic (KOI8-R).</span>
-		<span class="ident">koi8_r</span> <span class="op">=</span> <span class="number">20866</span>,
-		<span class="doccomment">/// IBM EBCDIC Icelandic.</span>
-		<span class="ident">IBM871</span> <span class="op">=</span> <span class="number">20871</span>,
-		<span class="doccomment">/// IBM EBCDIC Cyrillic Russian.</span>
-		<span class="ident">IBM880</span> <span class="op">=</span> <span class="number">20880</span>,
-		<span class="doccomment">/// IBM EBCDIC Turkish.</span>
-		<span class="ident">IBM905</span> <span class="op">=</span> <span class="number">20905</span>,
-		<span class="doccomment">/// IBM EBCDIC Latin 1/Open System (1047 + Euro symbol).</span>
-		<span class="ident">IBM00924</span> <span class="op">=</span> <span class="number">20924</span>,
-		<span class="doccomment">/// Japanese (JIS 0208-1990 and 0212-1990).</span>
-		<span class="ident">EUC_JP</span> <span class="op">=</span> <span class="number">20932</span>,
-		<span class="doccomment">/// Simplified Chinese (GB2312); Chinese Simplified (GB2312-80).</span>
-		<span class="ident">x_cp20936</span> <span class="op">=</span> <span class="number">20936</span>,
-		<span class="doccomment">/// Korean Wansung.</span>
-		<span class="ident">x_cp20949</span> <span class="op">=</span> <span class="number">20949</span>,
-		<span class="doccomment">/// IBM EBCDIC Cyrillic Serbian-Bulgarian.</span>
-		<span class="ident">cp1025</span> <span class="op">=</span> <span class="number">21025</span>,
-		<span class="doccomment">/// Ukrainian (KOI8-U); Cyrillic (KOI8-U).</span>
-		<span class="ident">koi8_u</span> <span class="op">=</span> <span class="number">21866</span>,
-		<span class="doccomment">/// ISO 8859-1 Latin 1; Western European (ISO).</span>
-		<span class="ident">iso_8859_1</span> <span class="op">=</span> <span class="number">28591</span>,
-		<span class="doccomment">/// ISO 8859-2 Central European; Central European (ISO).</span>
-		<span class="ident">iso_8859_2</span> <span class="op">=</span> <span class="number">28592</span>,
-		<span class="doccomment">/// ISO 8859-3 Latin 3.</span>
-		<span class="ident">iso_8859_3</span> <span class="op">=</span> <span class="number">28593</span>,
-		<span class="doccomment">/// ISO 8859-4 Baltic.</span>
-		<span class="ident">iso_8859_4</span> <span class="op">=</span> <span class="number">28594</span>,
-		<span class="doccomment">/// ISO 8859-5 Cyrillic.</span>
-		<span class="ident">iso_8859_5</span> <span class="op">=</span> <span class="number">28595</span>,
-		<span class="doccomment">/// ISO 8859-6 Arabic.</span>
-		<span class="ident">iso_8859_6</span> <span class="op">=</span> <span class="number">28596</span>,
-		<span class="doccomment">/// ISO 8859-7 Greek.</span>
-		<span class="ident">iso_8859_7</span> <span class="op">=</span> <span class="number">28597</span>,
-		<span class="doccomment">/// ISO 8859-8 Hebrew; Hebrew (ISO-Visual).</span>
-		<span class="ident">iso_8859_8</span> <span class="op">=</span> <span class="number">28598</span>,
-		<span class="doccomment">/// ISO 8859-9 Turkish.</span>
-		<span class="ident">iso_8859_9</span> <span class="op">=</span> <span class="number">28599</span>,
-		<span class="doccomment">/// ISO 8859-13 Estonian.</span>
-		<span class="ident">iso_8859_13</span> <span class="op">=</span> <span class="number">28603</span>,
-		<span class="doccomment">/// ISO 8859-15 Latin 9.</span>
-		<span class="ident">iso_8859_15</span> <span class="op">=</span> <span class="number">28605</span>,
-		<span class="doccomment">/// Europa 3.</span>
-		<span class="ident">x_Europa</span> <span class="op">=</span> <span class="number">29001</span>,
-		<span class="doccomment">/// ISO 8859-8 Hebrew; Hebrew (ISO-Logical).</span>
-		<span class="ident">iso_8859_8_i</span> <span class="op">=</span> <span class="number">38598</span>,
-		<span class="doccomment">/// ISO 2022 Japanese with no halfwidth Katakana; Japanese (JIS).</span>
-		<span class="ident">iso_2022_jp_1</span> <span class="op">=</span> <span class="number">50220</span>,
-		<span class="doccomment">/// ISO 2022 Japanese with halfwidth Katakana; Japanese (JIS-Allow 1 byte Kana).</span>
-		<span class="ident">csISO2022JP</span> <span class="op">=</span> <span class="number">50221</span>,
-		<span class="doccomment">/// ISO 2022 Japanese JIS X 0201-1989; Japanese (JIS-Allow 1 byte Kana - SO/SI).</span>
-		<span class="ident">iso_2022_jp_2</span> <span class="op">=</span> <span class="number">50222</span>,
-		<span class="doccomment">/// ISO 2022 Korean.</span>
-		<span class="ident">iso_2022_kr</span> <span class="op">=</span> <span class="number">50225</span>,
-		<span class="doccomment">/// ISO 2022 Simplified Chinese; Chinese Simplified (ISO 2022).</span>
-		<span class="ident">x_cp50227</span> <span class="op">=</span> <span class="number">50227</span>,
-		<span class="doccomment">/// ISO 2022 Traditional Chinese.</span>
-		<span class="ident">iso_2022_ch</span> <span class="op">=</span> <span class="number">50229</span>,
-		<span class="doccomment">/// EBCDIC Japanese (Katakana) Extended.</span>
-		<span class="ident">x_EBCDIC_JapaneseExtended</span> <span class="op">=</span> <span class="number">50930</span>,
-		<span class="doccomment">/// EBCDIC US-Canada and Japanese.</span>
-		<span class="ident">x_EBCDIC_USCanadaJapanese</span> <span class="op">=</span> <span class="number">50931</span>,
-		<span class="doccomment">/// EBCDIC Korean Extended and Korean.</span>
-		<span class="ident">x_EBCDIC_KoreanExtendedAndKorean</span> <span class="op">=</span> <span class="number">50933</span>,
-		<span class="doccomment">/// EBCDIC Simplified Chinese Extended and Simplified Chinese.</span>
-		<span class="ident">x_EBCDIC_ChineseExtendedAndChinese</span> <span class="op">=</span> <span class="number">50935</span>,
-		<span class="doccomment">/// EBCDIC Simplified Chinese.</span>
-		<span class="ident">x_EBCDIC_ChineseExtended</span> <span class="op">=</span> <span class="number">50936</span>,
-		<span class="doccomment">/// EBCDIC US-Canada and Traditional Chinese.</span>
-		<span class="ident">x_EBCDIC_USCanadaChinese</span> <span class="op">=</span> <span class="number">50937</span>,
-		<span class="doccomment">/// EBCDIC Japanese (Latin) Extended and Japanese.</span>
-		<span class="ident">x_EBCDIC_JapaneseExtendedAndJapanese</span> <span class="op">=</span> <span class="number">50939</span>,
-		<span class="doccomment">/// EUC Japanese.</span>
-		<span class="ident">euc_jp</span> <span class="op">=</span> <span class="number">51932</span>,
-		<span class="doccomment">/// EUC Simplified Chinese; Chinese Simplified (EUC).</span>
-		<span class="ident">EUC_CN</span> <span class="op">=</span> <span class="number">51936</span>,
-		<span class="doccomment">/// EUC Korean.</span>
-		<span class="ident">euc_kr</span> <span class="op">=</span> <span class="number">51949</span>,
-		<span class="doccomment">/// EUC Traditional Chinese.</span>
-		<span class="ident">EUC_TCN</span> <span class="op">=</span> <span class="number">51950</span>,
-		<span class="doccomment">/// HZ-GB2312 Simplified Chinese; Chinese Simplified (HZ).</span>
-		<span class="ident">hz_gb_2312</span> <span class="op">=</span> <span class="number">52936</span>,
-		<span class="doccomment">/// **Windows XP and later:** GB18030 Simplified Chinese (4 byte); Chinese Simplified (GB18030).</span>
-		<span class="ident">GB18030</span> <span class="op">=</span> <span class="number">54936</span>,
-		<span class="doccomment">/// ISCII Devanagari.</span>
-		<span class="ident">x_iscii_de</span> <span class="op">=</span> <span class="number">57002</span>,
-		<span class="doccomment">/// ISCII Bangla.</span>
-		<span class="ident">x_iscii_be</span> <span class="op">=</span> <span class="number">57003</span>,
-		<span class="doccomment">/// ISCII Tamil.</span>
-		<span class="ident">x_iscii_ta</span> <span class="op">=</span> <span class="number">57004</span>,
-		<span class="doccomment">/// ISCII Telugu.</span>
-		<span class="ident">x_iscii_te</span> <span class="op">=</span> <span class="number">57005</span>,
-		<span class="doccomment">/// ISCII Assamese.</span>
-		<span class="ident">x_iscii_as</span> <span class="op">=</span> <span class="number">57006</span>,
-		<span class="doccomment">/// ISCII Odia.</span>
-		<span class="ident">x_iscii_or</span> <span class="op">=</span> <span class="number">57007</span>,
-		<span class="doccomment">/// ISCII Kannada.</span>
-		<span class="ident">x_iscii_ka</span> <span class="op">=</span> <span class="number">57008</span>,
-		<span class="doccomment">/// ISCII Malayalam.</span>
-		<span class="ident">x_iscii_ma</span> <span class="op">=</span> <span class="number">57009</span>,
-		<span class="doccomment">/// ISCII Gujarati.</span>
-		<span class="ident">x_iscii_gu</span> <span class="op">=</span> <span class="number">57010</span>,
-		<span class="doccomment">/// ISCII Punjabi.</span>
-		<span class="ident">x_iscii_pa</span> <span class="op">=</span> <span class="number">57011</span>,
-		<span class="doccomment">/// Unicode (UTF-7).</span>
-		<span class="ident">utf_7</span> <span class="op">=</span> <span class="number">65000</span>,
-		<span class="doccomment">/// Unicode (UTF-8).</span>
-		<span class="ident">utf_8</span> <span class="op">=</span> <span class="number">65001</span>,
-		<span class="doccomment">/// Invalid code page.</span>
-		<span class="ident">Invalid</span> <span class="op">=</span> <span class="number">65535</span>,
-	}
+    <span class="doccomment">/// Represents a console code page.</span>
+    <span class="attribute">#[<span class="ident">repr</span>(<span class="ident">u16</span>)]</span>
+    <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">non_camel_case_types</span>)]</span>
+    <span class="ident">CodePage</span><span class="op">&lt;</span><span class="ident">u16</span><span class="op">&gt;</span> {
+        <span class="ident">__DEFAULT__</span> <span class="op">=</span> <span class="number">65535</span>,
+        <span class="doccomment">/// Default value.</span>
+        <span class="prelude-val">None</span> <span class="op">=</span> <span class="number">0</span>,
+        <span class="doccomment">/// IBM EBCDIC US-Canada.</span>
+        <span class="ident">IBM037</span> <span class="op">=</span> <span class="number">37</span>,
+        <span class="doccomment">/// OEM United States.</span>
+        <span class="ident">IBM437</span> <span class="op">=</span> <span class="number">437</span>,
+        <span class="doccomment">/// IBM EBCDIC International.</span>
+        <span class="ident">IBM500</span> <span class="op">=</span> <span class="number">500</span>,
+        <span class="doccomment">/// Arabic (ASMO 708).</span>
+        <span class="ident">ASMO_708</span> <span class="op">=</span> <span class="number">708</span>,
+        <span class="doccomment">/// Arabic (ASMO-449+, BCON V4).</span>
+        <span class="ident">ASMO_709</span> <span class="op">=</span> <span class="number">709</span>,
+        <span class="doccomment">/// Arabic - Transparent Arabic.</span>
+        <span class="ident">ASMO_710</span> <span class="op">=</span> <span class="number">710</span>,
+        <span class="doccomment">/// Arabic (Transparent ASMO); Arabic (DOS).</span>
+        <span class="ident">DOS_720</span> <span class="op">=</span> <span class="number">720</span>,
+        <span class="doccomment">/// OEM Greek (formerly 437G); Greek (DOS).</span>
+        <span class="ident">ibm737</span> <span class="op">=</span> <span class="number">737</span>,
+        <span class="doccomment">/// OEM Baltic; Baltic (DOS).</span>
+        <span class="ident">ibm775</span> <span class="op">=</span> <span class="number">775</span>,
+        <span class="doccomment">/// OEM Multilingual Latin 1; Western European (DOS).</span>
+        <span class="ident">ibm850</span> <span class="op">=</span> <span class="number">850</span>,
+        <span class="doccomment">/// OEM Latin 2; Central European (DOS).</span>
+        <span class="ident">ibm852</span> <span class="op">=</span> <span class="number">852</span>,
+        <span class="doccomment">/// OEM Cyrillic (primarily Russian).</span>
+        <span class="ident">IBM855</span> <span class="op">=</span> <span class="number">855</span>,
+        <span class="doccomment">/// OEM Turkish; Turkish (DOS).</span>
+        <span class="ident">ibm857</span> <span class="op">=</span> <span class="number">857</span>,
+        <span class="doccomment">/// OEM Multilingual Latin 1 + Euro symbol.</span>
+        <span class="ident">IBM00858</span> <span class="op">=</span> <span class="number">858</span>,
+        <span class="doccomment">/// OEM Portuguese; Portuguese (DOS).</span>
+        <span class="ident">IBM860</span> <span class="op">=</span> <span class="number">860</span>,
+        <span class="doccomment">/// OEM Icelandic; Icelandic (DOS).</span>
+        <span class="ident">ibm861</span> <span class="op">=</span> <span class="number">861</span>,
+        <span class="doccomment">/// OEM Hebrew; Hebrew (DOS).</span>
+        <span class="ident">DOS_862</span> <span class="op">=</span> <span class="number">862</span>,
+        <span class="doccomment">/// OEM French Canadian; French Canadian (DOS).</span>
+        <span class="ident">IBM863</span> <span class="op">=</span> <span class="number">863</span>,
+        <span class="doccomment">/// OEM Arabic; Arabic (864).</span>
+        <span class="ident">IBM864</span> <span class="op">=</span> <span class="number">864</span>,
+        <span class="doccomment">/// OEM Nordic; Nordic (DOS).</span>
+        <span class="ident">IBM865</span> <span class="op">=</span> <span class="number">865</span>,
+        <span class="doccomment">/// OEM Russian; Cyrillic (DOS).</span>
+        <span class="ident">cp866</span> <span class="op">=</span> <span class="number">866</span>,
+        <span class="doccomment">/// OEM Modern Greek; Greek, Modern (DOS).</span>
+        <span class="ident">ibm869</span> <span class="op">=</span> <span class="number">869</span>,
+        <span class="doccomment">/// IBM EBCDIC Multilingual/ROECE (Latin 2); IBM EBCDIC Multilingual Latin 2.</span>
+        <span class="ident">IBM870</span> <span class="op">=</span> <span class="number">870</span>,
+        <span class="doccomment">/// ANSI/OEM Thai (ISO 8859-11); Thai (Windows).</span>
+        <span class="ident">windows_874</span> <span class="op">=</span> <span class="number">874</span>,
+        <span class="doccomment">/// IBM EBCDIC Greek Modern.</span>
+        <span class="ident">cp875</span> <span class="op">=</span> <span class="number">875</span>,
+        <span class="doccomment">/// ANSI/OEM Japanese; Japanese (Shift-JIS).</span>
+        <span class="ident">shift_jis</span> <span class="op">=</span> <span class="number">932</span>,
+        <span class="doccomment">/// ANSI/OEM Simplified Chinese (PRC, Singapore); Chinese Simplified (GB2312).</span>
+        <span class="ident">gb2312</span> <span class="op">=</span> <span class="number">936</span>,
+        <span class="doccomment">/// ANSI/OEM Korean (Unified Hangul Code).</span>
+        <span class="ident">ks_c_5601_1987</span> <span class="op">=</span> <span class="number">949</span>,
+        <span class="doccomment">/// ANSI/OEM Traditional Chinese (Taiwan; Hong Kong SAR, PRC); Chinese Traditional (Big5).</span>
+        <span class="ident">big5</span> <span class="op">=</span> <span class="number">950</span>,
+        <span class="doccomment">/// IBM EBCDIC Turkish (Latin 5).</span>
+        <span class="ident">IBM1026</span> <span class="op">=</span> <span class="number">1026</span>,
+        <span class="doccomment">/// IBM EBCDIC Latin 1/Open System.</span>
+        <span class="ident">IBM01047</span> <span class="op">=</span> <span class="number">1047</span>,
+        <span class="doccomment">/// IBM EBCDIC US-Canada (037 + Euro symbol); IBM EBCDIC (US-Canada-Euro).</span>
+        <span class="ident">IBM01140</span> <span class="op">=</span> <span class="number">1140</span>,
+        <span class="doccomment">/// IBM EBCDIC Germany (20273 + Euro symbol); IBM EBCDIC (Germany-Euro).</span>
+        <span class="ident">IBM01141</span> <span class="op">=</span> <span class="number">1141</span>,
+        <span class="doccomment">/// IBM EBCDIC Denmark-Norway (20277 + Euro symbol); IBM EBCDIC (Denmark-Norway-Euro).</span>
+        <span class="ident">IBM01142</span> <span class="op">=</span> <span class="number">1142</span>,
+        <span class="doccomment">/// IBM EBCDIC Finland-Sweden (20278 + Euro symbol); IBM EBCDIC (Finland-Sweden-Euro).</span>
+        <span class="ident">IBM01143</span> <span class="op">=</span> <span class="number">1143</span>,
+        <span class="doccomment">/// IBM EBCDIC Italy (20280 + Euro symbol); IBM EBCDIC (Italy-Euro).</span>
+        <span class="ident">IBM01144</span> <span class="op">=</span> <span class="number">1144</span>,
+        <span class="doccomment">/// IBM EBCDIC Latin America-Spain (20284 + Euro symbol); IBM EBCDIC (Spain-Euro).</span>
+        <span class="ident">IBM01145</span> <span class="op">=</span> <span class="number">1145</span>,
+        <span class="doccomment">/// IBM EBCDIC United Kingdom (20285 + Euro symbol); IBM EBCDIC (UK-Euro).</span>
+        <span class="ident">IBM01146</span> <span class="op">=</span> <span class="number">1146</span>,
+        <span class="doccomment">/// IBM EBCDIC France (20297 + Euro symbol); IBM EBCDIC (France-Euro).</span>
+        <span class="ident">IBM01147</span> <span class="op">=</span> <span class="number">1147</span>,
+        <span class="doccomment">/// IBM EBCDIC International (500 + Euro symbol); IBM EBCDIC (International-Euro).</span>
+        <span class="ident">IBM01148</span> <span class="op">=</span> <span class="number">1148</span>,
+        <span class="doccomment">/// IBM EBCDIC Icelandic (20871 + Euro symbol); IBM EBCDIC (Icelandic-Euro).</span>
+        <span class="ident">IBM01149</span> <span class="op">=</span> <span class="number">1149</span>,
+        <span class="doccomment">/// Unicode UTF-16, little endian byte order (BMP of ISO 10646); available only to managed applications.</span>
+        <span class="ident">utf_16</span> <span class="op">=</span> <span class="number">1200</span>,
+        <span class="doccomment">/// Unicode UTF-16, big endian byte order; available only to managed applications.</span>
+        <span class="ident">unicodeFFFE</span> <span class="op">=</span> <span class="number">1201</span>,
+        <span class="doccomment">/// ANSI Central European; Central European (Windows).</span>
+        <span class="ident">windows_1250</span> <span class="op">=</span> <span class="number">1250</span>,
+        <span class="doccomment">/// ANSI Cyrillic; Cyrillic (Windows).</span>
+        <span class="ident">windows_1251</span> <span class="op">=</span> <span class="number">1251</span>,
+        <span class="doccomment">/// ANSI Latin 1; Western European (Windows).</span>
+        <span class="ident">windows_1252</span> <span class="op">=</span> <span class="number">1252</span>,
+        <span class="doccomment">/// ANSI Greek; Greek (Windows).</span>
+        <span class="ident">windows_1253</span> <span class="op">=</span> <span class="number">1253</span>,
+        <span class="doccomment">/// ANSI Turkish; Turkish (Windows).</span>
+        <span class="ident">windows_1254</span> <span class="op">=</span> <span class="number">1254</span>,
+        <span class="doccomment">/// ANSI Hebrew; Hebrew (Windows).</span>
+        <span class="ident">windows_1255</span> <span class="op">=</span> <span class="number">1255</span>,
+        <span class="doccomment">/// ANSI Arabic; Arabic (Windows).</span>
+        <span class="ident">windows_1256</span> <span class="op">=</span> <span class="number">1256</span>,
+        <span class="doccomment">/// ANSI Baltic; Baltic (Windows).</span>
+        <span class="ident">windows_1257</span> <span class="op">=</span> <span class="number">1257</span>,
+        <span class="doccomment">/// ANSI/OEM Vietnamese; Vietnamese (Windows).</span>
+        <span class="ident">windows_1258</span> <span class="op">=</span> <span class="number">1258</span>,
+        <span class="doccomment">/// Korean (Johab).</span>
+        <span class="ident">Johab</span> <span class="op">=</span> <span class="number">1361</span>,
+        <span class="doccomment">/// MAC Roman; Western European (Mac).</span>
+        <span class="ident">macintosh</span> <span class="op">=</span> <span class="number">10000</span>,
+        <span class="doccomment">/// Japanese (Mac).</span>
+        <span class="ident">x_mac_japanese</span> <span class="op">=</span> <span class="number">10001</span>,
+        <span class="doccomment">/// MAC Traditional Chinese (Big5); Chinese Traditional (Mac).</span>
+        <span class="ident">x_mac_chinesetrad</span> <span class="op">=</span> <span class="number">10002</span>,
+        <span class="doccomment">/// Korean (Mac).</span>
+        <span class="ident">x_mac_korean</span> <span class="op">=</span> <span class="number">10003</span>,
+        <span class="doccomment">/// Arabic (Mac).</span>
+        <span class="ident">x_mac_arabic</span> <span class="op">=</span> <span class="number">10004</span>,
+        <span class="doccomment">/// Hebrew (Mac).</span>
+        <span class="ident">x_mac_hebrew</span> <span class="op">=</span> <span class="number">10005</span>,
+        <span class="doccomment">/// Greek (Mac).</span>
+        <span class="ident">x_mac_greek</span> <span class="op">=</span> <span class="number">10006</span>,
+        <span class="doccomment">/// Cyrillic (Mac).</span>
+        <span class="ident">x_mac_cyrillic</span> <span class="op">=</span> <span class="number">10007</span>,
+        <span class="doccomment">/// MAC Simplified Chinese (GB 2312); Chinese Simplified (Mac).</span>
+        <span class="ident">x_mac_chinesesimp</span> <span class="op">=</span> <span class="number">10008</span>,
+        <span class="doccomment">/// Romanian (Mac).</span>
+        <span class="ident">x_mac_romanian</span> <span class="op">=</span> <span class="number">10010</span>,
+        <span class="doccomment">/// Ukrainian (Mac).</span>
+        <span class="ident">x_mac_ukrainian</span> <span class="op">=</span> <span class="number">10017</span>,
+        <span class="doccomment">/// Thai (Mac).</span>
+        <span class="ident">x_mac_thai</span> <span class="op">=</span> <span class="number">10021</span>,
+        <span class="doccomment">/// MAC Latin 2; Central European (Mac).</span>
+        <span class="ident">x_mac_ce</span> <span class="op">=</span> <span class="number">10029</span>,
+        <span class="doccomment">/// Icelandic (Mac).</span>
+        <span class="ident">x_mac_icelandic</span> <span class="op">=</span> <span class="number">10079</span>,
+        <span class="doccomment">/// Turkish (Mac).</span>
+        <span class="ident">x_mac_turkish</span> <span class="op">=</span> <span class="number">10081</span>,
+        <span class="doccomment">/// Croatian (Mac).</span>
+        <span class="ident">x_mac_croatian</span> <span class="op">=</span> <span class="number">10082</span>,
+        <span class="doccomment">/// Unicode UTF-32, little endian byte order; available only to managed applications.</span>
+        <span class="ident">utf_32</span> <span class="op">=</span> <span class="number">12000</span>,
+        <span class="doccomment">/// Unicode UTF-32, big endian byte order; available only to managed applications.</span>
+        <span class="ident">utf_32BE</span> <span class="op">=</span> <span class="number">12001</span>,
+        <span class="doccomment">/// CNS Taiwan; Chinese Traditional (CNS).</span>
+        <span class="ident">x_Chinese_CNS</span> <span class="op">=</span> <span class="number">20000</span>,
+        <span class="doccomment">/// TCA Taiwan.</span>
+        <span class="ident">x_cp20001</span> <span class="op">=</span> <span class="number">20001</span>,
+        <span class="doccomment">/// Eten Taiwan; Chinese Traditional (Eten).</span>
+        <span class="ident">x_Chinese_Eten</span> <span class="op">=</span> <span class="number">20002</span>,
+        <span class="doccomment">/// IBM5550 Taiwan.</span>
+        <span class="ident">x_cp20003</span> <span class="op">=</span> <span class="number">20003</span>,
+        <span class="doccomment">/// TeleText Taiwan.</span>
+        <span class="ident">x_cp20004</span> <span class="op">=</span> <span class="number">20004</span>,
+        <span class="doccomment">/// Wang Taiwan.</span>
+        <span class="ident">x_cp20005</span> <span class="op">=</span> <span class="number">20005</span>,
+        <span class="doccomment">/// IA5 (IRV International Alphabet No. 5, 7-bit); Western European (IA5).</span>
+        <span class="ident">x_IA5</span> <span class="op">=</span> <span class="number">20105</span>,
+        <span class="doccomment">/// IA5 German (7-bit).</span>
+        <span class="ident">x_IA5_German</span> <span class="op">=</span> <span class="number">20106</span>,
+        <span class="doccomment">/// IA5 Swedish (7-bit).</span>
+        <span class="ident">x_IA5_Swedish</span> <span class="op">=</span> <span class="number">20107</span>,
+        <span class="doccomment">/// IA5 Norwegian (7-bit).</span>
+        <span class="ident">x_IA5_Norwegian</span> <span class="op">=</span> <span class="number">20108</span>,
+        <span class="doccomment">/// US-ASCII (7-bit).</span>
+        <span class="ident">us_ascii</span> <span class="op">=</span> <span class="number">20127</span>,
+        <span class="doccomment">/// T.61.</span>
+        <span class="ident">x_cp20261</span> <span class="op">=</span> <span class="number">20261</span>,
+        <span class="doccomment">/// ISO 6937 Non-Spacing Accent.</span>
+        <span class="ident">x_cp20269</span> <span class="op">=</span> <span class="number">20269</span>,
+        <span class="doccomment">/// IBM EBCDIC Germany.</span>
+        <span class="ident">IBM273</span> <span class="op">=</span> <span class="number">20273</span>,
+        <span class="doccomment">/// IBM EBCDIC Denmark-Norway.</span>
+        <span class="ident">IBM277</span> <span class="op">=</span> <span class="number">20277</span>,
+        <span class="doccomment">/// IBM EBCDIC Finland-Sweden.</span>
+        <span class="ident">IBM278</span> <span class="op">=</span> <span class="number">20278</span>,
+        <span class="doccomment">/// IBM EBCDIC Italy.</span>
+        <span class="ident">IBM280</span> <span class="op">=</span> <span class="number">20280</span>,
+        <span class="doccomment">/// IBM EBCDIC Latin America-Spain.</span>
+        <span class="ident">IBM284</span> <span class="op">=</span> <span class="number">20284</span>,
+        <span class="doccomment">/// IBM EBCDIC United Kingdom.</span>
+        <span class="ident">IBM285</span> <span class="op">=</span> <span class="number">20285</span>,
+        <span class="doccomment">/// IBM EBCDIC Japanese Katakana Extended.</span>
+        <span class="ident">IBM290</span> <span class="op">=</span> <span class="number">20290</span>,
+        <span class="doccomment">/// IBM EBCDIC France.</span>
+        <span class="ident">IBM297</span> <span class="op">=</span> <span class="number">20297</span>,
+        <span class="doccomment">/// IBM EBCDIC Arabic.</span>
+        <span class="ident">IBM420</span> <span class="op">=</span> <span class="number">20420</span>,
+        <span class="doccomment">/// IBM EBCDIC Greek.</span>
+        <span class="ident">IBM423</span> <span class="op">=</span> <span class="number">20423</span>,
+        <span class="doccomment">/// IBM EBCDIC Hebrew.</span>
+        <span class="ident">IBM424</span> <span class="op">=</span> <span class="number">20424</span>,
+        <span class="doccomment">/// IBM EBCDIC Korean Extended.</span>
+        <span class="ident">x_EBCDIC_KoreanExtended</span> <span class="op">=</span> <span class="number">20833</span>,
+        <span class="doccomment">/// IBM EBCDIC Thai.</span>
+        <span class="ident">IBM_Thai</span> <span class="op">=</span> <span class="number">20838</span>,
+        <span class="doccomment">/// Russian (KOI8-R); Cyrillic (KOI8-R).</span>
+        <span class="ident">koi8_r</span> <span class="op">=</span> <span class="number">20866</span>,
+        <span class="doccomment">/// IBM EBCDIC Icelandic.</span>
+        <span class="ident">IBM871</span> <span class="op">=</span> <span class="number">20871</span>,
+        <span class="doccomment">/// IBM EBCDIC Cyrillic Russian.</span>
+        <span class="ident">IBM880</span> <span class="op">=</span> <span class="number">20880</span>,
+        <span class="doccomment">/// IBM EBCDIC Turkish.</span>
+        <span class="ident">IBM905</span> <span class="op">=</span> <span class="number">20905</span>,
+        <span class="doccomment">/// IBM EBCDIC Latin 1/Open System (1047 + Euro symbol).</span>
+        <span class="ident">IBM00924</span> <span class="op">=</span> <span class="number">20924</span>,
+        <span class="doccomment">/// Japanese (JIS 0208-1990 and 0212-1990).</span>
+        <span class="ident">EUC_JP</span> <span class="op">=</span> <span class="number">20932</span>,
+        <span class="doccomment">/// Simplified Chinese (GB2312); Chinese Simplified (GB2312-80).</span>
+        <span class="ident">x_cp20936</span> <span class="op">=</span> <span class="number">20936</span>,
+        <span class="doccomment">/// Korean Wansung.</span>
+        <span class="ident">x_cp20949</span> <span class="op">=</span> <span class="number">20949</span>,
+        <span class="doccomment">/// IBM EBCDIC Cyrillic Serbian-Bulgarian.</span>
+        <span class="ident">cp1025</span> <span class="op">=</span> <span class="number">21025</span>,
+        <span class="doccomment">/// Ukrainian (KOI8-U); Cyrillic (KOI8-U).</span>
+        <span class="ident">koi8_u</span> <span class="op">=</span> <span class="number">21866</span>,
+        <span class="doccomment">/// ISO 8859-1 Latin 1; Western European (ISO).</span>
+        <span class="ident">iso_8859_1</span> <span class="op">=</span> <span class="number">28591</span>,
+        <span class="doccomment">/// ISO 8859-2 Central European; Central European (ISO).</span>
+        <span class="ident">iso_8859_2</span> <span class="op">=</span> <span class="number">28592</span>,
+        <span class="doccomment">/// ISO 8859-3 Latin 3.</span>
+        <span class="ident">iso_8859_3</span> <span class="op">=</span> <span class="number">28593</span>,
+        <span class="doccomment">/// ISO 8859-4 Baltic.</span>
+        <span class="ident">iso_8859_4</span> <span class="op">=</span> <span class="number">28594</span>,
+        <span class="doccomment">/// ISO 8859-5 Cyrillic.</span>
+        <span class="ident">iso_8859_5</span> <span class="op">=</span> <span class="number">28595</span>,
+        <span class="doccomment">/// ISO 8859-6 Arabic.</span>
+        <span class="ident">iso_8859_6</span> <span class="op">=</span> <span class="number">28596</span>,
+        <span class="doccomment">/// ISO 8859-7 Greek.</span>
+        <span class="ident">iso_8859_7</span> <span class="op">=</span> <span class="number">28597</span>,
+        <span class="doccomment">/// ISO 8859-8 Hebrew; Hebrew (ISO-Visual).</span>
+        <span class="ident">iso_8859_8</span> <span class="op">=</span> <span class="number">28598</span>,
+        <span class="doccomment">/// ISO 8859-9 Turkish.</span>
+        <span class="ident">iso_8859_9</span> <span class="op">=</span> <span class="number">28599</span>,
+        <span class="doccomment">/// ISO 8859-13 Estonian.</span>
+        <span class="ident">iso_8859_13</span> <span class="op">=</span> <span class="number">28603</span>,
+        <span class="doccomment">/// ISO 8859-15 Latin 9.</span>
+        <span class="ident">iso_8859_15</span> <span class="op">=</span> <span class="number">28605</span>,
+        <span class="doccomment">/// Europa 3.</span>
+        <span class="ident">x_Europa</span> <span class="op">=</span> <span class="number">29001</span>,
+        <span class="doccomment">/// ISO 8859-8 Hebrew; Hebrew (ISO-Logical).</span>
+        <span class="ident">iso_8859_8_i</span> <span class="op">=</span> <span class="number">38598</span>,
+        <span class="doccomment">/// ISO 2022 Japanese with no halfwidth Katakana; Japanese (JIS).</span>
+        <span class="ident">iso_2022_jp_1</span> <span class="op">=</span> <span class="number">50220</span>,
+        <span class="doccomment">/// ISO 2022 Japanese with halfwidth Katakana; Japanese (JIS-Allow 1 byte Kana).</span>
+        <span class="ident">csISO2022JP</span> <span class="op">=</span> <span class="number">50221</span>,
+        <span class="doccomment">/// ISO 2022 Japanese JIS X 0201-1989; Japanese (JIS-Allow 1 byte Kana - SO/SI).</span>
+        <span class="ident">iso_2022_jp_2</span> <span class="op">=</span> <span class="number">50222</span>,
+        <span class="doccomment">/// ISO 2022 Korean.</span>
+        <span class="ident">iso_2022_kr</span> <span class="op">=</span> <span class="number">50225</span>,
+        <span class="doccomment">/// ISO 2022 Simplified Chinese; Chinese Simplified (ISO 2022).</span>
+        <span class="ident">x_cp50227</span> <span class="op">=</span> <span class="number">50227</span>,
+        <span class="doccomment">/// ISO 2022 Traditional Chinese.</span>
+        <span class="ident">iso_2022_ch</span> <span class="op">=</span> <span class="number">50229</span>,
+        <span class="doccomment">/// EBCDIC Japanese (Katakana) Extended.</span>
+        <span class="ident">x_EBCDIC_JapaneseExtended</span> <span class="op">=</span> <span class="number">50930</span>,
+        <span class="doccomment">/// EBCDIC US-Canada and Japanese.</span>
+        <span class="ident">x_EBCDIC_USCanadaJapanese</span> <span class="op">=</span> <span class="number">50931</span>,
+        <span class="doccomment">/// EBCDIC Korean Extended and Korean.</span>
+        <span class="ident">x_EBCDIC_KoreanExtendedAndKorean</span> <span class="op">=</span> <span class="number">50933</span>,
+        <span class="doccomment">/// EBCDIC Simplified Chinese Extended and Simplified Chinese.</span>
+        <span class="ident">x_EBCDIC_ChineseExtendedAndChinese</span> <span class="op">=</span> <span class="number">50935</span>,
+        <span class="doccomment">/// EBCDIC Simplified Chinese.</span>
+        <span class="ident">x_EBCDIC_ChineseExtended</span> <span class="op">=</span> <span class="number">50936</span>,
+        <span class="doccomment">/// EBCDIC US-Canada and Traditional Chinese.</span>
+        <span class="ident">x_EBCDIC_USCanadaChinese</span> <span class="op">=</span> <span class="number">50937</span>,
+        <span class="doccomment">/// EBCDIC Japanese (Latin) Extended and Japanese.</span>
+        <span class="ident">x_EBCDIC_JapaneseExtendedAndJapanese</span> <span class="op">=</span> <span class="number">50939</span>,
+        <span class="doccomment">/// EUC Japanese.</span>
+        <span class="ident">euc_jp</span> <span class="op">=</span> <span class="number">51932</span>,
+        <span class="doccomment">/// EUC Simplified Chinese; Chinese Simplified (EUC).</span>
+        <span class="ident">EUC_CN</span> <span class="op">=</span> <span class="number">51936</span>,
+        <span class="doccomment">/// EUC Korean.</span>
+        <span class="ident">euc_kr</span> <span class="op">=</span> <span class="number">51949</span>,
+        <span class="doccomment">/// EUC Traditional Chinese.</span>
+        <span class="ident">EUC_TCN</span> <span class="op">=</span> <span class="number">51950</span>,
+        <span class="doccomment">/// HZ-GB2312 Simplified Chinese; Chinese Simplified (HZ).</span>
+        <span class="ident">hz_gb_2312</span> <span class="op">=</span> <span class="number">52936</span>,
+        <span class="doccomment">/// **Windows XP and later:** GB18030 Simplified Chinese (4 byte); Chinese Simplified (GB18030).</span>
+        <span class="ident">GB18030</span> <span class="op">=</span> <span class="number">54936</span>,
+        <span class="doccomment">/// ISCII Devanagari.</span>
+        <span class="ident">x_iscii_de</span> <span class="op">=</span> <span class="number">57002</span>,
+        <span class="doccomment">/// ISCII Bangla.</span>
+        <span class="ident">x_iscii_be</span> <span class="op">=</span> <span class="number">57003</span>,
+        <span class="doccomment">/// ISCII Tamil.</span>
+        <span class="ident">x_iscii_ta</span> <span class="op">=</span> <span class="number">57004</span>,
+        <span class="doccomment">/// ISCII Telugu.</span>
+        <span class="ident">x_iscii_te</span> <span class="op">=</span> <span class="number">57005</span>,
+        <span class="doccomment">/// ISCII Assamese.</span>
+        <span class="ident">x_iscii_as</span> <span class="op">=</span> <span class="number">57006</span>,
+        <span class="doccomment">/// ISCII Odia.</span>
+        <span class="ident">x_iscii_or</span> <span class="op">=</span> <span class="number">57007</span>,
+        <span class="doccomment">/// ISCII Kannada.</span>
+        <span class="ident">x_iscii_ka</span> <span class="op">=</span> <span class="number">57008</span>,
+        <span class="doccomment">/// ISCII Malayalam.</span>
+        <span class="ident">x_iscii_ma</span> <span class="op">=</span> <span class="number">57009</span>,
+        <span class="doccomment">/// ISCII Gujarati.</span>
+        <span class="ident">x_iscii_gu</span> <span class="op">=</span> <span class="number">57010</span>,
+        <span class="doccomment">/// ISCII Punjabi.</span>
+        <span class="ident">x_iscii_pa</span> <span class="op">=</span> <span class="number">57011</span>,
+        <span class="doccomment">/// Unicode (UTF-7).</span>
+        <span class="ident">utf_7</span> <span class="op">=</span> <span class="number">65000</span>,
+        <span class="doccomment">/// Unicode (UTF-8).</span>
+        <span class="ident">utf_8</span> <span class="op">=</span> <span class="number">65001</span>,
+        <span class="doccomment">/// Invalid code page.</span>
+        <span class="ident">Invalid</span> <span class="op">=</span> <span class="number">65535</span>,
+    }
 }
 <span class="kw">impl</span> <span class="ident">CodePage</span> {
-	<span class="doccomment">/**
-	 Returns a CodePageInfo object which contains information about the CodePage.
+    <span class="doccomment">/**
+    Returns a CodePageInfo object which contains information about the CodePage.
 
-	 # Examples
-	 ```
-	 # extern crate winconsole;
-	 # use winconsole::console::CodePage;
-	 # fn main() {
-	 let info = CodePage::utf_8.get_info().unwrap();
-	 println!(&quot;{}&quot;, info.name);
-	 # }
-	 ```
+    # Examples
+    ```
+    # extern crate winconsole;
+    # use winconsole::console::CodePage;
+    # fn main() {
+    let info = CodePage::utf_8.get_info().unwrap();
+    println!(&quot;{}&quot;, info.name);
+    # }
+    ```
 
-	 # Errors
- 	 * [`FromUtf8Error`]: Returned if an error occurs while converting to a character.
- 	 * [`FromUtf16Error`]: Returned if an error occurs while converting to a character.
- 	 * [`IoError`]: Returned if an OS error occurs.
+    # Errors
+     * [`FromUtf8Error`]: Returned if an error occurs while converting to a character.
+     * [`FromUtf16Error`]: Returned if an error occurs while converting to a character.
+     * [`IoError`]: Returned if an OS error occurs.
 
- 	 [`FromUtf8Error`]: ../errors/enum.WinError.html#FromUtf8.v
- 	 [`FromUtf16Error`]: ../errors/enum.WinError.html#FromUtf16.v
- 	 [`IoError`]: ../errors/enum.WinError.html#Io.v
-	 */</span>
-	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_info</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">WinResult</span><span class="op">&lt;</span><span class="ident">CodePageInfo</span><span class="op">&gt;</span> {
-		<span class="ident">console</span>::<span class="ident">get_code_page_info</span>(<span class="kw-2">*</span><span class="self">self</span>)
-	}
+     [`FromUtf8Error`]: ../errors/enum.WinError.html#FromUtf8.v
+     [`FromUtf16Error`]: ../errors/enum.WinError.html#FromUtf16.v
+     [`IoError`]: ../errors/enum.WinError.html#Io.v
+    */</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_info</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">WinResult</span><span class="op">&lt;</span><span class="ident">CodePageInfo</span><span class="op">&gt;</span> {
+        <span class="ident">console</span>::<span class="ident">get_code_page_info</span>(<span class="self">self</span>)
+    }
 }
-</pre>
-</section><section id="search" class="content hidden"></section><section class="footer"></section><aside id="help" class="hidden"><div><h1 class="hidden">Help</h1><div class="shortcuts"><h2>Keyboard Shortcuts</h2><dl><dt><kbd>?</kbd></dt><dd>Show this help dialog</dd><dt><kbd>S</kbd></dt><dd>Focus the search field</dd><dt><kbd>↑</kbd></dt><dd>Move up in search results</dd><dt><kbd>↓</kbd></dt><dd>Move down in search results</dd><dt><kbd>↹</kbd></dt><dd>Switch tab</dd><dt><kbd>&#9166;</kbd></dt><dd>Go to active search result</dd><dt><kbd>+</kbd></dt><dd>Expand all sections</dd><dt><kbd>-</kbd></dt><dd>Collapse all sections</dd></dl></div><div class="infos"><h2>Search Tricks</h2><p>Prefix searches with a type followed by a colon (e.g. <code>fn:</code>) to restrict the search to a given type.</p><p>Accepted types are: <code>fn</code>, <code>mod</code>, <code>struct</code>, <code>enum</code>, <code>trait</code>, <code>type</code>, <code>macro</code>, and <code>const</code>.</p><p>Search functions by type signature (e.g. <code>vec -> usize</code> or <code>* -> vec</code>)</p><p>Search multiple things at once by splitting your query with comma (e.g. <code>str,u8</code> or <code>String,struct:Vec,test</code>)</p></div></div></aside><script>window.rootPath = "../../../../";window.currentCrate = "winconsole";</script><script src="../../../../aliases.js"></script><script src="../../../../main.js"></script><script defer src="../../../../search-index.js"></script></body></html>
+</pre></div>
+</section><section id="search" class="content hidden"></section><section class="footer"></section><aside id="help" class="hidden"><div><h1 class="hidden">Help</h1><div class="shortcuts"><h2>Keyboard Shortcuts</h2><dl><dt><kbd>?</kbd></dt><dd>Show this help dialog</dd><dt><kbd>S</kbd></dt><dd>Focus the search field</dd><dt><kbd>↑</kbd></dt><dd>Move up in search results</dd><dt><kbd>↓</kbd></dt><dd>Move down in search results</dd><dt><kbd>↹</kbd></dt><dd>Switch tab</dd><dt><kbd>&#9166;</kbd></dt><dd>Go to active search result</dd><dt><kbd>+</kbd></dt><dd>Expand all sections</dd><dt><kbd>-</kbd></dt><dd>Collapse all sections</dd></dl></div><div class="infos"><h2>Search Tricks</h2><p>Prefix searches with a type followed by a colon (e.g., <code>fn:</code>) to restrict the search to a given type.</p><p>Accepted types are: <code>fn</code>, <code>mod</code>, <code>struct</code>, <code>enum</code>, <code>trait</code>, <code>type</code>, <code>macro</code>, and <code>const</code>.</p><p>Search functions by type signature (e.g., <code>vec -> usize</code> or <code>* -> vec</code>)</p><p>Search multiple things at once by splitting your query with comma (e.g., <code>str,u8</code> or <code>String,struct:Vec,test</code>)</p></div></div></aside><script>window.rootPath = "../../../../";window.currentCrate = "winconsole";</script><script src="../../../../aliases.js"></script><script src="../../../../main.js"></script><script src="../../../../source-script.js"></script><script src="../../../../source-files.js"></script><script defer src="../../../../search-index.js"></script></body></html>

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `src\window\window_main.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>window_main.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../dark.css"><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script src="../../../storage.js"></script></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../../theme.js"></script><nav class="sub"><form class="search-form js-only"><div class="search-container"><input class="search-input" name="search" autocomplete="off" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><a id="settings-menu" href="../../../settings.html"><img src="../../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `src\window\window_main.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>window_main.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../dark.css"><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script src="../../../storage.js"></script><noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="shortcut icon" href="../../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../../winconsole/index.html'><div class='logo-container'><img src='../../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../../theme.js"></script><nav class="sub"><form class="search-form js-only"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../../settings.html"><img src="../../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
 <span id="4">  4</span>
@@ -492,500 +492,534 @@
 <span id="492">492</span>
 <span id="493">493</span>
 <span id="494">494</span>
-</pre><pre class="rust ">
-<span class="kw">use</span> <span class="ident">cgmath</span>::<span class="ident">Vector2</span>;
+<span id="495">495</span>
+<span id="496">496</span>
+<span id="497">497</span>
+<span id="498">498</span>
+<span id="499">499</span>
+<span id="500">500</span>
+<span id="501">501</span>
+<span id="502">502</span>
+<span id="503">503</span>
+<span id="504">504</span>
+<span id="505">505</span>
+<span id="506">506</span>
+<span id="507">507</span>
+<span id="508">508</span>
+<span id="509">509</span>
+<span id="510">510</span>
+<span id="511">511</span>
+</pre><div class="example-wrap"><pre class="rust ">
 <span class="kw">use</span> <span class="kw">super</span>::<span class="kw-2">*</span>;
 
 <span class="doccomment">/**
- Brings the window to the foreground and activates it, optionally displaying it.
+Brings the window to the foreground and activates it, optionally displaying it.
 
- # Arguments
- * `display` - Should the window be displayed?
- 
- # Examples
- ```
- # extern crate winconsole;
- # use winconsole::window;
- # fn main() {
- window::activate(true).unwrap();
- # }
- ```
+# Arguments
+* `display` - Should the window be displayed?
 
- # Errors
- * [`IoError`]: Returned if an OS error occurs.
+# Examples
+```
+# extern crate winconsole;
+# use winconsole::window;
+# fn main() {
+window::activate(true).unwrap();
+# }
+```
 
- [`IoError`]: ../errors/enum.WinError.html#Io.v
- */</span>
+# Errors
+* [`IoError`]: Returned if an OS error occurs.
+
+[`IoError`]: ../errors/enum.WinError.html#Io.v
+*/</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">activate</span>(<span class="ident">display</span>: <span class="ident">bool</span>) <span class="op">-&gt;</span> <span class="ident">WinResult</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
-	<span class="macro">os_err</span><span class="macro">!</span>(<span class="kw">unsafe</span> { <span class="ident">winuser</span>::<span class="ident">SetForegroundWindow</span>(<span class="macro">window_handle</span><span class="macro">!</span>()) });
-	<span class="kw">if</span> <span class="ident">display</span> {
-		<span class="ident">show</span>(<span class="bool-val">true</span>);
-		<span class="kw">if</span> <span class="ident">is_minimized</span>()<span class="question-mark">?</span> {
-			<span class="ident">restore</span>();
-		}
-	}
+    <span class="macro">os_err</span><span class="macro">!</span>(<span class="kw">unsafe</span> { <span class="ident">winuser</span>::<span class="ident">SetForegroundWindow</span>(<span class="macro">window_handle</span><span class="macro">!</span>()) });
+    <span class="kw">if</span> <span class="ident">display</span> {
+        <span class="ident">show</span>(<span class="bool-val">true</span>);
+        <span class="kw">if</span> <span class="ident">is_minimized</span>()<span class="question-mark">?</span> {
+            <span class="ident">restore</span>();
+        }
+    }
 
-	<span class="prelude-val">Ok</span>(())
+    <span class="prelude-val">Ok</span>(())
 }
 <span class="doccomment">/**
- Flashes the console window caption and/or tray icon.
+Flashes the console window caption and/or tray icon.
 
- # Examples
- ```
- # extern crate winconsole;
- # use winconsole::window;
- # use winconsole::window::FlashInfo;
- # fn main() {
- let mut info = FlashInfo::new();
- info.count = 3;
- info.flash_caption = true;
- window::flash(info);
- # }
- ```
- */</span>
+# Examples
+```
+# extern crate winconsole;
+# use winconsole::window;
+# use winconsole::window::FlashInfo;
+# fn main() {
+let mut info = FlashInfo::new();
+info.count = 3;
+info.flash_caption = true;
+window::flash(info);
+# }
+```
+*/</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">flash</span>(<span class="ident">info</span>: <span class="ident">FlashInfo</span>) {
-	<span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">flags</span>: <span class="ident">u32</span> <span class="op">=</span> <span class="number">0</span>;
-	<span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">count</span> <span class="op">=</span> <span class="ident">info</span>.<span class="ident">count</span>;
-	<span class="kw">let</span> <span class="ident">rate</span> <span class="op">=</span> <span class="ident">info</span>.<span class="ident">rate</span>;
+    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">flags</span>: <span class="ident">u32</span> <span class="op">=</span> <span class="number">0</span>;
+    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">count</span> <span class="op">=</span> <span class="ident">info</span>.<span class="ident">count</span>;
+    <span class="kw">let</span> <span class="ident">rate</span> <span class="op">=</span> <span class="ident">info</span>.<span class="ident">rate</span>;
 
-	<span class="kw">if</span> <span class="ident">info</span>.<span class="ident">flash_caption</span> { <span class="ident">flags</span> <span class="op">|=</span> <span class="number">0x1</span>; }
-	<span class="kw">if</span> <span class="ident">info</span>.<span class="ident">flash_tray</span> { <span class="ident">flags</span> <span class="op">|=</span> <span class="number">0x2</span>; }
-	<span class="kw">if</span> <span class="ident">info</span>.<span class="ident">indefinite</span> {
-		<span class="ident">flags</span> <span class="op">|=</span> <span class="number">0x4</span>;
-		<span class="ident">count</span> <span class="op">=</span> <span class="number">0</span>;
-	}
-	<span class="kw">if</span> <span class="ident">info</span>.<span class="ident">until_foreground</span> {
-		<span class="ident">flags</span> <span class="op">|=</span> <span class="number">0xC</span>;
-		<span class="ident">count</span> <span class="op">=</span> <span class="number">0</span>;
-	}
+    <span class="kw">if</span> <span class="ident">info</span>.<span class="ident">flash_caption</span> {
+        <span class="ident">flags</span> <span class="op">|=</span> <span class="number">0x1</span>;
+    }
+    <span class="kw">if</span> <span class="ident">info</span>.<span class="ident">flash_tray</span> {
+        <span class="ident">flags</span> <span class="op">|=</span> <span class="number">0x2</span>;
+    }
+    <span class="kw">if</span> <span class="ident">info</span>.<span class="ident">indefinite</span> {
+        <span class="ident">flags</span> <span class="op">|=</span> <span class="number">0x4</span>;
+        <span class="ident">count</span> <span class="op">=</span> <span class="number">0</span>;
+    }
+    <span class="kw">if</span> <span class="ident">info</span>.<span class="ident">until_foreground</span> {
+        <span class="ident">flags</span> <span class="op">|=</span> <span class="number">0xC</span>;
+        <span class="ident">count</span> <span class="op">=</span> <span class="number">0</span>;
+    }
 
-	<span class="kw">unsafe</span> {
-		<span class="kw">let</span> <span class="ident">handle</span> <span class="op">=</span> <span class="macro">window_handle</span><span class="macro">!</span>();
-		<span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">info</span>: <span class="ident">FLASHWINFO</span> <span class="op">=</span> <span class="ident">mem</span>::<span class="ident">zeroed</span>();
-		<span class="ident">info</span>.<span class="ident">cbSize</span> <span class="op">=</span> <span class="ident">mem</span>::<span class="ident">size_of</span>::<span class="op">&lt;</span><span class="ident">FLASHWINFO</span><span class="op">&gt;</span>() <span class="kw">as</span> <span class="ident">u32</span>;
-		<span class="ident">info</span>.<span class="ident">dwFlags</span> <span class="op">=</span> <span class="ident">flags</span>;
-		<span class="ident">info</span>.<span class="ident">dwTimeout</span> <span class="op">=</span> <span class="ident">rate</span>;
-		<span class="ident">info</span>.<span class="ident">hwnd</span> <span class="op">=</span> <span class="ident">handle</span>;
-		<span class="ident">info</span>.<span class="ident">uCount</span> <span class="op">=</span> <span class="ident">count</span>;
+    <span class="kw">unsafe</span> {
+        <span class="kw">let</span> <span class="ident">handle</span> <span class="op">=</span> <span class="macro">window_handle</span><span class="macro">!</span>();
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">info</span>: <span class="ident">FLASHWINFO</span> <span class="op">=</span> <span class="ident">mem</span>::<span class="ident">zeroed</span>();
+        <span class="ident">info</span>.<span class="ident">cbSize</span> <span class="op">=</span> <span class="ident">mem</span>::<span class="ident">size_of</span>::<span class="op">&lt;</span><span class="ident">FLASHWINFO</span><span class="op">&gt;</span>() <span class="kw">as</span> <span class="ident">u32</span>;
+        <span class="ident">info</span>.<span class="ident">dwFlags</span> <span class="op">=</span> <span class="ident">flags</span>;
+        <span class="ident">info</span>.<span class="ident">dwTimeout</span> <span class="op">=</span> <span class="ident">rate</span>;
+        <span class="ident">info</span>.<span class="ident">hwnd</span> <span class="op">=</span> <span class="ident">handle</span>;
+        <span class="ident">info</span>.<span class="ident">uCount</span> <span class="op">=</span> <span class="ident">count</span>;
 
-		<span class="kw">let</span> <span class="ident">info_p</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">info</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">FLASHWINFO</span>;
-		<span class="ident">winuser</span>::<span class="ident">FlashWindowEx</span>(<span class="ident">info_p</span>);
-	}
+        <span class="kw">let</span> <span class="ident">info_p</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">info</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">FLASHWINFO</span>;
+        <span class="ident">winuser</span>::<span class="ident">FlashWindowEx</span>(<span class="ident">info_p</span>);
+    }
 }
 <span class="doccomment">/**
- Returns the screen position of the cursor.
+Returns the screen position of the cursor.
 
- # Examples
- ```
- # extern crate winconsole;
- # use winconsole::window;
- # fn main() {
- let position = window::get_cursor_position().unwrap();
- println!(&quot;Cursor position: {:?}&quot;, position);
- # }
- ```
+# Examples
+```
+# extern crate winconsole;
+# use winconsole::window;
+# fn main() {
+let position = window::get_cursor_position().unwrap();
+println!(&quot;Cursor position: {:?}&quot;, position);
+# }
+```
 
- # Errors
- * [`IoError`]: Returned if an OS error occurs.
+# Errors
+* [`IoError`]: Returned if an OS error occurs.
 
- [`IoError`]: ../errors/enum.WinError.html#Io.v
- */</span>
+[`IoError`]: ../errors/enum.WinError.html#Io.v
+*/</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_cursor_position</span>() <span class="op">-&gt;</span> <span class="ident">WinResult</span><span class="op">&lt;</span><span class="ident">Vector2</span><span class="op">&lt;</span><span class="ident">i32</span><span class="op">&gt;&gt;</span> {
-	<span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">point</span>: <span class="ident">POINT</span>;
+    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">point</span>: <span class="ident">POINT</span>;
 
-	<span class="macro">os_err</span><span class="macro">!</span>(<span class="kw">unsafe</span> {
-		<span class="ident">point</span> <span class="op">=</span> <span class="ident">mem</span>::<span class="ident">zeroed</span>();
-		<span class="kw">let</span> <span class="ident">point_p</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">point</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">POINT</span>;
-		<span class="ident">winuser</span>::<span class="ident">GetCursorPos</span>(<span class="ident">point_p</span>)
-	});
+    <span class="macro">os_err</span><span class="macro">!</span>(<span class="kw">unsafe</span> {
+        <span class="ident">point</span> <span class="op">=</span> <span class="ident">mem</span>::<span class="ident">zeroed</span>();
+        <span class="kw">let</span> <span class="ident">point_p</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">point</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">POINT</span>;
+        <span class="ident">winuser</span>::<span class="ident">GetCursorPos</span>(<span class="ident">point_p</span>)
+    });
 
-	<span class="prelude-val">Ok</span>(<span class="ident">Vector2</span>::<span class="ident">new</span>(<span class="ident">point</span>.<span class="ident">x</span>, <span class="ident">point</span>.<span class="ident">y</span>))
+    <span class="prelude-val">Ok</span>(<span class="ident">Vector2</span>::<span class="ident">new</span>(<span class="ident">point</span>.<span class="ident">x</span>, <span class="ident">point</span>.<span class="ident">y</span>))
 }
 <span class="doccomment">/**
- Returns the display state of the console window.
+Returns the display state of the console window.
 
- # Examples
- ```
- # extern crate winconsole;
- # use winconsole::window;
- # fn main() {
- println!(&quot;State: {:?}&quot;, window::get_display_state().unwrap());
- # }
- ```
+# Examples
+```
+# extern crate winconsole;
+# use winconsole::window;
+# fn main() {
+println!(&quot;State: {:?}&quot;, window::get_display_state().unwrap());
+# }
+```
 
- # Errors
- * [`IoError`]: Returned if an OS error occurs.
+# Errors
+* [`IoError`]: Returned if an OS error occurs.
 
- [`IoError`]: ../errors/enum.WinError.html#Io.v
- */</span>
+[`IoError`]: ../errors/enum.WinError.html#Io.v
+*/</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_display_state</span>() <span class="op">-&gt;</span> <span class="ident">WinResult</span><span class="op">&lt;</span><span class="ident">DisplayState</span><span class="op">&gt;</span> {
-	<span class="kw">if</span> <span class="op">!</span><span class="ident">is_visible</span>() {
-		<span class="prelude-val">Ok</span>(<span class="ident">DisplayState</span>::<span class="ident">Hidden</span>)
-	} <span class="kw">else</span> {
-		<span class="prelude-val">Ok</span>(<span class="ident">DisplayState</span>::<span class="ident">from</span>(<span class="ident">get_window_show</span>()<span class="question-mark">?</span> <span class="kw">as</span> <span class="ident">u8</span>))
-	}
+    <span class="kw">if</span> <span class="op">!</span><span class="ident">is_visible</span>() {
+        <span class="prelude-val">Ok</span>(<span class="ident">DisplayState</span>::<span class="ident">Hidden</span>)
+    } <span class="kw">else</span> {
+        <span class="prelude-val">Ok</span>(<span class="ident">DisplayState</span>::<span class="ident">from</span>(<span class="ident">get_window_show</span>()<span class="question-mark">?</span> <span class="kw">as</span> <span class="ident">u8</span>))
+    }
 }
 <span class="doccomment">/**
- Returns the position of the console window in pixels.
+Returns the position of the console window in pixels.
 
- # Examples
- ```
- # extern crate winconsole;
- # use winconsole::window;
- # fn main() {
- let position = window::get_position().unwrap();
- println!(&quot;Window position: {:?}&quot;, position);
- # }
- ```
+# Examples
+```
+# extern crate winconsole;
+# use winconsole::window;
+# fn main() {
+let position = window::get_position().unwrap();
+println!(&quot;Window position: {:?}&quot;, position);
+# }
+```
 
- # Errors
- * [`IoError`]: Returned if an OS error occurs.
+# Errors
+* [`IoError`]: Returned if an OS error occurs.
 
- [`IoError`]: ../errors/enum.WinError.html#Io.v
- */</span>
+[`IoError`]: ../errors/enum.WinError.html#Io.v
+*/</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_position</span>() <span class="op">-&gt;</span> <span class="ident">WinResult</span><span class="op">&lt;</span><span class="ident">Vector2</span><span class="op">&lt;</span><span class="ident">i32</span><span class="op">&gt;&gt;</span> {
-	<span class="kw">let</span> <span class="ident">rect</span> <span class="op">=</span> <span class="ident">get_window_rect</span>()<span class="question-mark">?</span>;
-	<span class="prelude-val">Ok</span>(<span class="ident">Vector2</span>::<span class="ident">new</span>(<span class="ident">rect</span>.<span class="ident">left</span>, <span class="ident">rect</span>.<span class="ident">top</span>))
+    <span class="kw">let</span> <span class="ident">rect</span> <span class="op">=</span> <span class="ident">get_window_rect</span>()<span class="question-mark">?</span>;
+    <span class="prelude-val">Ok</span>(<span class="ident">Vector2</span>::<span class="ident">new</span>(<span class="ident">rect</span>.<span class="ident">left</span>, <span class="ident">rect</span>.<span class="ident">top</span>))
 }
 <span class="doccomment">/**
- Returns the size of the console window in pixels.
+Returns the size of the console window in pixels.
 
- # Examples
- ```
- # extern crate winconsole;
- # use winconsole::window;
- # fn main() {
- let size = window::get_size().unwrap();
- println!(&quot;Window size: {:?}&quot;, size);
- # }
- ```
+# Examples
+```
+# extern crate winconsole;
+# use winconsole::window;
+# fn main() {
+let size = window::get_size().unwrap();
+println!(&quot;Window size: {:?}&quot;, size);
+# }
+```
 
- # Errors
- * [`IoError`]: Returned if an OS error occurs.
+# Errors
+* [`IoError`]: Returned if an OS error occurs.
 
- [`IoError`]: ../errors/enum.WinError.html#Io.v
- */</span>
+[`IoError`]: ../errors/enum.WinError.html#Io.v
+*/</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">get_size</span>() <span class="op">-&gt;</span> <span class="ident">WinResult</span><span class="op">&lt;</span><span class="ident">Vector2</span><span class="op">&lt;</span><span class="ident">i32</span><span class="op">&gt;&gt;</span> {
-	<span class="kw">let</span> <span class="ident">rect</span> <span class="op">=</span> <span class="ident">get_window_rect</span>()<span class="question-mark">?</span>;
-	<span class="prelude-val">Ok</span>(<span class="ident">Vector2</span>::<span class="ident">new</span>(<span class="ident">rect</span>.<span class="ident">right</span> <span class="op">-</span> <span class="ident">rect</span>.<span class="ident">left</span> <span class="op">-</span> <span class="number">1</span>, <span class="ident">rect</span>.<span class="ident">bottom</span> <span class="op">-</span> <span class="ident">rect</span>.<span class="ident">top</span> <span class="op">-</span> <span class="number">1</span>))
+    <span class="kw">let</span> <span class="ident">rect</span> <span class="op">=</span> <span class="ident">get_window_rect</span>()<span class="question-mark">?</span>;
+    <span class="prelude-val">Ok</span>(<span class="ident">Vector2</span>::<span class="ident">new</span>(
+        <span class="ident">rect</span>.<span class="ident">right</span> <span class="op">-</span> <span class="ident">rect</span>.<span class="ident">left</span> <span class="op">-</span> <span class="number">1</span>,
+        <span class="ident">rect</span>.<span class="ident">bottom</span> <span class="op">-</span> <span class="ident">rect</span>.<span class="ident">top</span> <span class="op">-</span> <span class="number">1</span>,
+    ))
 }
 <span class="doccomment">/**
- Hides the console window.
+Hides the console window.
 
- # Examples
- ```
- # extern crate winconsole;
- # use winconsole::window;
- # fn main() {
- window::hide();
- # }
- ```
- */</span>
+# Examples
+```
+# extern crate winconsole;
+# use winconsole::window;
+# fn main() {
+window::hide();
+# }
+```
+*/</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">hide</span>() {
-	<span class="ident">set_window_show</span>(<span class="number">0</span>)
+    <span class="ident">set_window_show</span>(<span class="number">0</span>)
 }
 <span class="doccomment">/**
- Is the window the active window?
+Is the window the active window?
 
- # Examples
- ```
- # extern crate winconsole;
- # use winconsole::window;
- # fn main() {
- println!(&quot;Active? {}&quot;, window::is_active());
- # }
- ```
- */</span>
+# Examples
+```
+# extern crate winconsole;
+# use winconsole::window;
+# fn main() {
+println!(&quot;Active? {}&quot;, window::is_active());
+# }
+```
+*/</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_active</span>() <span class="op">-&gt;</span> <span class="ident">bool</span> {
-	<span class="kw">unsafe</span> { <span class="ident">winuser</span>::<span class="ident">GetForegroundWindow</span>() <span class="op">==</span> <span class="macro">window_handle</span><span class="macro">!</span>() }
+    <span class="kw">unsafe</span> { <span class="ident">winuser</span>::<span class="ident">GetForegroundWindow</span>() <span class="op">==</span> <span class="macro">window_handle</span><span class="macro">!</span>() }
 }
 <span class="doccomment">/**
- Is the window maximized?
+Is the window maximized?
 
- # Examples
- ```
- # extern crate winconsole;
- # use winconsole::window;
- # fn main() {
- println!(&quot;Maximized? {}&quot;, window::is_maximized().unwrap());
- # }
- ```
+# Examples
+```
+# extern crate winconsole;
+# use winconsole::window;
+# fn main() {
+println!(&quot;Maximized? {}&quot;, window::is_maximized().unwrap());
+# }
+```
 
- # Errors
- * [`IoError`]: Returned if an OS error occurs.
+# Errors
+* [`IoError`]: Returned if an OS error occurs.
 
- [`IoError`]: ../errors/enum.WinError.html#Io.v
- */</span>
+[`IoError`]: ../errors/enum.WinError.html#Io.v
+*/</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_maximized</span>() <span class="op">-&gt;</span> <span class="ident">WinResult</span><span class="op">&lt;</span><span class="ident">bool</span><span class="op">&gt;</span> {
-	<span class="prelude-val">Ok</span>(<span class="ident">get_window_show</span>()<span class="question-mark">?</span> <span class="op">==</span> <span class="number">3</span>)
+    <span class="prelude-val">Ok</span>(<span class="ident">get_window_show</span>()<span class="question-mark">?</span> <span class="op">==</span> <span class="number">3</span>)
 }
 <span class="doccomment">/**
- Is the window minimized?
+Is the window minimized?
 
- # Examples
- ```
- # extern crate winconsole;
- # use winconsole::window;
- # fn main() {
- println!(&quot;Minimized? {}&quot;, window::is_minimized().unwrap());
- # }
- ```
+# Examples
+```
+# extern crate winconsole;
+# use winconsole::window;
+# fn main() {
+println!(&quot;Minimized? {}&quot;, window::is_minimized().unwrap());
+# }
+```
 
- # Errors
- * [`IoError`]: Returned if an OS error occurs.
+# Errors
+* [`IoError`]: Returned if an OS error occurs.
 
- [`IoError`]: ../errors/enum.WinError.html#Io.v
- */</span>
+[`IoError`]: ../errors/enum.WinError.html#Io.v
+*/</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_minimized</span>() <span class="op">-&gt;</span> <span class="ident">WinResult</span><span class="op">&lt;</span><span class="ident">bool</span><span class="op">&gt;</span> {
-	<span class="prelude-val">Ok</span>(<span class="ident">get_window_show</span>()<span class="question-mark">?</span> <span class="op">==</span> <span class="number">2</span>)
+    <span class="prelude-val">Ok</span>(<span class="ident">get_window_show</span>()<span class="question-mark">?</span> <span class="op">==</span> <span class="number">2</span>)
 }
 <span class="doccomment">/**
- Is the window visible?
+Is the window visible?
 
- Note that this only refers to the state of the WS_VISIBLE style bit; the window may be obscured by other windows.
+Note that this only refers to the state of the WS_VISIBLE style bit; the window may be obscured by other windows.
 
- # Examples
- ```
- # extern crate winconsole;
- # use winconsole::window;
- # fn main() {
- println!(&quot;Visible? {}&quot;, window::is_visible());
- # }
- ```
- */</span>
+# Examples
+```
+# extern crate winconsole;
+# use winconsole::window;
+# fn main() {
+println!(&quot;Visible? {}&quot;, window::is_visible());
+# }
+```
+*/</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">is_visible</span>() <span class="op">-&gt;</span> <span class="ident">bool</span> {
-	<span class="kw">unsafe</span> {
-		<span class="kw">let</span> <span class="ident">handle</span> <span class="op">=</span> <span class="macro">window_handle</span><span class="macro">!</span>();
-		<span class="ident">winuser</span>::<span class="ident">IsWindowVisible</span>(<span class="ident">handle</span>) <span class="op">!=</span> <span class="number">0</span>
-	}
+    <span class="kw">unsafe</span> {
+        <span class="kw">let</span> <span class="ident">handle</span> <span class="op">=</span> <span class="macro">window_handle</span><span class="macro">!</span>();
+        <span class="ident">winuser</span>::<span class="ident">IsWindowVisible</span>(<span class="ident">handle</span>) <span class="op">!=</span> <span class="number">0</span>
+    }
 }
 <span class="doccomment">/**
- Maximizes and activates the console window.
+Maximizes and activates the console window.
 
- # Examples
- ```
- # extern crate winconsole;
- # use winconsole::window;
- # fn main() {
- window::maximize();
- # }
- ```
- */</span>
+# Examples
+```
+# extern crate winconsole;
+# use winconsole::window;
+# fn main() {
+window::maximize();
+# }
+```
+*/</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">maximize</span>() {
-	<span class="ident">set_window_show</span>(<span class="number">3</span>)
+    <span class="ident">set_window_show</span>(<span class="number">3</span>)
 }
 <span class="doccomment">/**
- Minimizes the console window.
+Minimizes the console window.
 
- # Arguments
- * `activate` - Should the window become the active window?
- * `activate_next` - If `activate` is false and this is true, the next top-level window in the Z order is activated.
+# Arguments
+* `activate` - Should the window become the active window?
+* `activate_next` - If `activate` is false and this is true, the next top-level window in the Z order is activated.
 
- # Examples
- ```
- # extern crate winconsole;
- # use winconsole::window;
- # fn main() {
- window::minimize(false, true);
- # }
- ```
- */</span>
+# Examples
+```
+# extern crate winconsole;
+# use winconsole::window;
+# fn main() {
+window::minimize(false, true);
+# }
+```
+*/</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">minimize</span>(<span class="ident">activate</span>: <span class="ident">bool</span>, <span class="ident">activate_next</span>: <span class="ident">bool</span>) {
-	<span class="kw">let</span> <span class="ident">cmd</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">activate</span> {
-		<span class="number">2</span>
-	} <span class="kw">else</span> {
-		<span class="kw">if</span> <span class="ident">activate_next</span> { <span class="number">6</span> } <span class="kw">else</span> { <span class="number">7</span> }
-	};
-	<span class="ident">set_window_show</span>(<span class="ident">cmd</span>)
+    <span class="kw">let</span> <span class="ident">cmd</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">activate</span> {
+        <span class="number">2</span>
+    } <span class="kw">else</span> {
+        <span class="kw">if</span> <span class="ident">activate_next</span> {
+            <span class="number">6</span>
+        } <span class="kw">else</span> {
+            <span class="number">7</span>
+        }
+    };
+    <span class="ident">set_window_show</span>(<span class="ident">cmd</span>)
 }
 <span class="doccomment">/**
- Restores and activates the console window.
+Restores and activates the console window.
 
- # Examples
- ```
- # extern crate winconsole;
- # use winconsole::window;
- # fn main() {
- window::restore();
- # }
- ```
- */</span>
+# Examples
+```
+# extern crate winconsole;
+# use winconsole::window;
+# fn main() {
+window::restore();
+# }
+```
+*/</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">restore</span>() {
-	<span class="ident">set_window_show</span>(<span class="number">9</span>)
+    <span class="ident">set_window_show</span>(<span class="number">9</span>)
 }
 <span class="doccomment">/**
- Sets the screen position of the cursor.
+Sets the screen position of the cursor.
 
- # Examples
- ```
- # extern crate winconsole;
- # use winconsole::window;
- # fn main() {
- let position = window::get_cursor_position().unwrap();
- window::set_cursor_position(position.x + 1, position.y + 1).unwrap();
- # }
- ```
+# Examples
+```
+# extern crate winconsole;
+# use winconsole::window;
+# fn main() {
+let position = window::get_cursor_position().unwrap();
+window::set_cursor_position(position.x + 1, position.y + 1).unwrap();
+# }
+```
 
- # Errors
- * [`IoError`]: Returned if an OS error occurs.
+# Errors
+* [`IoError`]: Returned if an OS error occurs.
 
- [`IoError`]: ../errors/enum.WinError.html#Io.v
- */</span>
+[`IoError`]: ../errors/enum.WinError.html#Io.v
+*/</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_cursor_position</span>(<span class="ident">x</span>: <span class="ident">i32</span>, <span class="ident">y</span>: <span class="ident">i32</span>) <span class="op">-&gt;</span> <span class="ident">WinResult</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
-	<span class="macro">os_err</span><span class="macro">!</span>(<span class="kw">unsafe</span> { <span class="ident">winuser</span>::<span class="ident">SetCursorPos</span>(<span class="ident">x</span>, <span class="ident">y</span>) });
-	<span class="prelude-val">Ok</span>(())
+    <span class="macro">os_err</span><span class="macro">!</span>(<span class="kw">unsafe</span> { <span class="ident">winuser</span>::<span class="ident">SetCursorPos</span>(<span class="ident">x</span>, <span class="ident">y</span>) });
+    <span class="prelude-val">Ok</span>(())
 }
 <span class="doccomment">/**
- Sets the display state of the console window.
+Sets the display state of the console window.
 
- # Arguments
- * `state` - The display state to set.
+# Arguments
+* `state` - The display state to set.
 
- # Examples
- ```
- # extern crate winconsole;
- # use winconsole::window;
- # use winconsole::window::DisplayState;
- # fn main() {
- window::set_display_state(DisplayState::Minimized);
- # }
- ```
- */</span>
+# Examples
+```
+# extern crate winconsole;
+# use winconsole::window;
+# use winconsole::window::DisplayState;
+# fn main() {
+window::set_display_state(DisplayState::Minimized);
+# }
+```
+*/</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_display_state</span>(<span class="ident">state</span>: <span class="ident">DisplayState</span>) {
-	<span class="kw">match</span> <span class="ident">state</span> {
-		<span class="ident">DisplayState</span>::<span class="ident">Normal</span> <span class="op">=&gt;</span> {
-			<span class="ident">show</span>(<span class="bool-val">true</span>);
-			<span class="ident">restore</span>();
-		},
-		<span class="ident">DisplayState</span>::<span class="ident">Hidden</span> <span class="op">=&gt;</span> <span class="ident">hide</span>(),
-		<span class="ident">DisplayState</span>::<span class="ident">Minimized</span> <span class="op">=&gt;</span> {
-			<span class="ident">show</span>(<span class="bool-val">false</span>);
-			<span class="ident">minimize</span>(<span class="bool-val">false</span>, <span class="bool-val">true</span>);
-		},
-		<span class="ident">DisplayState</span>::<span class="ident">Maximized</span> <span class="op">=&gt;</span> {
-			<span class="ident">show</span>(<span class="bool-val">true</span>);
-			<span class="ident">maximize</span>();
-		}
-	}
+    <span class="kw">match</span> <span class="ident">state</span> {
+        <span class="ident">DisplayState</span>::<span class="ident">Normal</span> <span class="op">=&gt;</span> {
+            <span class="ident">show</span>(<span class="bool-val">true</span>);
+            <span class="ident">restore</span>();
+        }
+        <span class="ident">DisplayState</span>::<span class="ident">Hidden</span> <span class="op">=&gt;</span> <span class="ident">hide</span>(),
+        <span class="ident">DisplayState</span>::<span class="ident">Minimized</span> <span class="op">=&gt;</span> {
+            <span class="ident">show</span>(<span class="bool-val">false</span>);
+            <span class="ident">minimize</span>(<span class="bool-val">false</span>, <span class="bool-val">true</span>);
+        }
+        <span class="ident">DisplayState</span>::<span class="ident">Maximized</span> <span class="op">=&gt;</span> {
+            <span class="ident">show</span>(<span class="bool-val">true</span>);
+            <span class="ident">maximize</span>();
+        }
+    }
 }
 <span class="doccomment">/**
- Sets the position of the console window.
+Sets the position of the console window.
 
- # Examples
- ```
- # extern crate winconsole;
- # use winconsole::window;
- # fn main() {
- let position = window::get_position().unwrap();
- window::set_position(position.x + 1, position.y + 1).unwrap();
- # }
- ```
+# Examples
+```
+# extern crate winconsole;
+# use winconsole::window;
+# fn main() {
+let position = window::get_position().unwrap();
+window::set_position(position.x + 1, position.y + 1).unwrap();
+# }
+```
 
- # Errors
- * [`IoError`]: Returned if an OS error occurs.
+# Errors
+* [`IoError`]: Returned if an OS error occurs.
 
- [`IoError`]: ../errors/enum.WinError.html#Io.v
- */</span>
+[`IoError`]: ../errors/enum.WinError.html#Io.v
+*/</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_position</span>(<span class="ident">x</span>: <span class="ident">i32</span>, <span class="ident">y</span>: <span class="ident">i32</span>) <span class="op">-&gt;</span> <span class="ident">WinResult</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
-	<span class="ident">set_window_info</span>(<span class="ident">x</span>, <span class="ident">y</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="prelude-val">None</span>, <span class="number">1</span>)
+    <span class="ident">set_window_info</span>(<span class="ident">x</span>, <span class="ident">y</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="prelude-val">None</span>, <span class="number">1</span>)
 }
 <span class="doccomment">/**
- Sets the size of the console window.
+Sets the size of the console window.
 
- # Examples
- ```
- # extern crate winconsole;
- # use winconsole::window;
- # fn main() {
- let size = window::get_size().unwrap();
- window::set_size(size.x + 1, size.y + 1).unwrap();
- # }
- ```
+# Examples
+```
+# extern crate winconsole;
+# use winconsole::window;
+# fn main() {
+let size = window::get_size().unwrap();
+window::set_size(size.x + 1, size.y + 1).unwrap();
+# }
+```
 
- # Errors
- * [`IoError`]: Returned if an OS error occurs.
+# Errors
+* [`IoError`]: Returned if an OS error occurs.
 
- [`IoError`]: ../errors/enum.WinError.html#Io.v
- */</span>
+[`IoError`]: ../errors/enum.WinError.html#Io.v
+*/</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_size</span>(<span class="ident">width</span>: <span class="ident">i32</span>, <span class="ident">height</span>: <span class="ident">i32</span>) <span class="op">-&gt;</span> <span class="ident">WinResult</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
-	<span class="ident">set_window_info</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="ident">width</span> <span class="op">+</span> <span class="number">1</span>, <span class="ident">height</span> <span class="op">+</span> <span class="number">1</span>, <span class="prelude-val">None</span>, <span class="number">2</span>)
+    <span class="ident">set_window_info</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="ident">width</span> <span class="op">+</span> <span class="number">1</span>, <span class="ident">height</span> <span class="op">+</span> <span class="number">1</span>, <span class="prelude-val">None</span>, <span class="number">2</span>)
 }
 <span class="doccomment">/**
- Shows the console window.
+Shows the console window.
 
- # Arguments
- * `activate` - Should the window become the active window?
+# Arguments
+* `activate` - Should the window become the active window?
 
- # Examples
- ```
- # extern crate winconsole;
- # use winconsole::window;
- # fn main() {
- window::show(true);
- # }
- ```
- */</span>
+# Examples
+```
+# extern crate winconsole;
+# use winconsole::window;
+# fn main() {
+window::show(true);
+# }
+```
+*/</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">show</span>(<span class="ident">activate</span>: <span class="ident">bool</span>) {
-	<span class="kw">let</span> <span class="ident">cmd</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">activate</span> { <span class="number">5</span> } <span class="kw">else</span> { <span class="number">8</span> };
-	<span class="ident">set_window_show</span>(<span class="ident">cmd</span>)
+    <span class="kw">let</span> <span class="ident">cmd</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">activate</span> { <span class="number">5</span> } <span class="kw">else</span> { <span class="number">8</span> };
+    <span class="ident">set_window_show</span>(<span class="ident">cmd</span>)
 }
 <span class="doccomment">/**
- Stops flashing the console window caption and/or tray icon.
+Stops flashing the console window caption and/or tray icon.
 
- # Examples
- ```
- # extern crate winconsole;
- # use winconsole::window;
- # fn main() {
- window::stop_flash();
- # }
- ```
- */</span>
+# Examples
+```
+# extern crate winconsole;
+# use winconsole::window;
+# fn main() {
+window::stop_flash();
+# }
+```
+*/</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">stop_flash</span>() {
-	<span class="ident">flash</span>(<span class="ident">FlashInfo</span>::<span class="ident">new</span>())
+    <span class="ident">flash</span>(<span class="ident">FlashInfo</span>::<span class="ident">new</span>())
 }
 
 <span class="kw">fn</span> <span class="ident">get_window_rect</span>() <span class="op">-&gt;</span> <span class="ident">WinResult</span><span class="op">&lt;</span><span class="ident">RECT</span><span class="op">&gt;</span> {
-	<span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">rect</span>: <span class="ident">RECT</span>;
-	<span class="macro">os_err</span><span class="macro">!</span>(<span class="kw">unsafe</span> {
-		<span class="kw">let</span> <span class="ident">handle</span> <span class="op">=</span> <span class="macro">window_handle</span><span class="macro">!</span>();
-		<span class="ident">rect</span> <span class="op">=</span> <span class="ident">mem</span>::<span class="ident">zeroed</span>();
-		<span class="kw">let</span> <span class="ident">rect_p</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">rect</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">RECT</span>;
+    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">rect</span>: <span class="ident">RECT</span>;
+    <span class="macro">os_err</span><span class="macro">!</span>(<span class="kw">unsafe</span> {
+        <span class="kw">let</span> <span class="ident">handle</span> <span class="op">=</span> <span class="macro">window_handle</span><span class="macro">!</span>();
+        <span class="ident">rect</span> <span class="op">=</span> <span class="ident">mem</span>::<span class="ident">zeroed</span>();
+        <span class="kw">let</span> <span class="ident">rect_p</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">rect</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">RECT</span>;
 
-		<span class="ident">winuser</span>::<span class="ident">GetWindowRect</span>(<span class="ident">handle</span>, <span class="ident">rect_p</span>)
-	});
-	<span class="prelude-val">Ok</span>(<span class="ident">rect</span>)
+        <span class="ident">winuser</span>::<span class="ident">GetWindowRect</span>(<span class="ident">handle</span>, <span class="ident">rect_p</span>)
+    });
+    <span class="prelude-val">Ok</span>(<span class="ident">rect</span>)
 }
 <span class="kw">fn</span> <span class="ident">get_window_show</span>() <span class="op">-&gt;</span> <span class="ident">WinResult</span><span class="op">&lt;</span><span class="ident">u32</span><span class="op">&gt;</span> {
-	<span class="kw">let</span> <span class="ident">state</span>: <span class="ident">u32</span>;
-	<span class="macro">os_err</span><span class="macro">!</span>(<span class="kw">unsafe</span> {
-		<span class="kw">let</span> <span class="ident">handle</span> <span class="op">=</span> <span class="macro">window_handle</span><span class="macro">!</span>();
-		<span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">placement</span>: <span class="ident">WINDOWPLACEMENT</span> <span class="op">=</span> <span class="ident">mem</span>::<span class="ident">zeroed</span>();
-		<span class="ident">placement</span>.<span class="ident">length</span> <span class="op">=</span> <span class="ident">mem</span>::<span class="ident">size_of</span>::<span class="op">&lt;</span><span class="ident">WINDOWPLACEMENT</span><span class="op">&gt;</span>() <span class="kw">as</span> <span class="ident">u32</span>;
-		<span class="kw">let</span> <span class="ident">placement_p</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">placement</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">WINDOWPLACEMENT</span>;
+    <span class="kw">let</span> <span class="ident">state</span>: <span class="ident">u32</span>;
+    <span class="macro">os_err</span><span class="macro">!</span>(<span class="kw">unsafe</span> {
+        <span class="kw">let</span> <span class="ident">handle</span> <span class="op">=</span> <span class="macro">window_handle</span><span class="macro">!</span>();
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">placement</span>: <span class="ident">WINDOWPLACEMENT</span> <span class="op">=</span> <span class="ident">mem</span>::<span class="ident">zeroed</span>();
+        <span class="ident">placement</span>.<span class="ident">length</span> <span class="op">=</span> <span class="ident">mem</span>::<span class="ident">size_of</span>::<span class="op">&lt;</span><span class="ident">WINDOWPLACEMENT</span><span class="op">&gt;</span>() <span class="kw">as</span> <span class="ident">u32</span>;
+        <span class="kw">let</span> <span class="ident">placement_p</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">placement</span> <span class="kw">as</span> <span class="kw-2">*</span><span class="kw-2">mut</span> <span class="ident">WINDOWPLACEMENT</span>;
 
-		<span class="kw">let</span> <span class="ident">result</span> <span class="op">=</span> <span class="ident">winuser</span>::<span class="ident">GetWindowPlacement</span>(<span class="ident">handle</span>, <span class="ident">placement_p</span>);
-		<span class="ident">state</span> <span class="op">=</span> <span class="ident">placement</span>.<span class="ident">showCmd</span>;
-		<span class="ident">result</span>
-	});
-	<span class="prelude-val">Ok</span>(<span class="ident">state</span>)
+        <span class="kw">let</span> <span class="ident">result</span> <span class="op">=</span> <span class="ident">winuser</span>::<span class="ident">GetWindowPlacement</span>(<span class="ident">handle</span>, <span class="ident">placement_p</span>);
+        <span class="ident">state</span> <span class="op">=</span> <span class="ident">placement</span>.<span class="ident">showCmd</span>;
+        <span class="ident">result</span>
+    });
+    <span class="prelude-val">Ok</span>(<span class="ident">state</span>)
 }
-<span class="kw">fn</span> <span class="ident">set_window_info</span>(<span class="ident">x</span>: <span class="ident">i32</span>, <span class="ident">y</span>: <span class="ident">i32</span>, <span class="ident">width</span>: <span class="ident">i32</span>, <span class="ident">height</span>: <span class="ident">i32</span>, <span class="ident">z</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">HWND</span><span class="op">&gt;</span>, <span class="ident">flags</span>: <span class="ident">u32</span>) <span class="op">-&gt;</span> <span class="ident">WinResult</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
-	<span class="kw">let</span> <span class="ident">z</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">z</span> {
-		<span class="prelude-val">Some</span>(<span class="ident">z</span>) <span class="op">=&gt;</span> <span class="ident">z</span>,
-		<span class="prelude-val">None</span> <span class="op">=&gt;</span> <span class="ident">ptr</span>::<span class="ident">null_mut</span>()
-	};
-	<span class="macro">os_err</span><span class="macro">!</span>(<span class="kw">unsafe</span> {
-		<span class="kw">let</span> <span class="ident">handle</span> <span class="op">=</span> <span class="macro">window_handle</span><span class="macro">!</span>();
-		<span class="ident">winuser</span>::<span class="ident">SetWindowPos</span>(<span class="ident">handle</span>, <span class="ident">z</span>, <span class="ident">x</span>, <span class="ident">y</span>, <span class="ident">width</span>, <span class="ident">height</span>, <span class="ident">flags</span>)
-	});
-	<span class="prelude-val">Ok</span>(())
+<span class="kw">fn</span> <span class="ident">set_window_info</span>(
+    <span class="ident">x</span>: <span class="ident">i32</span>,
+    <span class="ident">y</span>: <span class="ident">i32</span>,
+    <span class="ident">width</span>: <span class="ident">i32</span>,
+    <span class="ident">height</span>: <span class="ident">i32</span>,
+    <span class="ident">z</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">HWND</span><span class="op">&gt;</span>,
+    <span class="ident">flags</span>: <span class="ident">u32</span>,
+) <span class="op">-&gt;</span> <span class="ident">WinResult</span><span class="op">&lt;</span>()<span class="op">&gt;</span> {
+    <span class="kw">let</span> <span class="ident">z</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">z</span> {
+        <span class="prelude-val">Some</span>(<span class="ident">z</span>) <span class="op">=&gt;</span> <span class="ident">z</span>,
+        <span class="prelude-val">None</span> <span class="op">=&gt;</span> <span class="ident">ptr</span>::<span class="ident">null_mut</span>(),
+    };
+    <span class="macro">os_err</span><span class="macro">!</span>(<span class="kw">unsafe</span> {
+        <span class="kw">let</span> <span class="ident">handle</span> <span class="op">=</span> <span class="macro">window_handle</span><span class="macro">!</span>();
+        <span class="ident">winuser</span>::<span class="ident">SetWindowPos</span>(<span class="ident">handle</span>, <span class="ident">z</span>, <span class="ident">x</span>, <span class="ident">y</span>, <span class="ident">width</span>, <span class="ident">height</span>, <span class="ident">flags</span>)
+    });
+    <span class="prelude-val">Ok</span>(())
 }
 <span class="kw">fn</span> <span class="ident">set_window_show</span>(<span class="ident">value</span>: <span class="ident">i32</span>) {
-	<span class="kw">unsafe</span> {
-		<span class="kw">let</span> <span class="ident">handle</span> <span class="op">=</span> <span class="macro">window_handle</span><span class="macro">!</span>();
-		<span class="ident">winuser</span>::<span class="ident">ShowWindow</span>(<span class="ident">handle</span>, <span class="ident">value</span>);
-	}
+    <span class="kw">unsafe</span> {
+        <span class="kw">let</span> <span class="ident">handle</span> <span class="op">=</span> <span class="macro">window_handle</span><span class="macro">!</span>();
+        <span class="ident">winuser</span>::<span class="ident">ShowWindow</span>(<span class="ident">handle</span>, <span class="ident">value</span>);
+    }
 }
-</pre>
-</section><section id="search" class="content hidden"></section><section class="footer"></section><aside id="help" class="hidden"><div><h1 class="hidden">Help</h1><div class="shortcuts"><h2>Keyboard Shortcuts</h2><dl><dt><kbd>?</kbd></dt><dd>Show this help dialog</dd><dt><kbd>S</kbd></dt><dd>Focus the search field</dd><dt><kbd>↑</kbd></dt><dd>Move up in search results</dd><dt><kbd>↓</kbd></dt><dd>Move down in search results</dd><dt><kbd>↹</kbd></dt><dd>Switch tab</dd><dt><kbd>&#9166;</kbd></dt><dd>Go to active search result</dd><dt><kbd>+</kbd></dt><dd>Expand all sections</dd><dt><kbd>-</kbd></dt><dd>Collapse all sections</dd></dl></div><div class="infos"><h2>Search Tricks</h2><p>Prefix searches with a type followed by a colon (e.g. <code>fn:</code>) to restrict the search to a given type.</p><p>Accepted types are: <code>fn</code>, <code>mod</code>, <code>struct</code>, <code>enum</code>, <code>trait</code>, <code>type</code>, <code>macro</code>, and <code>const</code>.</p><p>Search functions by type signature (e.g. <code>vec -> usize</code> or <code>* -> vec</code>)</p><p>Search multiple things at once by splitting your query with comma (e.g. <code>str,u8</code> or <code>String,struct:Vec,test</code>)</p></div></div></aside><script>window.rootPath = "../../../";window.currentCrate = "winconsole";</script><script src="../../../aliases.js"></script><script src="../../../main.js"></script><script defer src="../../../search-index.js"></script></body></html>
+</pre></div>
+</section><section id="search" class="content hidden"></section><section class="footer"></section><aside id="help" class="hidden"><div><h1 class="hidden">Help</h1><div class="shortcuts"><h2>Keyboard Shortcuts</h2><dl><dt><kbd>?</kbd></dt><dd>Show this help dialog</dd><dt><kbd>S</kbd></dt><dd>Focus the search field</dd><dt><kbd>↑</kbd></dt><dd>Move up in search results</dd><dt><kbd>↓</kbd></dt><dd>Move down in search results</dd><dt><kbd>↹</kbd></dt><dd>Switch tab</dd><dt><kbd>&#9166;</kbd></dt><dd>Go to active search result</dd><dt><kbd>+</kbd></dt><dd>Expand all sections</dd><dt><kbd>-</kbd></dt><dd>Collapse all sections</dd></dl></div><div class="infos"><h2>Search Tricks</h2><p>Prefix searches with a type followed by a colon (e.g., <code>fn:</code>) to restrict the search to a given type.</p><p>Accepted types are: <code>fn</code>, <code>mod</code>, <code>struct</code>, <code>enum</code>, <code>trait</code>, <code>type</code>, <code>macro</code>, and <code>const</code>.</p><p>Search functions by type signature (e.g., <code>vec -> usize</code> or <code>* -> vec</code>)</p><p>Search multiple things at once by splitting your query with comma (e.g., <code>str,u8</code> or <code>String,struct:Vec,test</code>)</p></div></div></aside><script>window.rootPath = "../../../";window.currentCrate = "winconsole";</script><script src="../../../aliases.js"></script><script src="../../../main.js"></script><script src="../../../source-script.js"></script><script src="../../../source-files.js"></script><script defer src="../../../search-index.js"></script></body></html>
